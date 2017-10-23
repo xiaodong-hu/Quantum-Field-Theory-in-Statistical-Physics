@@ -1,0 +1,1046 @@
+\documentclass[b5paper,10pt,UTF8]{book}
+\usepackage[Symbol]{upgreek}%使用\up+希腊字母, 可得直立体(如文中的\uppsi)
+\usepackage{ctex}
+\usepackage{mathrsfs,amssymb,amsfonts,amsmath,bm,ntheorem}
+\usepackage{mathbbol}%双线数字
+\usepackage{fancyhdr,titlesec,enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 版面调节 %%%%%%%%%%
+\usepackage[paperwidth=182mm,paperheight=257mm,text={142mm,210mm},left=23mm,includehead,vmarginratio=1:1]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{lmodern}
+% Source: http://en.wikibooks.org/wiki/LaTeX/Hyperlinks %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[numbers,sort&compress]{natbib}%修改参考文献
+%\usepackage{feynmf}%%%%%%%%%%%%%%%%%%%费曼图
+\usepackage{simplewick}%%%%%%%%%%%%%%%%%%%%%Wick缩并
+\usepackage{tikz} %%%% 高阶绘图
+%\usepackage{pgfplots} %%%% 简单绘图
+\usetikzlibrary{arrows,shapes,chains}
+\usepackage{cleveref}
+\crefname{tikzpicture}{figure}{figures}%%%第一个框为类型，第二个框为单引用输出，第三个为多引用输出。命令为\cref
+
+\usepackage{lscape}%%%单页横置
+\usepackage{diagbox}%%%表格对角线
+
+
+%%%%%%%%%%%%%%%%%正体微分%%%%%%%%%%%%%%%%%
+\newcommand*\dd{\mathop{}\!\mathrm{d}}
+\newcommand*\ddd[1]{\mathop{}\!\mathrm{d^#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{dedication}
+{
+   \cleardoublepage
+   \thispagestyle{empty}
+   \vspace*{\stretch{1}}
+   \hfill\begin{minipage}[t]{0.66\textwidth}
+   \raggedright
+}
+{
+   \end{minipage}
+   \vspace*{\stretch{3}}
+   \clearpage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chapter quote at the start of chapter        %
+% Source: http://tex.stackexchange.com/a/53380 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\renewcommand{\@chapapp}{}% Not necessary...
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First page of book which contains 'stuff' like: %
+%  - Book title, subtitle                         %
+%  - Book author name                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{\zihao{0}\textbf{Qauntum Field Theory in Statistical Physics}}
+\author{{\kaishu 胡啸东}\thanks{\url{cdqz2014@mail.ustc.edu.cn}}}
+
+%%%%%%%%%%%%%%%%%%%%%方程按节编号%%%%%%%%%%%%%%%%%%%%%
+\numberwithin{equation}{section}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\allowdisplaybreaks[4] %%%%%%%%%%%%%%%%%% 允许 align 跨页编排
+
+\begin{document}
+%\begin{fmffile}{fmftemp1}%%%%%%%% 费曼图
+\frontmatter
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add a dedication paragraph to dedicate your book to someone %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dedication}
+	{\kaishu 山无数，乱红如雨，不记来时路。}\\
+	\hfill{———— 相对论吧纪念墙\quad}
+\end{dedication}
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %  定理定义等
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{Experiment}[section]
+\newenvironment{Experiment}[1][]{{\par\normalfont\bfseries 实验事实~\stepcounter{Experiment}\arabic{Experiment}#1~~}\kaishu}{\par}
+\newcounter{Axiom}[section]
+\newenvironment{Axiom}[1][]{{\par\normalfont\bfseries 公理~\stepcounter{Axiom}\arabic{Axiom}#1~~}\kaishu}{\par}
+\newcounter{Hypothesis}[section]
+\newenvironment{Hypothesis}[1][]{{\par\normalfont\bfseries 假设~\stepcounter{Hypothesis}\arabic{Hypothesis}#1~~}\kaishu}{\par}
+%%%%%%%%无标号假设%%%%%%%%%%%%%%%
+\newenvironment{Hypothesis*}[1][]{{\par\normalfont\bfseries 假设~#1~~}\kaishu}{\par}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{Proposition}[section]
+\newenvironment{Proposition}[1][]{{\par\normalfont\bfseries 命题~\stepcounter{Proposition}\arabic{Proposition}#1~~}\kaishu}{\par}
+\newcounter{Corollary}[section]
+\newenvironment{Corollary}[1][]{{\par\normalfont\bfseries 推论~\stepcounter{Corollary}\arabic{Corollary}#1~~}\kaishu}{\par}
+\newcounter{Theorem}[section]
+\newenvironment{Theorem}[1][]{{\par\normalfont\bfseries 定理~\stepcounter{Theorem}\arabic{Theorem}#1~~}\kaishu}{\par}
+\newcounter{Lemma}[section]
+\newenvironment{Lemma}[1][]{{\par\normalfont\bfseries 引理~\stepcounter{Lemma}\arabic{Lemma}#1~~}\kaishu}{\par}
+\newcounter{Property}[section]
+\newenvironment{Property}[1][]{{\par\normalfont\bfseries 性质~\stepcounter{Property}\arabic{Property}#1~~}\kaishu}{\par}
+\newcounter{Assertion}[section]
+\newenvironment{Assertion}[1][]{{\par\normalfont\bfseries 断语~\stepcounter{Assertion}\arabic{Assertion}#1~~}\kaishu}{\par}
+\newenvironment{Proof}{{\par{\heiti 证明}~~}}{\hfill $\square$ \par\hfill\par}
+\newcounter{Example}[section]
+\newenvironment{Example}[1][]{{\par\normalfont\bfseries 例~\stepcounter{Example}\arabic{Example}#1~~}\songti}{\hfill\par\hfill\par}
+\newcounter{Def}[section]
+\newenvironment{Def}[1][]{{\par\normalfont\bfseries 定义~\stepcounter{Def}\arabic{Def}#1~~\songti}}{\par}
+%%%%%%%%无标号定义%%%%%%%%%%%%%%%
+\newenvironment{Def*}[1][]{{\par\normalfont\bfseries 定义~#1~~}\kaishu}{\par}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{Note}[section]
+\newenvironment{Note}[1][]{{\par\normalfont\bfseries 注~\stepcounter{Note}\arabic{Note}#1~~}\songti}{\par}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % 首页后根据奇偶页不同设置页眉页脚
+ % L,C,R分别代表左中右，O,E代表奇偶页
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \pagestyle{fancy}
+ \fancyhf{}
+ %\fancyhead[RE]{第~XX~卷}%%%%%偶数页左上
+ \fancyhead[EC]{\nouppercase{\heiti\leftmark}}%%%%%%偶数页中上
+ \fancyhead[EL,OR]{\thepage}%%%%%%奇数页右上与偶数页左上，页码
+ \fancyhead[OC]{\nouppercase{\heiti\rightmark}}%%%%%奇数页中上
+ \lfoot{}
+ \cfoot{}
+ \rfoot{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+\clearpage
+
+
+
+\chapter{Preliminaries}
+	\section{Three Pictures in Quantum Mechanics}
+
+		Generally, there are merely two kinds of quantities one can direct measure in microscopic systems: the eigenvalue of observables and the corresponding probabilities. To understand the experimental results essentially, people brought in two abstract things in quantum mechanics: observables (unbounded self-adjoint operators) and bras (vectors in rigged Hilbert Space), but which of them undertook the task of time-evolution became the subsequently urgent problem. Depending on the different perspectives on time evolution, People then developed three so-called \emph{pictures}.\par
+		Anyway, whatever standpoints we adopt, they must be physically equivalent, i.e., the calculated quantities related to observables must be equal to each other, or
+		\begin{equation}\label{1.0.1}
+			\langle\psi^S|\Omega^S|\phi^S\rangle=\langle\psi^H|\Omega^H|\phi^H\rangle=\langle\psi^I|\Omega|\phi^I\rangle.
+		\end{equation}
+		To discuss the distinction of these three pictures, we set three pictures coincides at initial time for convenience
+		$$|\psi^S(0)\rangle=|\psi^H(0)\rangle=|\psi^I(0)\rangle.$$
+
+
+		\subsection{Schr$\ddot{\text{o}}$dinger Picture}
+			\textbf{In the most familiar Schr$\ddot{\text{o}}$dinger picture, vectors undertake all the time-evolution brought by Hamiltonian $H(t)$}. \par
+			The formal solution of Schr$\ddot{\text{o}}$dinger equation
+			\begin{equation}\label{1.1.1}
+				i\hbar\dfrac{\partial}{\partial t}|\psi^S(t)\rangle=H(t)|\psi^S(t)\rangle
+			\end{equation}
+			obviously takes the form of
+			\begin{equation}\label{1.1.2}
+			|\psi^S(t)\rangle=U^S(t,t_0)|\psi^S(0)\rangle,
+			\end{equation}
+			where we have introduced the unitary operator
+			\begin{align*}
+				U^S(t,t_0)&=\lim_{\Delta t\rightarrow0}e^{-iH(t)\Delta t/\hbar}e^{-iH(t-\Delta t)\Delta t/\hbar}\cdots e^{-iH(t_0)\Delta t/\hbar}\\
+				&:=T\exp\left(-\dfrac{i}{\hbar}\int_{t_0}^t \dd\tau H(\tau)\right).
+			\end{align*}
+			\indent It is valuable to mention that not all observables in Schr$\ddot{\text{o}}$dinger picture are independent of time. Acturally, the Hamiltionian, for example, which measures the evolution of system, may be explicit function of time.
+		\subsection{Heisenberg Picture}
+			\textbf{In Heisenberg picture, however, it's the dynamic operators rather than vectors that undertake all the time-evolution brought by Hamiltonian $H(t)$}. \par
+			Note that Schr$\ddot{\text{o}}$dinger equation, as the third principle of axiomatic quantum mechanics, still must work here, so the demands that states never evolve with time equally means an inverse evolution on the Schr$\ddot{\text{o}}$dinger picture that:
+			\begin{equation}\label{1.1.3}
+				|\psi^H(t)\rangle=U^S(t,t_0)^{-1}|\psi^S(t)\rangle\equiv|\psi(t_0)\rangle.
+			\end{equation}
+			And to guarantee the conservation of probability amplitude, \eqref{1.0.1} gives
+			\begin{equation}\label{1.1.4}
+				\Omega^H(t)=U^S(t,t_0)^{-1}\Omega^S U^S(t,t_0).
+			\end{equation}
+			Differentiate \eqref{1.1.3} and \eqref{1.1.4}, we get
+			\begin{equation}\label{1.1.5}
+				\begin{cases}
+					\dfrac{\dd}{\dd t}|\psi^H(t)\rangle=0,\\[0.5em]
+					\dfrac{\dd}{\dd t}\Omega^H(t)=\dfrac{\partial}{\partial t}\Omega^H(t)+\dfrac{1}{i\hbar}[\Omega^H(t),H^H(t)],
+				\end{cases}
+			\end{equation}
+			where $\displaystyle \dfrac{\partial \Omega^H(t)}{\partial t}=U^S(t,t_0)^{-1}\dfrac{\partial\Omega^S}{\partial t}U^S(t,t_0)$ and $\displaystyle H^H(t)=U^S(t,t_0)^{-1}H(t)U^S(t,t_0)$
+		\subsection{Interaction Picture}
+			In perturbation theory, we will divide the Hamiltonian into free and interactive parts $H=H_0+H_i$. They respectively determine the kinetic and dynamic kinds of evolution. We define the state at time $t$ in interaction picture to be the state in Schr$\ddot{\text{o}}$dinger picture that inversely evolves with the \emph{free parts} of Hamiltonian:
+			\begin{equation}\label{1.1.6}
+				|\psi^I(t)\rangle:=U_{0}^S(t,t_0)^{-1}|\psi^S(t)\rangle,
+			\end{equation}
+			where $U_0^S$ denotes the free part evolution, i.e., $\displaystyle U_{0}^S(t,t_0)=T\exp\left(-\dfrac{i}{\hbar}\int_{t_0}^t\dd\tau H_0(\tau)\right)$. Similarly, to ensure the conservation of probability amplitude, we must have
+			\begin{align}
+				|\psi^I(t)\rangle&=U^I(t,t_0)|\psi(t_0)\rangle,\quad U^I(t,t_0)\equiv U_0^S(t,t_0)^{-1}U^S(t,t_0)\label{1.1.7}\\
+				\Omega^I(t)&=U_0^S(t,t_0)^{-1}\Omega^S(t)U_0^S(t,t_0).\label{1.1.8}
+			\end{align}
+			In quantum fields theory, people would rather call the unitary evolving operator in interactive picture $U^I(t,t_0)$ the \emph{$S$-matrix}, denoting it by $S(t;t_0)$ instead, i.e.,
+			\begin{equation}\label{1.1.10}
+				S(t,t_0)\equiv U_0^{-1}(t,t_0)U(t,t_0),
+			\end{equation}
+			where we supress the supscript of picture (because we only use the notation of evolving operation introduced in Schr$\ddot{\text{o}}$dinger Picture).\par
+			The evolution equation can also be easily obtained by differentiating \eqref{1.1.7} and substituting \eqref{1.1.8}, but it is a little departure of our topic that we will never use in the future, so I just skip it.
+
+	\section{Schr$\ddot{\text{o}}$dinger Field and the Second Quantization}
+		\indent To prepare to construct the identical multi-particle quantum theory, we start with regarding the probability amplitude or wave funtion $\psi$ as the variable of \emph{classical fields}, though it is a quantity involving entirely in QM. Introducing the \emph{free}\footnote{I have to emphasize here that although there seems to be an ``interaction term'' $V$ in our Lagrangian, as is widely interpreted in QM, it is still a free theory since what we derive from it is the usual Schr$\ddot{\text{o}}$dinger equation, just like the non-interactive scalar field Lagrangian deriving a usual Klein-Gordan equation and non-interactive spinor field Lagrangian deriving a usual Dirac equation. In a nutshell, \textbf{\emph{free} here means there is no non-linear or coupling terms in Lagrangian} (since $\psi$ and $\psi^*$ are two independent fields, our Lagrangian here is indeed linear for fields and their derivatives).} (one-component) Lagrangian density
+		\begin{equation}\label{1.2.1}
+			\mathcal{L}=i\hbar\psi^*(\bm{r},t)\psi(\bm{r},t)-\dfrac{\hbar^2}{2m}\nabla\psi^*\cdot\nabla\psi-V\psi^*\psi,
+		\end{equation}
+		where the complex fields $\psi$ and $\psi^*$ are independent with each other, and utilizing the celebrated Euler-Lagrangian equation of $\psi^*$, i.e.,
+		$$\partial_\mu\dfrac{\partial\mathcal{L}}{\partial(\partial_\mu\psi^*)}-\dfrac{\partial\mathcal{L}}{\partial\psi^*}=0,$$
+		we get the familiar Schr$\ddot{\text{o}}$dinger equation of $\psi$
+		$$i\hbar\dfrac{\partial \psi}{\partial t}=-\dfrac{\hbar^2}{2m}\Delta\psi+V\psi.$$
+		\indent Now that we are in the formalism of classical field theory, the corresponding canonical momentum of field quantity is
+		\begin{equation}\label{1.2.2}
+			\pi(\bm{r},t)=\dfrac{\partial\mathcal{L}}{\partial\dot{\psi}(\bm{r},t)}=i\hbar\psi^*.
+		\end{equation}
+		And then the Hamiltonian density can be written as
+		\begin{equation}\label{1.2.3}
+			\mathcal{H}\equiv \pi\dot{\psi}-\mathcal{L}=\dfrac{\hbar^2}{2m}\nabla\psi^*\cdot\nabla\psi+V\psi^*\psi.
+		\end{equation}
+		\indent According to the definition of Poinsson bracket (at equal time) that\footnote{c.f. Weinberg I.}
+		$$\{\psi(\bm{r},t),\psi^*(\bm{r''},t)\}=\int\dd\bm{r'}\left\{\dfrac{\delta\psi(\bm{r},t)}{\delta\psi(\bm{r'},t)}\dfrac{\delta\psi^*(\bm{r''},t)}{\delta\pi(\bm{r'},t)}-\dfrac{\delta\psi(\bm{r},t)}{\delta\pi(\bm{r'},t)}\dfrac{\delta\psi^*(\bm{r''},t)}{\delta\psi(\bm{r'},t)}\right\}$$
+		we get\footnote{By definition of functional derivatives, $$\dfrac{\delta\psi(\bm{r},t)}{\delta\psi(\bm{r'},t)}=\delta(\bm{r}-\bm{r'})$$ and accordingly $$\dfrac{\delta\psi^*(\bm{r''},t)}{\delta\pi(\bm{r'},t)}=\dfrac{1}{i\hbar}\delta(\bm{r''}-\bm{r'}).$$}
+		\begin{align}
+			\{\psi(\bm{r},t),\psi^*(\bm{r'},t)\}&=\dfrac{1}{i\hbar}\delta(\bm{r}-\bm{r'}),\label{1.2.4}\\
+			\{\psi(\bm{r},t),\psi^*(\bm{r'},t)\}&=\{\psi^*(\bm{r},t),\psi^*(\bm{r'},t)\}=0.\label{1.2.5}
+		\end{align}
+		\indent Fortunately, unlike the annoying gauge invariance in electromagenetic fields, there is no constraint in our Schr$\ddot{\text{o}}$dinger field, so according to the standard methods for canonically quantizing a constraint system developed by Dirac\footnote{This temporarilly works in $3+1$ dimensional fieds theory and 4-dimensional Euclidean fields theory. But things become esoteric for low-dimensional case, which we will study in the future part.}, the procedure of second qunatization is just simple replacement of ``classical field'' $\psi$ by the field operators $\hat{\psi}$ and Poinsson bracket $\{,\}$ by Dirac bracket\footnote{Here positive sign corresponds to Bosons while minus sign corresponds to Fermions} $[,]_{\pm}$ with a coefficient $1/i\hbar$, respectively, i.e.,
+		$$\{A,B\}\mapsto\dfrac{1}{i\hbar}[\hat{A},\hat{B}]_{\pm}.$$
+		So
+		\begin{Axiom}[(Second Quantization of Schr$\ddot{\text{o}}$dinger Field)]
+			The quantized canonical variables of $\psi$ and $\psi^*=\psi^\dagger$ (note that there is only one component in our Schr$\ddot{\text{o}}$dinger field) in \eqref{1.2.4} and \eqref{1.2.5}, denoting $\hat{\psi}$ and $\hat{\psi^\dagger}$, in Heisenberg picture, have the commutation relation that
+			\begin{align}
+				[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r'},t)]_{\pm}&=\delta(\bm{r}-\bm{r'}),\label{1.2.6}\\
+				[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r'},t)]_{\pm}&=[\hat{\psi}^\dagger(\bm{r},t),\hat{\psi}^\dagger(\bm{r'},t)]=0.\label{1.2.7}
+			\end{align}
+		\end{Axiom}
+
+	\section{Occupation Number Representation}
+		By occupation number representation, we mean \textbf{a group of orthogonally normalized basis of multi-particle Hilbert space (adding the fundamental \emph{identical principle}) with the meaning of distribution of numbers of particles to some extent.}\par
+		For simplicity, we only consider the case where the potential term $V$ is independent of time. At this moment, we write the complete set of functions as $\{\psi_k(\bm{r})\}$, where
+		$$\left(-\dfrac{\hbar^2}{2m}\Delta+V(\bm{r})\right)\psi_k=E_k\psi_k.$$
+		By Sturm-Liouville theorem, this family of functions are orthogonally normalized and complete, i.e., $\langle\psi_k|\psi_l\rangle$. Particularly, we have
+		\begin{align}
+			\int\dd\bm{r}\,\psi_k(\bm{r})\psi^*_{k'}(\bm{r})&=\int\dd\bm{r}\,\langle\psi_k|\bm{r}\rangle\langle\bm{r}|\psi_{k'}\rangle=\delta_{kk'},\label{1.3.1}\\
+			\int\dd\bm{r}\,\psi_k(\bm{r})\psi^*_k(\bm{r'})&=1\implies\psi_k(\bm{r})\psi^*_k(\bm{r'})=\delta(\bm{r}-\bm{r'}).\label{1.3.2}
+		\end{align}
+
+		So we can expand the field operator by combining the operator $a$ and $a^\dagger$ bearing the whole non-commutative properties with the coefficients of complete functions above
+		\begin{Assertion}[(Expansion of Fields Operators)]
+			Generally, fields operators in Heisenberg picture must take the form of 
+			\begin{equation}\label{1.3.3}
+				\hat{\psi}(\bm{r},t)=\sum_ka_k\psi_k(\bm{r})e^{-iE_kt/\hbar},\quad\hat{\psi}^\dagger(\bm{r},t)=\sum_ka^\dagger_k\psi^*_k(\bm{r})e^{-iE_kt/\hbar},
+			\end{equation}
+			with 
+			\begin{equation}\label{1.3.4}
+				[a_k,a_{k'}^\dagger]_{\pm}=\delta_{kk'},\quad[a_k,a_{k'}]_{\pm}=[a^\dagger_k,a^\dagger_{k'}]_{\pm}=0.
+			\end{equation}
+		\end{Assertion}
+		\begin{Proof}
+			First, these two algrabric coefficients can be inversely work out through utilization of the orthogonality \eqref{1.3.1} that  
+			\begin{align*}
+				a_k&=\int\,\dd\bm{r}\,\hat{\psi}(\bm{r},t)\psi_k^*(\bm{r})e^{iE_k t/\hbar},\\
+				a_k^{\dagger}&=\int\,\dd\bm{r}\,\hat{\psi}^\dagger(\bm{r},t)\psi_k(\bm{r})e^{-iE_k t\hbar}.
+			\end{align*}
+			Then we check \eqref{1.3.4} though direct computation: 
+			\begin{align*}
+				[a_k,a^\dagger_{k'}]_{\pm}&=\int\dd\bm{r}\dd\bm{r'}\,[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r},t)]_{\pm}\psi_{k'}(\bm{r'})\psi^*_{k}(\bm{r})e^{i(E_k-E_k')t/\hbar}\\
+				&=\int\dd\bm{r}\dd\bm{r'}\,\delta(\bm{r}-\bm{r'})\psi_{k'}(\bm{r'})\psi^*_{k}(\bm{r})e^{i(E_k-E_{k'})t/\hbar}\\
+				&=e^{i(E_k-E_{k'})t/\hbar}\int\,\dd\bm{r}\psi_{k'}(\bm{r})\psi_k^*(\bm{r})=e^{i(E_k-E_{k'})t/\hbar}\delta_{kk'}=\delta_{kk'}.
+			\end{align*}
+			The same goes to other commutative relations.
+		\end{Proof}
+		\begin{Note}
+			One may wonder why we recklessly quantize the Schr$\ddot{\text{o}}$dinger in \emph{both} the commutative and anti-commutative rule, which is aberrant to what we learned form QFT that one kind of field corresponds with just one kind of particles (or much precisely, exited by). That is because the energy scale in condensed matter fields is so low (less than $100\,\mathrm{eV}$) that we naturally regard the speed of light not be finite but infinite, and hence in CMP we only consider the \emph{non-relativistic} QFT. So \textbf{the confinement of casualties on commutators\footnote{Some reminder on casualty in Relativistic QFT: \textbf{Lorentz covariance of S-matrix can be directly deduced from its definiton, which in turn confines that the interactive density must commute for space-like interval}. But by introduction of creation and annihilation operators, any operators in QFT can be expanded as multiples of them. So the only way to construct the fields operator is linear combination of creation and annihilation fields operators, or, the familiar casualty.} disappear and we are free to quantize the Schr$\ddot{\text{o}}$dinger field haphazardly}.
+		\end{Note}
+		\begin{Example}[(Non-interactive Fermions)]
+			\par
+			In solid state physics, we already knew that \textbf{Bloch eletrons}, in perfect periodic lattice, is discribed by the ``box-normalization'' plane wave:
+			$$\psi_{\bm{p}}(\bm{r})=\dfrac{1}{\sqrt{V}}e^{i\bm{p\cdot x}},$$
+			where $V$ is the volume of the box. So in this case \eqref{1.3.3} takes the simple form\footnote{We neglect $\hbar$ here.}
+			\begin{equation}\label{1.3.5}
+				\hat{\psi}(\bm{r},t)=\dfrac{1}{\sqrt{V}}\sum_{\bm{p}}a_{\bm{p}}e^{i\bm{p\cdot x}}e^{-iE_p t}.
+			\end{equation}
+		\end{Example}
+		\begin{Proposition}
+			The Hamiltionian $\hat{H}\equiv\int\dd\bm{r}\,\mathcal{H}$ always commutes with the $k$-mode particle number operator $\hat{N}_k:=a_k^\dagger a_k$ if it is not explicit function of time, i.e.,
+			\begin{equation}\label{1.3.6}
+				[\hat{H},\hat{N}_{k}]=0,\quad\forall k.
+			\end{equation}
+			So \textbf{the number of $k$-mode quasi-particles is independent of time for a stable system (equilibrium)}.
+		\end{Proposition}
+		\begin{Proof}
+			To see this more explicitly, we first express $\hat{H}$ with creation and annihilation operators:
+			\begin{align}
+				\hat{H}&=\int\dd\bm{r}\,\hat{\psi}^\dagger\left(-\dfrac{\hbar^2}{2m}\Delta+V\right)\hat{\psi}\nonumber\\
+				&=\sum_{k,k'}a_{k'}^\dagger a_k E_k e^{i(E_{k'}-E_k)t\hbar}\int\dd\bm{r}\,\psi_{k'}^*(\bm{r},t)\psi_k(\bm{r},t)\nonumber\\
+				&=\sum_k E_ka_k^\dagger a_k,\label{1.3.7}
+			\end{align}
+			where the first line comes from the rule of the second quantization and in the second line we insert \eqref{1.3.3}.
+			Obviously, for each $k$, Hamiltonian commutes with the $k$-mode quasi-particle number operator.
+		\end{Proof}
+		\textbf{Since each $\hat{N}_k$ also commute with each other, $\{\hat{H},\hat{N}_{k}\}$ forms one \emph{complete set of commutating observables}, so they can be simultaneously diagonalized under the \emph{simultaneous eigenstates}}, temporarily denoted as $|\psi_N\rangle$, which must belong to the multi-particle space\footnote{Here the subscript $1$ means this is the single-particle Hilbert space, and the superscript $(i)$ indicate the label of particles, i.e., the single-particle Hilbert space of the $i$th particle is denoted as $\mathcal{H}_1^{(i)}$.}
+		$$|\psi_N\rangle\in\mathcal{H}_N=\mathcal{H}_1^{(1)}\otimes\cdots\otimes\mathcal{H}_1^{(N)}$$
+		because in our system there are indeed $N_k$ quasi-particles.
+
+	\section{Identical Multi-particle State}
+		In the former section we mentioned that now we have to consider the multi-particle state. And more importantly, since all these $n_k$ quasi-particles, if exits, are of $k$-mode, they belongs to the same state and therefore are \emph{identical} ones satisfying the \emph{identical principle}, which adds complexity to them.\par
+		We first start with the single-particle state. Let $\{\hat{\varphi}^{(i)}\}$ be a \emph{complete set of commutative observables} in $\mathcal{H}^{(i)}_1$ and $|\varphi_\alpha^{(i)}\rangle$ be the simultaneous eigenstates\footnote{Here the subscript $\alpha$ indicate one label of linear-independent basic vectors of single-particle Hilbert space.} of $\mathcal{H}^{(i)}_1$. Then an arbitrary $N$-particle state can be naturally written as
+		\begin{equation}\label{1.4.0}
+			|\varphi_N\rangle\equiv|\varphi_{\alpha_1}^{(1)}\cdots\varphi_{\alpha_N}^{(N)}\rangle=|\varphi_{\alpha_1}^{(1)}\rangle\otimes\cdots\otimes|\varphi_{\alpha_N}^{(N)}\rangle.
+		\end{equation}
+		This basis of $\mathcal{H}_{N}$ must be complete because each components of it is the complete basis of single-particle state\footnote{As for the reason why these eigenstates of the self-adjoint operator $\hat{\varphi}$ form the complete basis of single-particle Hilbert spaces, one can refer to the celebrated \emph{spectrum decomposition theorem of unbounded self-adjoint operators} proved by Von Neumann.}.\par
+		According to \textbf{identical principle, some unitary phases are allowed exits after interchanging two identical particles}
+		$$|\psi_N(\cdots,i,\cdots,j,\cdots)\rangle=e^{i\theta(\cdots)}|\psi_N(\cdots,j,\cdots,i,\cdots)\rangle,$$
+		where $\theta(\cdots)$ is the \textbf{one-dimensional irreducible unitary representation of the group of interchanging particles}. In our case of \emph{three-dimensional} configuration space, this group is the \textbf{permutation group\footnote{Things alter for two-dimensional case, where the group describing transposition of two particles become the so-called \emph{braid group}.}, whose one-dimensional unitary representation $\rho:\mathbf{Perm}\rightarrow\mathbb{R}$ is characterized by either a positive or minus sign}. %Because of the extra structure imposed to our system, the prototype description of multi-particle states should be altered. 
+		More explicitly, denote the operator of transposition as $P_{ij}$ such that
+		$$P_{ij}|\cdots\phi_{\alpha_i}^{(i)}\cdots\phi_{\alpha_j}^{(j)}\cdots\rangle:=|\cdots\phi_{\alpha_i}^{(j)}\cdots\phi_{\alpha_j}^{(i)}\cdots\rangle,$$
+		then 
+		\begin{equation}\label{1.4.1}
+			P_{ij}|N\rangle=\varepsilon|N\rangle,\quad\varepsilon=\pm1,
+		\end{equation}
+		where $|N\rangle\equiv|\cdots\phi_{\alpha_i}^{(i)}\cdots\phi_{\alpha_j}^{(j)}\cdots\rangle$ denoting \textbf{the multi-particle state including the effects of interchange} (compare with that without interchanging effect in \eqref{1.4.0}), and positive for bosons while minus for fermions.\\
+ 		\indent The question is, \textbf{since extra physical structure is included in our theory, the prototype in \eqref{1.4.0} proves to be invalid to naturally contain the interchange effect} (In \eqref{1.4.2} we add the sign by manual realization). Fortunately, a mathemtical trick succeed in realizing this:
+ 		\begin{Def}[(Symmetrized and Anti-symmetrized Multi-particle State)]
+ 			By introducing a appropriate normalization factor $1/N!$, the prescription\footnote{Since \eqref{1.4.2} is just a mathematical realization of \eqref{1.4.1}, we inherit the notation $|N\rangle$ of multi-particle states with interchange effects.} 
+ 			\begin{equation}\label{1.4.2}
+ 				|N\rangle\equiv|\psi^{(\varepsilon)}_N\rangle:=\dfrac{1}{N!}\hat{S}_\varepsilon|\psi_{\alpha_1}^{(1)}\cdots\psi_{\alpha_N}^{(N)}\rangle,
+ 			\end{equation}
+ 			with $\displaystyle\hat{S}_{\varepsilon}=\sum_\mathcal{P}\varepsilon^p\mathcal{P}$ known as \emph{symmetrization operator}, where $p$ is the number of transpositions constructing the permutation $\mathcal{P}$, or more precisely, $\mathcal{P}$ is $p$ times of group multiplication of tarnspositions, $\varepsilon$ is the sign under each transposition, and the sum runs over \emph{all} the permutation for the $N$-tube $(1,2,\cdots,N)$, leads to a correct \emph{symmetrized or anti-symmetrized multi-particle state}. And the space spanned by it, which is of obviously smaller than the former one, is denoted as $\mathcal{H}_N^{(\varepsilon)}\subset\mathcal{H}_N$.
+ 		\end{Def}
+ 		To see that \eqref{1.4.2} is well-defined, we only need to check \eqref{1.4.1}. In fact, symmetrized (antisymmetrized) states are nothing but summation of usual ones, which always give out an extra sign $\varepsilon$ under another transposition. That is,
+ 		$$P_{ij}\hat{S}_\varepsilon=\sum_{\mathcal{P}}\varepsilon^p P_{ij}\mathcal{P}=\sum_{\mathcal{P}}\varepsilon^{p+1}\mathcal{P}=\varepsilon\hat{S}_\varepsilon.$$
+ 		
+ 		\hfill\par
+ 		Inner products of symmetrized states will be used in the near future, let us study here in advance. We begin with investigation on properties of the permutation operator:
+ 		\begin{Property}\hfill\par
+ 			a) $\mathcal{P}=\mathcal{P}^\dagger$;\par
+ 			b) $[\mathcal{P},A]=0$;\par
+ 			c) $\mathcal{P}^2=\mathbb{1}$.
+ 		\end{Property}
+ 		\begin{Proof}
+ 			The fists property is easy to see. For an arbitrary permutation constructed by multiplication of transposition,
+ 			\begin{align*}
+ 				\langle\psi_N^{(\varepsilon)}|\mathcal{P}^\dagger|\phi_N^{(\varepsilon)}\rangle\equiv(\langle\phi_N^{(\varepsilon)}|\mathcal{P}|\psi_N^{(\varepsilon)}\rangle)^*=\varepsilon^p(\langle\phi_N^{(\varepsilon)}|\psi_N^{(\varepsilon)}\rangle)^*=\varepsilon^p\langle\psi_N^{(\varepsilon)}|\phi_N^{(\varepsilon)}\rangle=\langle\psi_N^{(\varepsilon)}|\mathcal{P}|\phi_N^{(\varepsilon)}\rangle.
+ 			\end{align*}
+ 			\indent To reveal the commutation relation, we invoke the \emph{identical princlple} mentioned above that
+ 			\begin{align*}
+ 				\langle\cdots\psi^{(i)}_{\alpha_i}\cdots\psi^{(j)}_{\alpha_j}\cdots|A|\cdots\phi^{(i)}_{\alpha_i}\cdots\phi^{(j)}_{\alpha_j}\cdots\rangle&=\langle\cdots\psi^{(j)}_{\alpha_i}\cdots\psi^{(i)}_{\alpha_j}\cdots|e^{i\theta(\cdots)}Ae^{-i\theta(\cdots)}|\cdots\psi^{(j)}_{\alpha_i}\cdots\psi^{(i)}_{\alpha_j}\cdots\rangle\\
+ 				&=\langle\cdots\psi^{(j)}_{\alpha_i}\cdots\psi^{(i)}_{\alpha_j}\cdots|A|\cdots\phi^{(j)}_{\alpha_i}\cdots\phi^{(i)}_{\alpha_j}\cdots\rangle\\
+ 				&\equiv\langle\cdots\psi^{(i)}_{\alpha_i}\cdots\psi^{(j)}_{\alpha_j}\cdots|P_{ij}^\dagger AP_{ij}|\cdots\phi^{(i)}_{\alpha_i}\cdots\phi^{(j)}_{\alpha_j}\cdots\rangle,
+ 			\end{align*}
+ 			implying $A=P_{ij}^\dagger AP_{ij}$ or $[P_{ij},A]=0$ with the unitarity in property one. And since $\mathcal{P}$ is group multiplication of transposition $P_{ij}$, the second property holds.\par
+ 			Property c) means that $\mathcal{P}$ is \emph{nilpotent}, which is obvious form the nilpotency of transposition operator $P_{ij}$.
+ 		\end{Proof}
+ 		\begin{Lemma}[(Inner Products of Symmetrized (Anti-symmetrized) States)]
+ 			 \begin{equation}\label{1.4.9}
+ 			 	\langle\psi_N^{(\varepsilon)}|A|\phi_N^{(\varepsilon)}\rangle=\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A|\phi_N^{(\varepsilon)}\rangle.
+ 			 \end{equation}
+ 		\end{Lemma}
+ 		\begin{Proof}
+ 			The average under symmetrized (anti-symmetrized) states can be shown in use of both properties before:
+ 			\begin{align*}
+ 				\langle\psi_N^{(\varepsilon)}|A|\phi_N^{(\varepsilon)}\rangle&=\dfrac{1}{N!}\sum_{\mathcal{P}}\varepsilon^p\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|\mathcal{P}^\dagger A|\phi_N^{(\varepsilon)}\rangle\\
+ 				&=\dfrac{1}{N!}\sum_{\mathcal{P}}\varepsilon^p\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A\mathcal{P}|\phi_N^{(\varepsilon)}\rangle\\
+ 				&=\dfrac{1}{N!}\sum_{\mathcal{P}}\varepsilon^{2p}\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A\mathcal{P}|\phi_N^{(\varepsilon)}\rangle=\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A|\phi_N^{(\varepsilon)}\rangle,
+ 			\end{align*}
+ 			where in the second line we make use of both the unitarity and nilpotency of $\mathrm{P}$, in the third line $\varepsilon^{2p}=1$ whatever the sign of our system is and the sum exactly contains $N!$ terms. 
+ 		\end{Proof}
+ 		\hfill\par
+ 		Now let us continue our previous discussion where \textbf{different energy level $E_k$ corresponds to a different number of particles $N_k$}.\par 
+ 		One might notice that what we defined before on creation and annihilation operators $a_k$ and $a_k^\dagger$, as the linear operator on \textbf{$k$-mode Hilbert spaces}, are just the non-commutative relation and we did not mention a word on the essential domain spaces or image spaces of them, as well as the effects they act on states. So there is still freedom on the definition of them and now we are to complete it:
+ 		\begin{Def}[(Creation Operators)]
+	 		The creation operator $a_\beta^\dagger:\mathcal{H}_{N_k}^{(\varepsilon)}\rightarrow\mathcal{H}_{N_k+1}^{(\varepsilon)}$ is defined as
+ 			\begin{equation}\label{1.4.3}
+ 				a^\dagger_\beta|N_k\rangle\equiv a^\dagger_\beta|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}:=\sqrt{N_k+1}|\varphi_\beta\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}.
+ 			\end{equation}
+ 		\end{Def}
+ 		As the adjoint operator of $a^\dagger_\beta$, $a_\beta$ must map from $\mathcal{H}_{N_k}^{(\varepsilon)}$ to $\mathcal{H}_{N_k-1}^{(\varepsilon)}$ with some unknown coefficients, which can be determined by the commutation relation and the fact that our symmetrized or anti-symmetrized state $|N_k\rangle$ is always the eigenstate of $\hat{N}_k\equiv a^\dagger_k a_k$ such that
+ 		%\footnote{There are some ambiguities in my notation: although here I am talking about the general cases, I still use $N_k$ as is in the former section, meaning that all $n_k$ particles are settle in the same }
+ 		\begin{equation}\label{1.4.4}
+ 			\hat{N}_k|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=N_k|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)},
+ 		\end{equation}
+ 		giving
+ 		\begin{Def}[(Annihilation Operators)]
+	 		\begin{equation}\label{1.4.5}
+ 				a_{\alpha_i}|\varphi_{\alpha_1}\cdots\varphi_{\alpha_i}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=\sqrt{N}|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{i-1}}\varphi_{\alpha_{i+1}}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}.
+ 			\end{equation}
+		\end{Def}
+		Applying \eqref{1.4.5} $N_k$ times, one easily gets
+		\begin{Proposition}
+			The symmetrized or anti-symmetrized multi-particle states for a typical energy level can be constructed by applying creation operator $N_k$ times on vacuum state
+			\begin{equation}\label{1.4.6}
+				|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=\dfrac{1}{\sqrt{N_k!}}a_{\alpha_1}^\dagger\cdots a_{\alpha_{N_k}}^\dagger|0\rangle.
+			\end{equation}
+		\end{Proposition}
+		Although to define the action of creation and annihilation operator we pick one energy level with particle number $N_k$, one can discern that \textbf{these two definition is independent of which energy level we are focussing on}. And since different energy level never overlap with others (as a hypothesis of statistical equilibrium), so we can finally write out the explicit form of \textbf{\emph{complete} (anti-)symmetrized multi-particle states as simple tensor products of $|N_k\rangle$}:
+		\begin{Assertion}[(Complete Symmetrized (Anti-symmetrized) States)]
+			Whatever the sign of system we adopt, the compete state always takes the form of
+			\begin{equation}\label{1.4.10}
+				|N\rangle=|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_1}}\rangle^{(\varepsilon)}\otimes\cdots\otimes|\varphi_{\beta_1}\cdots\varphi_{\beta_{N_k}}\rangle^{(\varepsilon)}\otimes\cdots\nonumber,
+			\end{equation}
+			where $|N\rangle$ is the eigenstate of $\hat{N}=\sum_k\hat{N}_k$ with $N=\sum_k N_k$.
+		\end{Assertion}
+		\begin{Corollary}[(Eigenstates of Bosons $\hat{N}$)]
+			The state of overall $k$-mode quasi-bosons is
+			\begin{align}
+				|N\rangle_{\text{bosons}}=\dfrac{1}{\sqrt{N_1!\cdots N_k!\cdots}}(a^\dagger_\alpha)^{N_1}\cdots(a^\dagger_\beta)^{N_k}\cdots|0\rangle,\label{1.4.7}
+			\end{align}
+		\end{Corollary}
+		As for Fermions case, general formula \eqref{1.4.10} still holds, but one should note that \textbf{the number of particles of $k$-mode Fermions can only be either zero or one, as is required by \emph{Pauli exclusion principle}}:
+		\begin{Lemma}[(Pauli Exclusion Principle)]
+			For each $k$, the eigenvalue of $\hat{N}_k$ can only be one or zero.
+		\end{Lemma}
+		\begin{Proof}
+			We show this by proving that at this time $\hat{N}_k$ is the projective operator\footnote{We here use $b$ and $b^\dagger$ to make the distinction with boson case.}
+			$$\hat{N}_k^2=b_k^\dagger b_k b_k^\dagger b_k=b_k^\dagger(1-b_k^\dagger b_k)b_k=\hat{N}_k,$$
+			where we have substitute the anti-commute relation for the creation and annihilation operators for fermions.
+		\end{Proof}
+		Since both the factorials of one and zero are one, for fermions we similarly have
+		\begin{Corollary}[(Eigenstates of Fermions $\hat{N}$)]
+			The state of overall $k$-mode quasi-fermions is
+			\begin{align}
+				|N\rangle_{\text{fermions}}=b^\dagger_\alpha\cdots b^\dagger_\beta\cdots|0\rangle.\label{1.4.8}
+			\end{align}
+		\end{Corollary}
+	
+	\section{Multi-particle Operators}
+		In this section, we will express the operators defined on the Hilbert space we constructed (spanned by $|\psi_N\rangle$) in the last section with creation and annihilation operators. 
+		\begin{Def}[(Single-particle and Two-particle Operator)]
+			For an arbitrary observable acting on symmetrized Hilbert space $A\in\mathrm{End}\left(\displaystyle\bigotimes_{i}\mathcal{H}_{N_i}^{(\varepsilon)}\right)$, $A$ must also be (anti-)symmetrized as the Hilbert space with the form\footnote{The subscript indicates the number of particles of Hilbert spaces that the operator is defined on.} of
+			\begin{equation}\label{1.5.1}
+				A=A_1+A_2+\cdots\equiv\sum_{i=1}^N A^{(i)}_1+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}+\cdots.
+			\end{equation}
+			We call the first part of the summation \emph{single-particle operator} and the second part \emph{two-particle operator}.
+		\end{Def}
+		\begin{Example}
+			A naive consideration (without self-couplings) is 
+			$$ H=H_1+H_2=\sum_i^N\dfrac{p_i^2}{2m}+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}V(\bm{r}_i-\bm{r}_j).$$
+			Although what we usual encounter is the above simple expression, \textbf{equation \eqref{1.5.1} is acturally an expansion of interaction including high-order couplings.}
+		\end{Example}
+		\begin{Proposition}[(Single-particle Operator)]
+			The single-particle operator of $A$ can be expressed as
+			\begin{equation}\label{1.5.2}
+				A_1\equiv\sum_{i=1}^N A^{(i)}_1=\sum_{\alpha,\beta}\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta,
+			\end{equation}
+			where the superscript $i$ indicates a contribution from the $i$th single-particle\footnote{Since all the paritcle of the same energy level are supposed to be identical, contribution from the inner product of single-particle state of particle one has nothing different with that of particle two. Hence in this sense, \textbf{the superscript $i$ is utterly unecessary}.}. In the continuous form
+			$$\sum_{i=1}^N A^{(i)}_1=\iint\dd\alpha\dd\beta\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta.$$
+		\end{Proposition}
+		\begin{Proof}
+			We prove the discrete form, and there is no differences on the continuous one. Utilize the completeness of symmetrized multi-particle states $|N\rangle$, we have (focussing on a specific $k$-mode of $N$ particles)
+			\begin{align}
+				A_1&=\sum_{\substack{\alpha_1\cdots\alpha_N\\\beta_1\cdots\beta_N}}|\varphi_{\alpha_1}\cdots\rangle^{(\varepsilon)}{}^{(\varepsilon)}\langle\varphi_{\alpha_1}\cdots|A_1|\varphi_{\beta_1}\cdots\rangle^{(\varepsilon)}{}^{(\varepsilon)}\langle\varphi_{\beta_1}\cdots|\label{1.5.3}\\
+	 			&=\dfrac{1}{N!}\sum_{\substack{\alpha_1\cdots\alpha_N\\\beta_1\cdots\beta_N}}a_{\alpha_1}^\dagger\cdots a_{\alpha_N}^\dagger|0\rangle{}^{(\varepsilon)}\langle\varphi_{\alpha_1}\cdots|A_1|\varphi_{\beta_1}\cdots\rangle^{(\varepsilon)}\langle0|a_{\beta_N}\cdots a_{\beta_1}.\label{1.5.4}
+			\end{align}
+			Here we encounter with an inner product under symmetrized states, which has be shown in \eqref{1.4.9} before. Expanding the right hand side of \eqref{1.4.9} with the definition of symmetrized (anti-symmetrized) state, one immediately gets
+			\begin{align}
+				{}^{(\varepsilon)}\langle\varphi_{\alpha_1}\cdots|A_1|\varphi_{\beta_1}\cdots\rangle^{(\varepsilon)}&=\dfrac{1}{N!}\sum_{\mathcal{P}_\beta}\varepsilon^{p_\beta}\mathcal{P}_\beta\bigg[\langle\varphi_{\alpha_1}^{(1)}|A^{(1)}_1|\varphi_{\beta_1}^{(1)}\rangle\langle\varphi_{\alpha_2}^{(2)}|\varphi_{\beta_2}^{(2)}\rangle\cdots\langle\varphi_{\alpha_N}^{(N)}|\varphi_{\beta_N}^{(N)}\rangle\nonumber\\
+				&+\cdots+\langle\varphi_{\alpha_1}^{(1)}|\varphi_{\beta_1}^{(1)}\rangle\langle\varphi_{\alpha_2}^{(2)}|\varphi_{\beta_2}^{(2)}\rangle\cdots\langle\varphi_{\alpha_N}^{(N)}|A^{(N)}_N|\varphi_{\beta_N}^{(N)}\rangle\bigg],\label{1.5.5}
+			\end{align}
+			where we make use of the the definition of usual multi-particle states (as simple tensor products of single-particle states) and the definition of single-particle operator that only have contribution under inner products of single particle states.\par
+			And \textbf{because both $\alpha$ and $\beta$ are dummy index under sum, each term in \eqref{1.5.5} should give exactly the same contribution after inserting \eqref{1.5.5} into \eqref{1.5.4}}, which can be easily seen by re-labeling them\footnote{ The operation of renaming variables will certainly also affect the order of creation and annihiation operators outside the inner product of symmetrized (anti-symmetrized) states, but by commutation relation there will be no contribution.}. However, \textbf{because of the existence of permutation opearator $\mathcal{P}_\beta$ acting on all labels $\beta$, each transposition (exchange of name of two dummy variables) will contributes an extra factor $\varepsilon$ and therefore each term in \eqref{1.5.5} will contribute an extra $\varepsilon^{p_\beta}$ overall}. Including the existed factor $\varepsilon^{p_\beta}$, this gives for each same term a coefficient $\varepsilon^{2p_\beta}\equiv+1$ whatever the kind of identical particles we are handling. So 
+			\begin{align}
+				\sum_i^N A_1^{(1)}&=\dfrac{N}{N!}\sum_{\substack{\alpha_1\cdots\alpha_N\\\beta_1\cdots\beta_N}}a_{\alpha_1}^\dagger\cdots a_{\alpha_N}^\dagger|0\rangle\bigg[\langle\psi_{\alpha_1}^{(1)}|A_1^{(1)}|\psi_{\beta_1}^{(1)}\rangle\delta_{\alpha_2,\beta_2}\cdots\delta_{\alpha_N,\beta_N}\bigg]\langle0|a_{\beta_N}\cdots a_{\beta_1}\nonumber\\
+				&=\sum_{\alpha_1,\beta_1}\langle\psi_{\alpha_1}^{(1)}|A_1^{(1)}|\psi_{\beta_1}^{(1)}\rangle a_{\alpha_1}^\dagger a_{\beta_1}\left[\dfrac{1}{(N-1)!}\sum_{\substack{\alpha_2\cdots\alpha_N\\\beta_2\cdots\beta_N}}a_{\alpha_1}^\dagger\cdots a_{\alpha_N}^\dagger|0\rangle\langle0|a_{\alpha_2}\cdots a_{\alpha_N}\right]\nonumber\\
+				&=\sum_{\alpha,\beta}\langle\varphi_\alpha|A_1^{(1)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta^\dagger=\sum_{\alpha,\beta}\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta^\dagger\nonumber,
+			\end{align}
+			where the square bracket in the second line is exactly the completeness relation of $\mathcal{H}_{N-1}^{(\varepsilon)}$.
+		\end{Proof}
+		\begin{Proposition}
+			The two-particle operator of $A$ can be expressed as
+			\begin{equation}\label{1.5.6}
+				A_2\equiv\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}=\dfrac{1}{2}\sum_{\alpha,\beta,\gamma,\delta}\langle\varphi_\alpha\varphi_\beta|A_2^{(i,j)}|\varphi_\gamma\varphi_\delta\rangle a_\alpha^\dagger a_\beta^\dagger a_\delta a_\gamma.
+			\end{equation}
+			where $(i,j)$ is an arbitrary pair and $|\varphi_\alpha\varphi_\beta\rangle$ is the usual two-particle state $|\varphi_\alpha\rangle\otimes|\varphi_\beta\rangle$,
+			or in the continuous form
+			$$\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}=\dfrac{1}{2}\iiiint\dd\alpha\dd\beta\dd\gamma\dd\delta\,\langle\varphi_\alpha\varphi_\beta|A_2^{(i,j)}|\varphi_\gamma\varphi_\delta\rangle a_\alpha^\dagger a_\beta^\dagger a_\delta a_\gamma.$$
+		\end{Proposition}
+		\begin{Proof}
+			Similarly. Leave as an exercise.
+		\end{Proof}
+		Both \eqref{1.5.2} and \eqref{1.5.6} involve in merely abstract states in $\mathcal{H}_N^{(\varepsilon)}$, but we always choose some specific representations in real calculation.
+
+		%Now that we have gotten the explicit form of identical multi-particle operators acting on abstract states in $\mathcal{H}_N^{(\varepsilon)}$, it is natural to consider their forms acting on some wave functions.
+
+		\begin{Corollary}
+			In the $\xi$ representation (for example, coordinate representation or momentum representation), we can also write the matrix element in \eqref{1.5.2} and \eqref{1.5.6} as\footnote{In usual literature we neglect the superscript in the inner product since they all have the same contribution form each particle for single-body operators or each pair for two-body operators. But in order not to cause ambiguities, I maintain them in our expressions.}
+			\begin{align}
+				A_1&=\sum_{\alpha\beta}\int\dd\xi\,\varphi^*_\alpha(\xi)A_1^{(i)}(\xi)\varphi_\beta(\xi)a_\alpha^\dagger a_\beta,\label{1.5.7}\\
+				A_2&=\dfrac{1}{2}\sum_{\alpha\beta\gamma\delta}\iint\dd\xi_1\dd\xi_2\,\varphi_\alpha^*(\xi_1)\varphi_\beta^*(\xi_2)A_2^{(i,j)}(\xi_1,\xi_2)\varphi_\gamma(\xi_2)\varphi_\delta(\xi_1)a_\alpha^\dagger a_\beta^\dagger a_\gamma a_\delta,\label{1.5.8}
+			\end{align}
+			where $A_1^{(i)}(\xi)\equiv\langle\xi|A_1^{(i)}|\xi\rangle$ and $\quad A_2^{(i,j)}(\xi_1,\xi_2)\equiv\langle\xi_1,\xi_2|A_2^{(i,j)}|\xi_2,\xi_1\rangle$
+		\end{Corollary}
+		\begin{Proof}
+			We still work in discrete form in consistency with what we have done above, that is, we have a discrete spectrum decomposition of the identity operator in the $i$th single-particle Hilbert space $\mathcal{H}_1^{(i)}$
+			$$\displaystyle\sum_\xi|\xi^{(i)}\rangle\langle\xi^{(i)}|=\mathbb{1}.$$
+			\indent We first prove the single-particle case. One should note that only when $A_1^{(i)}$ acts on states in $\mathcal{H}_1^{(i)}$ that it gives out a non-vanishing value, i.e.,
+			\begin{equation}\label{1.5.9}
+				A_1^{(i)}|\xi^{(j)}\rangle=\delta_{ij}A_1^{(i)}|\xi^{(i)}\rangle.
+			\end{equation}
+			So
+			\begin{align*}
+				A_1&=\sum_{\xi^{(i)}}\sum_{\xi^{(j)}}\langle\varphi_\alpha|\xi^{(i)}\rangle\langle\xi^{(i)}|A_1^{(i)}|\xi^{(j)}\rangle\langle\xi^{(j)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta\\
+				&=\sum_{\xi^{(i)}}\varphi^*_\alpha(\xi^{(i)})A_1^{(i)}(\xi^{(i)})\varphi_\beta(\xi^{(i)})a_\alpha^\dagger a_\beta.
+			\end{align*}
+			There is no difference in the proof of two-particle case.
+		\end{Proof}
+		\begin{Example}[(Self-interactive Hamiltonian for Schr$\ddot{\text{o}}$dinger Field)]
+			Consider a multi-particle system put in an extra field and has interaction\footnote{For simplicity we do not consider the couplings between spins and extra fields here.} between particles of \emph{different} $k$-mode (since there is just one kind of field, we would like to call this the \emph{self-interaction} of Schr$\ddot{\text{o}}$dinger fields), which has interference on the \emph{free} Hamiltonian and may result in changing the transition rate of particles or other observable physical processes. One can easily write
+			\begin{align}
+				H&=\sum_{i,j}\int\dd\bm{r}\left[\dfrac{\hbar^2}{2m}\nabla\varphi_i(\bm{r})^*\cdot\nabla\varphi_j(\bm{r})+\varphi_i^*(\bm{r})U(\bm{r})\varphi_j(\bm{r})\right]a^\dagger_i a_j\nonumber\\
+				&+\dfrac{1}{2}\sum_{i,j,k,l}\iint\dd\bm{r}\dd\bm{r'}\,\varphi_i^*(\bm{r})\varphi^*_j(\bm{r'})U^{(2)}(\bm{r},\bm{r})\varphi_k(\bm{r'})\varphi_l(\bm{r})a_i^\dagger a_j^\dagger a_k a_l+\cdots\nonumber\\
+				&=\int\dd\bm{r}\left[\dfrac{\hbar^2}{2m}\nabla\psi^\dagger\cdot\nabla\psi+\psi^\dagger(\bm{r})U(\bm{r})\psi(\bm{r})\right]\nonumber\\
+				&+\dfrac{1}{2}\iint\dd\bm{r}\dd\bm{r'}\,\psi^\dagger(\bm{r})\psi^\dagger(\bm{r'})U^{(2)}(\bm{r},\bm{r})\psi(\bm{r'})\psi(\bm{r}),+\cdots\label{1.5.10}
+			\end{align}
+			where we have inserted the definition of fields operators.
+		\end{Example}
+
+\part{Landau Fermi Liquid Thoery}
+\chapter{Methods on $T=0$ Quantum Field Theory}
+	\section{Grand Canonical Ensemble}
+
+		\textbf{In CMP, we would like to handle with the systems with a given chemistry potential rather than a stable number of particles to cater for most of the experiments}. Thus we replace our original Hamiltonian with
+		$$H'=H-\mu N,$$
+		and modify our definition of fields operators in Heisenberg pictures that
+		\begin{equation}\label{2.1.1}
+			\psi^H_\alpha(t,\bm{r})=e^{iH't}\psi_\alpha^S e^{-iH't}.
+		\end{equation}
+		We need to check that after applying this change we will obtaining a similar form of \eqref{1.3.5}. In fact,
+		starting with the ``box-normalized'' non-interactive field operator in Sch$\ddot{\text{o}}$rdingre picture, we can instantly prove it in usage of \eqref{2.1.1}\footnote{Recall that in free theory, the Hamiltonian commutes with the Number operator so both can be diagonalized under $\hat{n}_{\bm{p}}\equiv a_{\bm{p}}^\dagger a_{\bm{p}}$.}:
+			\begin{align}
+				\psi^H(\bm{r},t)&=\frac{1}{\sqrt{V}} \left(\sum_{\bm p}e^{i\sum_{\bm{p'}}(\varepsilon_{\bm{p'}}-\mu)\hat{n}_{\bm{p'}}}\cdot a_{\bm{p}}e^{i\bm{p\cdot r}}\cdot e^{i\sum_{\bm{p''}}(\varepsilon_{\bm{p''}}-\mu)\hat{n}_{\bm{p''}}}\right)e^{-i\varepsilon_{\bm{p}}t}\nonumber\\
+				&=\dfrac{1}{\sqrt{V}}\sum_{\bm{p}}a_{\bm{p}}e^{i[\bm{p\cdot r}-(\varepsilon_{\bm{p}}-\mu)t]},\label{5.3.6}
+			\end{align}
+			where in the second line we use the B-C-H formula.\par
+		\textbf{By the probability interpretation of QM, only statistical quantities make sense}. But how to calculate the \emph{ensemble average} of the system may bewilder you. Now that we allow changes of number of particles in our system, it is natural to combine the theory of \emph{grand canonical ensemble} of quantum statistical physics in our theory:
+		\begin{Def}[(Density Matrix)]
+			The density matrix of the grand canonical ensemble is
+			\begin{equation}\label{2.1.2}
+				\rho:=\dfrac{1}{\varXi}e^{-\beta H'},
+			\end{equation}
+			where the \emph{grand partition function}is $\varXi\equiv\mathrm{tr}(e^{-\beta H'})=\mathrm{tr}(e^{-\beta(H-\mu N)})$. And then the average of any operator $A$ is defined by
+			$$\langle A\rangle:=\mathrm{tr}(\rho A).$$
+			%\emph{grand potential} $\Omega:=-(1/\beta)\ln\mathrm{tr}(e^{-\beta H'})$ as usual.\par
+		\end{Def}
+		\begin{Note}
+			In the theory of quantum statistical physics, the trace runs all the possible micro-state of our system, i.e.
+			\begin{equation}\label{2.1.3}
+				\mathrm{tr}(\rho A)\equiv\sum_{s}\langle s|\rho A|s\rangle
+			\end{equation}
+			for any arbitruary set of complete basis of our multi-particle Hilbert space.
+		\end{Note}
+
+	\section{Green Function}
+		Before I put forward the definition of Green function, let us pause for some thoughts on experiments in CMP. Anything encountered for the first time for an pristine human being during the expedition are dangerous black boxes, and to probe the properties of such unknown matters, a natural gesture occurring in his mind may be touching them and feeling their shape and texture. Similarly, for physicists who believe in objective things such as electrons and protons much harder than their bodies and brains, what they first do on the unknown matter is also to \textbf{impose an simple influence\footnote{By ``simple'', we mean something physicists believe they are familiar with, for example, the linear repsonse of current under external electric fields.} on it and observe what the matter will reflect to it}. For example, in solid state physics, we already knew that physicists use the X-ray diffraction to determine the lattice structure of crystals and infrared absorption to study the optic branch of viberation of solids.\par
+		In a word, any experiments in CMP, as long as involving in test particles or responsing particles, can be categorized to \emph{probing measure}, which is apparently devided into two kinds: \textbf{one is to inject a test particle in the sample and measure the responsing particles after interactions, or in the language of QFT, propagation\footnote{In some cases, electromagnetic fields will be released from solids and captured by experimental apparatus, but in most cases, the responsing particles are collective behavior and quasi-ones.}, another one is to take away a particle at first\footnote{For example, take away some electrons from the valence band through dopping a semiconductor, and then observing the propagation of hole.}, and then observing the propagation of the ``hole''.}.\par
+		Recall the fields operator and their dual operators have exactly the same effects on multi-particle states, creation and annhilation (otherwise we would not waste time abruptly swerving our topic to experiments 2333). So it's natural for us to propose the definition of Green function in consideration of these two ways of experiments:
+		\begin{Def}[(Green Function)]
+			The single-particle \emph{Green function} is defined as\footnote{I will not add the hat on fields operators unless they bring in ambiguity.}
+			\begin{equation}\label{2.2.1}
+				iG_{\alpha\beta}(x,x')=\langle T(\psi_\alpha^H(x)\psi^{\dagger H}_\beta(x'))\rangle,
+			\end{equation}
+			where the average takes the meaning of quantum statistical ensembles, the subscript indicate the components of spins of quasi-particles, and $T$ is the time-order operator such that\footnote{Note that \textbf{the function of time-order operator is just rearranging the order of operators but never brings in a minus sign in the expression}, which throughly result from the classification of particles.}
+			$$T\psi(x)\psi(y)=\begin{cases}\psi(x)\psi(y),\quad x^0>y^0,\\\varepsilon\psi(y)\psi(x),\quad y^0>x^0,\end{cases}$$
+			where $\varepsilon=\pm1$ for bosons and fermions.
+		\end{Def}
+		\begin{Note}
+			The coefficient ``$i$'' is just a convention in order to make it concord with the Schr$\ddot{\text{o}}$dinger equation of no interaction case, as is shown latter, because \textbf{in the sense of mathematics, ``Green function'' should subject to the same differential equation as general solution does, whereas this is true only when we are handling with the free systems in CMP.} We will see this in the near future.
+		\end{Note}
+		\begin{Note}[(Subtleties in spins of quasi-particles)]
+			In condensed matter physics, the structure of symmetries of space-time, Lorentz group, is removed, and so is the representation of the universal cover of it. In the construction of relativistic quantum fields theory, spins is defined by the the highest weights of the representation of the little group of such universal cover group. Although the structure of group is altered while little authors regard this problem as importance, I believe\footnote{Lifshiz and Pitaevskii seem to interprete the problem of spin by degeneracy of energy level, but I disaggree (and do not understand 2333).} \textbf{spins can also be obtained form the representation of \emph{Galileo group}, the central extension of the Lie algebra of which gives out a similar distribution of weights as Lorent group does}. \par
+			However, a much more serious question is that \textbf{the spin-statistical theorem also breaks in CMP}, hence even if we endow quasi-particles with spins from the representaion of Galileo group, we acturally still \textbf{cannot determine what kind of commuation relation their corresponding fields operators subject to}, let alone the complicated anyons. As far as I am concerned, almost all physicists frivolously acquiesce (or never notice) the trueness of spin-statistical thoerem in CMP. In order not to swerve from our mainline, I still have to \textbf{suppose the correctness of spin-statistical theorem}. I point out the logical flaws here just to emphasize the inconspicuous ambiguity of the construction of non-relativistic QFT.\par
+			In fact, both of the two questions holds only because we take the view of \emph{extreme anti-reductionism}, or \emph{emergence} as Wen does. If one ackowledges that particles in high energy physics are indeed ``basic particles'', and collectively exited particles in CMP are composition of them, then all the hinderance above will be cleared. In a word, \textbf{whether spins of quasi-particle is a problem is determined by which philosophy---emergence or reductionism---one believes}.
+		\end{Note}
+		\hfill\par
+		\hfill\par
+		Up to now we have not utilize the condition of \emph{zero-temperature} in the caption of this chapter at all, and let's see what will it bring to our form of Green functions:
+		\begin{Proposition}[($T=0$ Green Function)]
+			At $T=0\,\mathrm{k}$, the Green function can be computed under the average of \emph{gruond state}\footnote{I use $|\Omega\rangle$ just to make it in concord with the notation in high energy physics.}, i.e.,
+			\begin{equation}
+				iG_{\alpha\beta}(x,x')=\langle\Omega|T\psi_\alpha^H(x)\psi_\beta^{\dagger H}(x')|\Omega\rangle.
+			\end{equation}
+		\end{Proposition}
+		\begin{Proof}
+			Decompose the identity operator of our system by some arbitrary complete set of states (not have to be the symmetrized or anti-symmetrized multipaticle states we introduced in chapter one)
+			$$\mathbb{1}=\sum_{t}|t\rangle\langle t|,$$
+			then by definition of statistical average, we have
+			\begin{align*}
+				\langle T\psi(x)\psi^\dagger(x')\rangle&=\mathrm{tr}\left(\rho T\psi(x)\psi^\dagger(x')\right)\\
+				&=\dfrac{\displaystyle\sum_{s,t}\langle s|e^{-\beta(H-\mu N)}|t\rangle\langle t|T\psi(x)\psi^\dagger(x')|s\rangle}{\displaystyle\sum_{s}\langle s|e^{-\beta(H-\mu N)}|s\rangle}\\
+				&=\displaystyle\sum_{n}e^{-\beta(E_s-\mu N_s)}\langle s|T\psi(x)\psi^\dagger(x')|s\rangle\bigg/\displaystyle\sum_s e^{-\beta(E_s-\mu N_s)},
+			\end{align*}
+			where in the third line we use the notation $E_s$ and $N_s$ to denote the energy and number of particles of the state $|s\rangle$ and the orthogonal relation of states $|s\rangle$ and $|t\rangle$.\par
+			Although we have no idea of the real number $E_s$ and $N_s$ due to the arbitrary choice of complete set of states, we can pick out the unique state $|\Omega\rangle$ with lowest energy by the fundamental \textbf{non-degeneracy hypothesis}\footnote{The non-degeneracy hypothesis says that \textbf{the ground state of any energy spectrum is unique}. A similar statement in Wightman's axiomatic construction of quantum field theory also says that \textbf{the vaccuum state is always non-degenerate}.}. Denoting its energy $E'_{\Omega}\equiv E_\Omega-\mu N_\Omega$, we then have 
+			$$E'_s\big|_{s\neq\Omega}>E'_\Omega.$$
+			So we get 
+			 \begin{align*}
+			 	iG(t_1,t_2)&=\lim_{\beta\rightarrow\infty}\dfrac{\displaystyle \langle\Omega|T\psi(x)\psi^\dagger(x')|\Omega\rangle+\sum_{s\neq\Omega}e^{-\beta(E'_s-E'_\Omega)}\langle s|T\psi(x)\psi^\dagger(x')|s\rangle+\cdots}{\displaystyle 1+\sum_{s\neq\Omega}e^{-\beta(E'_s-E'_\Omega)}+\cdots}\\
+			 	&=\langle\Omega|T\psi(x)\psi^\dagger(x')|\Omega\rangle,
+			 \end{align*}
+			 where all the other terms are \emph{exponentially suppressed} because of the inequality we displayed above.
+		\end{Proof}
+		\begin{Note}
+			The method used here is similar to the powerful \emph{zero-mode} in the \emph{heat kernel theory} in mathematical physics, which is tightly related to the \emph{Atiyah-Singer index theorem}.
+		\end{Note}
+		\begin{Note}
+			Some additional comparision of the ground state $|\Omega\rangle$ in CMP and QED is necessary here:\par
+			\textbf{In CMP, owing to the effects of statistical physics\footnote{One should notice that although QED has more structure than CMP in the sense of Lorentz invariance, the theoretical framework of the latter one still own some original features because \textbf{CMP is acturally the combination of (perturbative) field theory and the therory of Gibbs statistics}. And it is the additional characteristic that makes it valuable to learn.}, electrons in non-interacting fermion systems have the distribution of \emph{fermi ball} in the momentum space, which is disparate in situations in high energy physics. Thus the terminology ``vaccuum state'' has entirely different meaning in these two paradigms}. This difference is apparent under action of creation and annihilation operators:
+			$$\begin{cases}a_{\bm{p}}|\Omega\rangle=0,&(\varepsilon>\varepsilon_F)\\a_{\bm{p}}^\dagger|\Omega\rangle=0.&(\varepsilon<\varepsilon_F)\end{cases}$$
+		\end{Note}
+		\hfill\par
+		Clearly if our system is not ferro-magnetic or put in magnetic fields, Green function must be independent of spins, i.e.,
+		$$G_{\alpha\beta}(x,x')=\delta_{\alpha\beta}G(x,x').$$
+		\indent Furthermore, since our physical world for condensed matters physics is \emph{homogeneous} on time and space\footnote{For simplicity we start with studying the systems without disorders and defects.}, the Green function can only depends on differences between time and spaces
+		\begin{Assertion}
+			Generally, we have
+			\begin{equation}\label{2.2.3}
+				G(t_1,\bm{r}_1;t_2,\bm{r}_2)=G(t;\bm{r}),
+			\end{equation}
+			where $t\equiv t_1-t_2, \bm{r}=\bm{r}_1-\bm{r}_2$.
+		\end{Assertion}
+		But, when it comes to the \emph{isotropy} of time and space, since most of detective approaches in CMP, for example, the X-ray diffraction, which involves in \emph{chronological} scattering proceeds, clearly time has not to be invertible. On the other hand, compared with gases and liquids, common systems like solid crystals are sure not of isotropic, so we can only claim that \textbf{only in systems with such so-called \emph{microscopic homogeneity}\footnote{By \emph{microscopic homogeneity}, we mean not only the system has a homogeneous average density macroscopically but it also gives particles in it a homogeneous distribution of probabilities on different spacial positions.} the Green functions satisfy $G(t,\bm{r})=G(t,-\bm{r})$. But we can \emph{never} friviously deem that $G(t,\bm{r})=G(-t,\bm{t})$}. From this aspect, we must attach importance on the conventional order of the time difference in Green function $t\equiv t_1-t_2$.
+		
+	\section{Free Green Function}
+		\subsection{Quantum Statistics of Grand Canonical Ensemble}
+		Any observables can be solved out from the grand partition function:
+		\begin{align*}
+			\varXi\equiv\mathrm{tr}(e^{-\beta H'})&=\sum_{\{n_k\}}\langle\{n_k\}|\prod_{\ell}e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|\{n_k\}\rangle\\
+			&=\prod_{\ell}\sum_{n_k=0}^\infty e^{-\beta(\varepsilon_\ell-\mu)n_k}.
+		\end{align*}
+		Note that for fermions $n_k$ can only be either zero or one while for bosons $n_k$ can be any large number, so 
+		\begin{equation}\label{2.3.14}
+			\varXi_{\mp}=\prod_\ell(1\mp e^{-\beta(\varepsilon_\ell-\mu)})^{\mp1},
+		\end{equation}
+		where minus sign for bosons and possitive sign for fermions.\par
+		Now we are able to obtain the distribution of particle numbers.
+		\begin{align*}
+			\langle a_k^\dagger a_k\rangle&\equiv\langle\rho a_k^\dagger a_k\rangle=\mathrm{tr}\left(a_k^\dagger a_k\dfrac{1}{\varXi}\prod_\ell e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\\
+			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k\prod_l e^{-\beta(\varepsilon_l-\mu)a_l^\dagger a_l}|\{n_k\}\rangle\\
+			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}\sum_l|\{n_l\}\rangle\langle\{n_l\}|\prod_n e^{-\beta(\varepsilon_n-\mu)}|\{n_k\}\rangle
+		\end{align*}
+		\subsection{Fermion Fields}
+			We begin with the familiar distribution of free fermion gases at finite temperature
+			\begin{equation}\label{2.3.1}
+				n_F(\varepsilon_{\bm{k}})\equiv\langle a_{\bm{k}}^\dagger a_{\bm{k}}\rangle=\mathrm{tr}\bigg(e^{\beta(\Omega-H')}a_{\bm{k}}^\dagger a_{\bm{k}}\bigg)=1\bigg/ \left(e^{\beta(\varepsilon_{\bm{k}}-\mu)}+1\right).
+			\end{equation}
+			At the low temperature limit $\beta\rightarrow\infty$, not only do we immediately have
+			\begin{equation}\label{2.3.2}
+				n_F(\varepsilon_{\bm k})=\theta(\mu-\varepsilon_{\bm k}),
+			\end{equation}
+			as is illustrated in figure \ref{fig:1}:\par
+			%%%%% Tikz picture %%%%%
+			\begin{figure}[!htp]
+				\centering
+				\begin{tikzpicture}
+					\draw[->] (0,-0.2)--(0,1.7) node[left]{$n_F$};
+					\draw[->] (-0.2,0)--(4,0) node[below right]{$\varepsilon_k$};
+					\draw[ultra thick] (0,1)--(2,1);
+					\draw[ultra thick] (2,0)--(3.5,0);	
+					\draw[ultra thick,dashed] (2,0)--(2,1);
+					\node [below] at (2,0) {$\mu$};
+					\draw [fill=lightgray] (0,0) rectangle (2,1);
+					\node [above right] at (2.2,0.7) {$\beta\rightarrow\infty$};
+					\node [below left] at (0,0) {$O$};
+					\node [left] at (0,1) {$1$};
+				\end{tikzpicture}
+				\caption{Strong-Degenerate free fermion gases}
+				\label{fig:1}
+			\end{figure}
+			%%%%%%%%%%%%%%%%%%%%%%%
+			one should also notice that in analogy of what we have done on definition of Green function, at this time only the ``physical vaccuum'' state average contributes to a non-zero value, i.e.,
+			$$\lim_{\beta\rightarrow\infty}\langle a_{\bm{k}} a_{\bm{k}}^\dagger\rangle=\langle\Omega|a_{\bm{k}}a_{\bm{k}}^\dagger|\Omega\rangle=n_F(\varepsilon_{\bm{k}}).$$
+			Before putting forward the specific results of Green functions, it is worthy to introduce one generalize function before:
+			\begin{Lemma}[(Sokhotsky-Weiestrass Formula)]
+				Given an integrable function $\varphi(x)$ (with a compact support), we can introduce a linear functional on $K$ space\footnote{Some Addition on definition of \emph{basic function space} $K$. We say the linear combinations of complex functions with bounded support and infinit derivatives forms a space of $K$ if the limit (topology) is defined as follows:\par
+				1) given a sequence $\{\varphi_m\}\subset K$, there exists a bounded set $A$ such that $\mathrm{supp}(\varphi_m)\subset A$.\par
+				2) all order of derivatives of $\{\varphi_m\}$, denoted as $\{D^p \varphi_m\}$ are uniformly convergent on $D^p \varphi$, written as $\displaystyle\varphi_m\mathop{\rightarrow}^{K}\varphi$.}, by
+				\begin{equation}\label{2.3.3}
+					\bigg\langle\varphi(x),\lim_{\delta\rightarrow0}\dfrac{1}{x\pm i\delta}\bigg\rangle\equiv\lim_{\delta\rightarrow\infty}\int\dd x\,\varphi(x)\dfrac{1}{x\pm i\delta}=\mathcal{P}\int\,\dd x\,\dfrac{\varphi(x)}{x}\mp i\pi \varphi(0),
+				\end{equation}
+				i.e.,
+				$$\dfrac{1}{x\pm i\delta}=\mathcal{P}\dfrac{1}{x}\mp i\pi\delta(x),$$
+				where $\mathcal{P}$ is the \emph{Cauchy principle value}.
+			\end{Lemma}
+			\begin{Proof}
+				Out of the main line of this note, so we just skip it.
+			\end{Proof}
+			Sometimes we'd like to write $\dfrac{1}{x\pm i0}\equiv\displaystyle\lim_{\delta\rightarrow0}\dfrac{1}{x\pm i\delta}$, then a more widely used form is to re-express such functional by an integral of an exponential function with a slight real translation (this shift is necessary to make it converge)
+			\begin{equation}\label{2.3.4}
+				\lim_{\delta\rightarrow+0}\int_0^\infty\,e^{ist-\delta t}\,\dd t=\left.\dfrac{e^{ist-\delta t}}{s-\delta}\right|_{t=0}^{t=\infty}=\lim_{\delta\rightarrow+0}\dfrac{i}{s+ i\delta}.
+			\end{equation}
+			\begin{Note}
+				Note that \eqref{2.3.4} holds for all real number $s$, no matter $s$ is possitive or negative.
+			\end{Note}
+
+			\begin{Proposition}
+				The Green funtion of non-interactive fermion gases $G^{(0)}$ in momnentum space is
+				\begin{equation}\label{2.3.5}
+					G^{(0)}(\omega,\bm{p})=\dfrac{1}{\omega+\mu-\varepsilon_{\bm{p}}+i\delta\mathrm{sgn}(|\bm{p}-p_F|)},
+				\end{equation}
+				where the \emph{Fermi momentum} $p_F\equiv\sqrt{2m\mu}$.
+			\end{Proposition}
+			\begin{Proof}
+			Direclty substitute the free fermion fields operator, we have (recall the \emph{minus sign} for fermions)
+				\begin{align*}
+					G^{(0)}(\bm{r};t)&=\frac{1}{i}\left(\theta(t)\langle|\Omega|\psi^H\psi^{\dagger H}|\Omega\rangle-\theta(-t)\langle\Omega|\psi^{\dagger H}\psi^H|\Omega\rangle\right)\\
+					&=\dfrac{1}{iV}\sum_{\bm{k}}\bigg(\theta(t)\langle\Omega|(1-a_{\bm{k}}^\dagger a_{\bm{k}})|\Omega\rangle-\theta(-t)\langle\Omega|a_{\bm{k}}^\dagger a_{\bm{k}}|\Omega\rangle\bigg)e^{i[\bm{k\cdot x}-(\varepsilon_{\bm{k}}-\mu)t]}\\
+					&=\dfrac{1}{iV}\sum_{\bm{k}}\bigg(\theta(t)\big(1-\theta(\mu-\varepsilon_{\bm{k}})\big)-\theta(-t)\theta(\mu-\varepsilon_{\bm{k}})\bigg)e^{i[\bm{k\cdot x}-(\varepsilon_{\bm{k}}-\mu)t]},
+				\end{align*}
+				where we have utilized the anticommutation relation and substituted the distribution of fermions at $T=0\,\mathrm{k}$. Next, carefully performing the Fourier transformation, we get 
+				\begin{align*}
+					G^{(0)}(\bm{p},\omega)&\equiv\int\,G^{(0)}(\bm{r},t)e^{-i(\bm{p\cdot r}-\omega t)}\dd t\dd\bm{r}\\
+					&=	\begin{cases}
+							\displaystyle\mu-\varepsilon_{\bm{p}}>0,&\displaystyle\frac{-1}{i}\int\,\theta(-t)e^{i(\omega-\varepsilon_{\bm p}+\mu)t}\dd t=\dfrac{-1}{i}\int_{-\infty}^0\,e^{i(\omega+\mu-\varepsilon_{\bm p})t}\,\dd t,\\[0.7pc]
+							\displaystyle\mu-\varepsilon_{\bm{p}}<0,&\displaystyle\frac{1}{i}\int\,\theta(t)e^{i(\omega-\varepsilon_{\bm p}+\mu)t}\dd t=\dfrac{1}{i}\int_0^\infty\,e^{i(\omega+\mu-\varepsilon_{\bm p})t}\,\dd t.
+						\end{cases}
+				\end{align*}
+				One can see that both of the cases can be summarized to an integrand $\int\,e^{ikt}\dd t$, which is certainly \emph{divergent}. However, \textbf{what outweighs is not the concrete form of the Green function, but the specific indication of the contour you choose in convention when multiplying it on some physically integrable functions in the computation of some feynmann diagrams}, as is seen in the future. In other words, in CMP, similar to the Dirac delta function, Green function is also defined in the sense of integrals and thus a \emph{generalized functions}.\par
+				Thus we intentionally add a slight real translation on each term and use \eqref{2.3.4}, getting\footnote{Because \eqref{2.4.2} holds for all real $s$, so for the $\mu>\varepsilon_{\bm{p}}$ term, one just need to perform the variable transformation $t\rightarrow-u$ and absorb the extra minus sign in the bracket, i.e.,
+				$$\dfrac{-1}{i}\int_{-\infty}^0\,e^{i(\omega+\mu-\varepsilon_{\bm p})t}\,\dd t=\dfrac{-1}{i}\int_0^{+\infty}\,e^{i(\varepsilon_{\bm{p}}-\omega-\mu)u}\,\dd u=\lim_{u\rightarrow0^+}\dfrac{-i}{\varepsilon_{\bm{p}}-\omega-\mu+i\delta}.$$}
+				\begin{align}\label{2.3.6}
+					G^{(0)}(\bm{p},\omega)&=\dfrac{1}{i}\lim_{\delta\rightarrow+0}\int_0^\infty\dd t\left[-\theta(\mu-\varepsilon_{\bm p})e^{-i(\omega+\mu-\varepsilon_{\bm{p}})t+\delta t}+\theta(\varepsilon_{\bm p}-\mu)e^{i(\omega+\mu-\varepsilon_{\bm{p}})t-\delta t}\right]\nonumber\\
+					&=\dfrac{\theta(|\bm{p}-p_F|)}{\omega+\mu-\varepsilon_{\bm{k}}+i0}+\dfrac{\theta(p_F-|\bm{p}|)}{\omega+\mu-\varepsilon_{\bm{k}}-i0},
+				\end{align}
+				where we have rewritten the theta function $\theta(\mu-\varepsilon_{\bm p})$ by momentum, and it's easy to check that the above results is equivalent to \eqref{2.3.5}.
+			\end{Proof}
+			\hfill\par
+			Recall that we have mentioned above that the non-interactive Green function in physics concord with that in the sense of mathematics, that is, 
+			\begin{Corollary}
+				$G^{(0)}(\bm{r},t)$ we obtained here satifies the Green equation in mathematical sense that
+				$$LG(x,s)=\delta(s-x),$$
+				where the linear differential operator $L$ is exactly the one in Sch$\ddot{\text o}$rdinger equation of fields operators without both external interaction and high order self-interaction terms, i.e.,
+				\begin{equation}\label{2.3.7}
+					\left(i\dfrac{\partial }{\partial t}+\dfrac{\Delta}{2m}+\mu\right)G^{(0)}(t,\bm{r})=\delta(t)\delta(\bm{r}).
+				\end{equation}
+			\end{Corollary}
+			\begin{Proof}
+				Rewrite the definition of Green function \eqref{2.2.1} in an explicit form
+				\begin{equation*}
+					\dfrac{\partial}{\partial t}G_{\alpha\beta}=-i\dfrac{\partial}{\partial t}\bigg[\langle\psi_\alpha(x_1)\psi_\beta^\dagger(x_2)\theta(t)-\langle\psi_\beta^\dagger(x_2)\psi_\alpha(x_1)\rangle\theta(-t)\bigg],
+				\end{equation*}
+				and utilize the anti-commutation relation for fermions and the formula $\partial_t\theta(t)\equiv\delta(t)$, we get
+				$$\dfrac{\partial}{\partial t}G_{\alpha\beta}=-i\left\langle T\dfrac{\partial\psi_\alpha(x_1)}{\partial t_1}\psi_\beta^\dagger(x_2)\right\rangle-i\delta_{\alpha\beta}\delta(\bm{r})\delta(t).$$
+				In addition, the fields operators in Heisenberg picture for our free system satisfies
+				\begin{equation}\label{2.3.8}
+					i\dfrac{\partial\psi_\alpha}{\partial t}=-\dfrac{1}{2m}\Delta\psi_\alpha-\mu\psi_\alpha,
+				\end{equation}
+				which can be derived from our Hamiltonian \eqref{1.5.10} without both external and self interaction. Substitute this in the above expression, we find the equation of free Green functions:
+				\begin{equation*}
+					\left(i\dfrac{\partial }{\partial t}+\dfrac{\Delta}{2m}+\mu\right)G^{(0)}(t,\bm{r})=\delta(t)\delta(\bm{r}).
+				\end{equation*}
+				Impose Fourier transformation on it giving
+				\begin{equation}\label{2.3.9}
+					\left(\omega-\dfrac{\bm{p}^2}{2m}+\mu\right)G^{(0)}(\omega,\bm{p})=1,
+				\end{equation}
+				or the former explicit form
+				\begin{equation*}
+					G^{(0)}(\omega,\bm{p})=\dfrac{1}{\omega-\varepsilon_{\bm p}+\mu+i0\mathrm{sgn}\omega},
+				\end{equation*}
+				where $\varepsilon_{\bm p}=\bm{p}^2/2m$ and we insert the important infinitesimally imaginary term to make it consistent with our former discussion about the choices of integral contour when counting the feynman diagrams (the general analytic properties of Green function will impose such a demand on the imaginary part).
+			\end{Proof}
+
+		\subsection{Phonon Fields}
+			We start with introducing what is the phonon fields:\par
+			Diffierent from the fermion fields operators, \textbf{it is because the phonon fields describe the real displayment of lattice that it must be real field operators, or Hermitian operator}. So regard the solid as continumm of springs and follow the same procedure of canonical quantization as Peksin, we have the familiar
+			\begin{Def}[(Phonon Field Operator)]
+				The \emph{phonon field operator} (in Heisenberg picture) is
+				\begin{equation}\label{2.3.11}
+					\varphi^H(\bm{r},t)=\dfrac{1}{\sqrt{V}}\sum_{\bm{k}}\sqrt{\dfrac{\omega_{\bm p}}{2}}\left(b_{\bm k}e^{i(\bm{k\cdot r}-\omega_{\bm k}t)}+b_{\bm k}^\dagger e^{-i(\bm{k\cdot r}-\omega_{\bm k}t)}\right).
+				\end{equation}
+			\end{Def}
+			Through the similar process, we can obtain
+			\begin{Proposition}
+				The unperturded Green function for phonons is
+				\begin{equation}\label{2.3.12}
+					D^{(0)}(\bm{k},\omega)=\dfrac{\omega_{\bm k}^2}{\omega^2-\omega_{\bm k}^2+i0}.
+				\end{equation}
+			\end{Proposition}
+			\begin{Proof}
+				\begin{align*}
+					D^{(0)}(\bm{r},t)&=\dfrac{1}{i}\bigg(\langle\Omega|\theta(t)\varphi^H\varphi^{\dagger H}|\Omega\rangle+\langle\Omega|\theta(-t)\varphi^{\dagger H}\varphi^H|\Omega\rangle\bigg)\\
+					&=\dfrac{1}{iV}\sum_{\bm{k,l}}\dfrac{\sqrt{\omega_{\bm k}\omega_{\bm l}}}{2}\bigg[\theta(t)\langle\Omega|\left(b_{\bm k}+b_{-\bm k}^\dagger\right)e^{i(\bm{k\cdot r_1}-\omega_{\bm k}t_1)}\left(b_{\bm l}+b_{-\bm l}^\dagger\right)e^{i(\bm{l\cdot r_2}-\omega_{\bm l}t_2)}|\Omega\rangle\\
+					&\qquad+\theta(-t)\langle\Omega|\left(b_{\bm l}+b_{-\bm l}^\dagger\right)e^{i(\bm{l\cdot r_1}-\omega_{\bm l}t_1)}\left(b_{\bm k}+b_{-\bm k}^\dagger\right)e^{i(\bm{k\cdot r_2}-\omega_{\bm k}t_2)}|\Omega\rangle\bigg]\\
+					&=\dfrac{1}{iV}\sum_{\bm{k}}\dfrac{\omega_{\bm k}}{2}\left(\theta(t)e^{i(\bm{k\cdot r}-\omega_{\bm k}t)}+\theta(-t)e^{-i(\bm{k\cdot r}-\omega_{\bm k}t)}\right),
+				\end{align*}
+				where in the second we utilize the technique introduced in Peskin to shorten the expression
+				$$\dfrac{1}{\sqrt{V}}\sum_{\bm{k}}\sqrt{\dfrac{\omega_{\bm p}}{2}}\left(b_{\bm k}e^{i(\bm{k\cdot r}-\omega_{\bm k}t)}+b_{\bm k}^\dagger e^{-i(\bm{k\cdot r}-\omega_{\bm k}t)}\right)\equiv\dfrac{1}{\sqrt{V}}\sum_{\bm{k}}\sqrt{\dfrac{\omega_{\bm p}}{2}}\left(b_{\bm k}+b_{-\bm k}\right)e^{i(\bm{k\cdot r}-\omega_{\bm k}t)}$$
+				and in the third line we use the commutation relation of $b_{\bm k}$ and find that the only non-vanishing term is
+				$$\langle\Omega|b_{\bm k}b_{\bm l}^\dagger|\Omega\rangle=\delta_{kl}.$$
+				Because \textbf{diffrent form fermions, there is no such momentum ball for bosons and the ``physical vaccuum state'' is exactly the vaccuum state in the usual meaning}. So we have $b_{\bm{k}}|\Omega\rangle\equiv0$ while $b_{\bm{k}}^\dagger|\Omega\rangle=|\phi_{\bm{k}}\rangle$. Thus
+				\begin{align*}
+					D^{(0)}(\bm{p},\omega)&\equiv\int D^{(0)}(\bm{r},t)e^{-i(\bm{p\cdot r}-\omega t)}\,\dd\bm r\dd t\\
+					&=\dfrac{\omega_{\bm p}}{2i}\left(\int_0^\infty\,e^{i(\omega-\omega_{\bm p})t}\,\dd t+\int_{-\infty}^0\,e^{i(\omega+\omega_{\bm p})t}\,\dd t\right)\\
+					&=\dfrac{\omega_{\bm p}}{2i}\left(\dfrac{i}{\omega-\omega_{\bm p}+i0}+\dfrac{-i}{\omega+\omega_{\bm p}-i0}\right)\\
+					&=\dfrac{\omega_{\bm p}^2}{\omega^2-\omega_{\bm p}^2+i0},
+				\end{align*}
+				where in the last line we expand the power function
+				$$(\omega_{\bm p}-i0)^2\sim\omega_{\bm p}^2+2i\omega_{\bm p}0\sim\omega_{\bm p}^2+i0$$
+				because by definition, the ground state energy is always no less than zero (and thus would not influence our choice of contour in calculation of integrals).
+			\end{Proof}
+
+	\section{General Analytical Properties}
+		In this section we will discuss the analytic properties of Green functions around the poles on the $\omega$ plane and show that the behavior in free cases is not a special property but a common one.\par
+		All our discussin bases on the two postulation that 
+		\begin{itemize}
+			\item \textbf{The system is microscopically homogeneous}.
+			\item \textbf{The multi-particle state is stable, or space and time invariant}.
+		\end{itemize}
+		\textbf{Thus for some system with defects or unstability, all analytic properties obtained in this section must be questioned or even become entirely invalid}.\par
+		
+		Before our derivation, we should recall that for a system with conservative energy and momentum, its fields operator can be rewritten as space-time translation
+		\begin{equation}\label{2.4.1}
+			\psi^H(\bm{r},t)=e^{-i(\bm{P\cdot r}-H't)}\psi^S(\bm{0})e^{i(\bm{P\cdot r}-H't)}.
+		\end{equation}
+		So we have
+		\begin{Proposition}[(K$\ddot{\text{a}}$ll$\grave{\text{e}}$n-Lehmann Spectral Representaion\footnote{I give this such name because in QFT we also have a similar non-perturbative result as the implement of unitarity})]
+			The Green function for fermions(particularly, electrons) can be rewritten in the momentum space that
+			\begin{align}
+				G(\omega,\bm{p})&=\dfrac{(2\pi)^3}{2}\sum_s\bigg\{\dfrac{A_s\delta(\bm{p}-\bm{p}_s)}{\omega-\varepsilon_s^+ +\mu+i0}\mp\dfrac{B_s\delta(\bm{p}+\bm{p}_s)}{\omega-\varepsilon_s^- +\mu-i0}\bigg\},\label{2.4.2}
+			\end{align}
+			where sign ``$-$'' is for bosons while ``$+$'' for fermions\footnote{Coventionally I set the upper sign for bosons, and the lower sign for fermions.}, $A_s\equiv|\langle\Omega|\psi_\alpha(0)|\psi_s\rangle|^2, B_s\equiv|\langle \psi_s|\psi_\alpha(0)|\Omega\rangle|^2, \varepsilon_s^+ =E_s(N+1)-E_\Omega(N)$ and $\varepsilon_s^- =E_\Omega(N)-E_s(N-1)$.
+		\end{Proposition}
+		\begin{Proof}
+			For simplicity we just ignore the label of spins components (if you want to consider it you just need to add an factor of one half for Fermion liquids). Inserting the complete set of one arbitrary basis of Hilbert space, say, $\displaystyle I=\sum_{s}|s\rangle\langle s|$ and substituting the above decomposition under shifting of spaces and time, we have
+			\begin{align*}
+				iG(t_1,t_2)&=\langle\Omega|\psi^H(x_1)\psi^{H\dagger}(x_2)|\Omega\rangle\theta(t_1-t_2)\pm\langle\Omega|\psi^{H\dagger}(x_2)\psi^H(x_1)|\Omega\rangle\theta(t_2-t_1)\\
+				&=\sum_s\bigg(\langle \Omega|e^{-i(\bm{P\cdot r}-H't_1)}\psi e^{i(\bm{P\cdot r}-H't_1)}|s\rangle\langle s|e^{i(\bm{P\cdot r}-H't_2)}\psi e^{-i(\bm{P\cdot r}-H't_2)}|\Omega\rangle\theta(t_1-t_2)\\
+				&\quad\pm\langle\Omega|e^{i(\bm{P\cdot r}-H't_2)}\psi e^{-i(\bm{P\cdot r}-H't_2)}|s\rangle\langle s|e^{-i(\bm{P\cdot r}-H't_1)}\psi e^{i(\bm{P\cdot r}-H't_1)}|\Omega\rangle\theta(t_2-t_1)\bigg)\\
+				&=\sum_s\bigg(\theta(t_1-t_2)e^{i(E_\Omega-\mu N_\Omega)t_1}\langle\Omega|\psi|s\rangle e^{-i((E_s-\mu N_s)t_1-\bm{P\cdot x_1})}\\
+				&\qquad\times e^{i((E_s-\mu N_s)t_2-\bm{P\cdot x_2})}\langle s|\psi^\dagger|\Omega\rangle e^{-i(E_\Omega-\mu N_\Omega)t_2}\\
+				&\quad\pm\theta(t_2-t_1)e^{i(E_\Omega-\mu N_\Omega)t_2}\langle\Omega|\psi^\dagger|s\rangle e^{-i((E_s-\mu N_s)t_2-\bm{P\cdot x_2})}\\
+				&\qquad\times e^{i((E_s-\mu N_s)t_1-\bm{P\cdot x_1})}\langle s|\psi|\Omega\rangle e^{-i(E_\Omega-\mu N_\Omega)t_1}\bigg),
+			\end{align*}
+			where in the third line we use the fact that the momentum of ground state is always zero $P_\Omega=0$.\par
+			Note that we share a similar positive factor $|\langle\Omega|\psi|s\rangle|^2$ and $|\langle s|\psi|\Omega\rangle|^2$ in each terms, while annihilation operator has function of deceasing number of partcles for a multiparticle state by one, so the only non-zero contribution demands the confinement seperately:
+			$$\begin{cases}N_s=N_\Omega+1,\quad t_1>t_2,\\N_s=N_\Omega-1,\quad t_1<t_2.\end{cases}$$
+			Denote $N_\Omega$ as $N$ for short, hence for the first half of term, we have its exponential
+			\begin{align*}
+			\exp&\bigg[i(E_\Omega(N)-\mu N)t_1-i\bigg(\big(E_s(N+1)-\mu\cdot(N+1)\big)t_1-\bm{P\cdot x_1}\bigg)+\\
+			&\qquad i\bigg(\big(E_s(N+1)-\mu\cdot(N+1)\big)t_2-\bm{P\cdot x_2}\bigg)-i(E_\Omega(N)-\mu N)t_2\bigg]\\
+			&=\exp\bigg[i\bigg(E_\Omega(N)-E_s(N+1)+\mu\bigg)(t_1-t_2)+\bm{P\cdot}(\bm{x_1-x_2})\bigg].
+			\end{align*}
+			And for another half of term, we also have
+			\begin{align*}
+			\exp&\bigg[i(E_\Omega(N)-\mu N)t_2-i\bigg(\big(E_s(N-1)-\mu\cdot(N-1)\big)t_2-\bm{P\cdot x_2}\bigg)+\\
+			&\qquad i\bigg(\big(E_s(N-1)-\mu\cdot(N-1)\big)t_1-\bm{P\cdot x_1}\bigg)-i(E_\Omega(N)-\mu N)t_1\bigg]\\
+			&=\exp\bigg[i\bigg(E_\Omega(N)-E_s(N-1)-\mu\bigg)(t_2-t_1)+\bm{P\cdot}(\bm{x_2-x_1})\bigg].
+			\end{align*}
+			Now introducing the notation (called the \emph{exitation energy}) $\varepsilon_s^+\equiv E_s(N+1)-E_\Omega(N), \varepsilon_s^-\equiv E_\Omega(N)-E_s(N-1)$ and $A_s, B_s$ above, we have
+			$$iG=\dfrac{1}{2}\sum_s\bigg[\theta(t_1-t_2)A_s e^{i((-\varepsilon_s^+ +\mu)(t_1-t_2)+\bm{P_s\cdot}(\bm{x_1-x_2}))}\pm\theta(t_2-t_1)B_s e^{i((\varepsilon_s^--\mu)(t_2-t_1)+\bm{P_s\cdot}(\bm{x_2-x_1}))}\bigg].$$
+			Perform Fourier transformation on it, and denote $t\equiv t_1-t_2$ and $\bm{x}=\bm{x_1}-\bm{x_2}$ for short, we have
+			\begin{align*}
+				iG(\omega,\bm{p})&=\dfrac{1}{2}\sum_s\int\dd\bm{x}\bigg[\int_0^\infty\,\dd t\,A_s e^{i((-\varepsilon_s^+ +\mu)t+\bm{P_s\cdot x})}\,e^{i(\omega t-\bm{p\cdot x})}\\
+				&\qquad\pm\int_{-\infty}^0\,\dd t\,	B_s e^{i((\varepsilon_s^--\mu)(-t)+\bm{P_s\cdot(-x)})}\,e^{i(\omega t-\bm{p\cdot x})}\bigg].
+			\end{align*}
+			To complish this integral, we need to shift the exponential slightly and substitute the formula \eqref{2.3.4}. The first term is easy to done that
+			$$\int_0^\infty\,\dd t\,A_s e^{i((-\varepsilon_s^+ +\mu)t+\bm{P_s\cdot x})}\,e^{i(\omega t-\bm{p\cdot x})}=\dfrac{iA_s\delta(\bm{p}-\bm{P_s})}{\omega-\varepsilon_s^+ +\mu +i0}.$$
+			But the sign of the second term is a little perplexing: perform a variable tansformation $t\rightarrow-u$ and reverese the direction of intergral, then the second term becomes
+			\begin{align*}
+			&\pm\int_{-\infty}^0\dd t\,B_s e^{i((\varepsilon_s^--\mu)(-t)+\bm{P_s\cdot(-x)})}\,e^{i(\omega t-\bm{p\cdot x})}\\
+			&\qquad=\pm\int_0^\infty\dd u\, B_s e^{i( (\varepsilon_s^- -\mu-\omega)u-\bm{(P_s+p)\cdot x})}.\\
+			&\qquad=\pm\dfrac{iB_s\delta(\bm{P_s}+\bm{p})}{\varepsilon_s^- -\mu-\omega+i0}=\mp\dfrac{iB_s\delta(\bm{P_s}+\bm{p})}{\omega+\mu-\varepsilon_s^- -i0}.
+			\end{align*}
+			So we're done.
+		\end{Proof}
+		\begin{Proposition}
+			We have the inequality for exitation energy:
+			\begin{equation}\label{2.4.3}
+				\begin{cases}
+					\varepsilon_s^+=E_s(N+1)-E_0(N)>\mu,\\
+					\varepsilon_s^-=E_0(N)-E_s(N-1)<\mu
+				\end{cases}
+			\end{equation}
+		\end{Proposition}
+		\begin{Proof}				
+			Recall that for an open system, we have 
+			\begin{equation}\label{2.4.4}
+			\dd U=T\dd S-p\dd V+\mu\dd N.
+			\end{equation}
+			So at the low temperature limit $T\rightarrow0$, we have 
+			$\mu=\partial E/\partial N$, while $E_\Omega(N+1)-E_\Omega(N)\sim\partial E/\partial N$. So
+			$$\varepsilon_s^+\sim\bigg(E_s(N+1)-E_\Omega(N+1)\bigg)+\mu.$$
+			But by definition the difference in the bracket is always possitive, so we're done.
+		\end{Proof}
+
+	\section{Computation of Macrospic Quantaties}
+		In analogous of the definition of particle number operator in chapter one here we also introduce the definition of number density operator in terms of Heisenberg operators:
+		\begin{Def}[(Particle Density Operator)]
+			The \emph{particle density operator} of the multi-particle system is defined to be (with the spin subcript added)
+			\begin{equation}\label{2.5.1}
+				\rho_{\alpha\beta}(\bm{r}):=\dfrac{1}{N}\langle\psi_\beta^\dagger(t,\bm{r})\psi_\alpha(t,\bm{r})\rangle.
+			\end{equation}
+		\end{Def}
+		\begin{Note}
+			Note that this density is of the \emph{real} particles, rather than that of quasi-particles.
+		\end{Note}
+		Faced with such a familiar expression, I dare to say that one cannot reject to relate it with the Green functions we studied above. In fact, \textbf{it's enough to describe all the thermal preperties after knowing the Green function of the system}.
+		\begin{Proposition}[(Relation of Green Function and Macoscopic Quantaties)]
+			\hfill\par
+			1) The average density of real particles can be computed as
+			\begin{equation}\label{2.5.2}
+				\dfrac{N}{V}=-2i\langle G(t=0,\bm{r}=0)
+				\rangle.
+			\end{equation}
+			\indent 2) The distribution of particles with momentum can be computated as 
+			\begin{equation}\label{2.5.3}
+			N(\bm{p})=-i\lim_{t\rightarrow0^-}\int_{-\infty}^{\infty}G(\omega,\bm{p})e^{-i\omega t}\dfrac{\dd \omega}{2\pi}.
+			\end{equation}
+		\end{Proposition}
+		\begin{Proof}
+			By definition we have
+			\begin{equation*}
+				G_{\alpha\beta}(x_1,x_2)=\begin{cases}-i\langle\psi_\alpha(x_1)\psi_\beta^\dagger(x_2)\rangle&t_1>t_2,\\
+				\mp i\langle\psi_\beta^\dagger(x_2)\psi_\alpha(x_1)\rangle&t_1<t_2.\end{cases}
+			\end{equation*}
+			So for the microscopically homogeneous systems, we have
+			$$n_{\alpha\beta}(\bm{r})=-iG_{\alpha\beta}(t=-0,\bm{r}=\bm{0}),$$
+			where $t\equiv t_1-t_2, \bm{r}=\bm{x_1}-\bm{x_2}$ (so the sign of $t$ should be negative), and \eqref{2.5.2} can be gotten by taking the trace of spins.\par
+			Performing the Fourier transformation of $n_{\alpha\beta}$ and substiture the form of Green function in momentum space, we finally have
+			\begin{align*}
+				N(\bm{p})&=\int\dd\bm{r}\,n(\bm{r})e^{-i\bm{p\cdot r}}=-i\int\dd\bm{r} G(t=-0,\bm{r})\,e^{-i\bm{p\cdot r}}\\
+				&=-i\lim_{t\rightarrow0^-}\int_{-\infty}^{\infty}G(\omega,\bm{p})e^{-i\omega t}\dfrac{\dd \omega}{2\pi}.
+			\end{align*}
+		\end{Proof}
+		\begin{Note}
+			From the free cases we can see that \textbf{chemical potential is the parameter of Green function, so \eqref{2.5.2} tells the relation between $\dfrac{N}{V}$ and $\mu$}.
+		\end{Note}
+		\begin{Corollary}[(Relation of Green Function and Thermal Quantaties)]
+			For a system with volume unchangable, its \emph{grand potential}\footnote{Grand potential $\Omega\equiv U-TS-\mu N$ describes system with volume unchanged.} can be computated as
+			\begin{equation}\label{2.5.4}
+				\Omega=-\int_0^\mu\dd \mu\, N(\mu),
+			\end{equation}
+			where $N(\mu)$ can be deduced from \eqref{2.5.2} (though might be just implicit functions).
+		\end{Corollary}
+		\begin{Proof}
+			By definition, $\dd\Omega=-P\dd V-S\dd T-N\dd\mu$, but by the \emph{third principle of thermal dynamics}\footnote{\emph{Nernst theorem}, or \emph{third principle of thermal dynamics} tells that the entropy of the condensed system goes to zero as temperature does in the isothermal processes, i.e.,$$\lim_{T\rightarrow 0}(\Delta S)_T=0.$$}, entropy $S$ will also go to zero as temperature does, and now $\dd V=0$, so we have $\dd\Omega=-N\dd\mu$, or \eqref{2.5.4}.
+		\end{Proof}
+		\begin{Note}
+			Note that this corollary holds only at $T=0\,\mathrm{k}$.
+		\end{Note}
+
+	\section{Inclusion of Interactions}
+		Now we are to introduce interaction in our theory, where $H'=H'_0+H'_I$ (here we neglect the uppperscript prime). Recall some important relation we derived in chapter one:
+		\begin{align*}
+			\begin{cases}
+				|\psi^I(t)\rangle=S(t,t_0)|\psi(0)\rangle,\\
+				\hat{A}^I(t)=U_0^{-1}(t,t_0)\hat{A}^S(t) U_0(t;t_0),
+			\end{cases}
+		\end{align*}
+		and from \eqref{1.1.4} and \eqref{1.1.8} we can get the relation between Heisenberg operator and interactive operator:
+		\begin{equation}\label{2.6.0}
+			\hat{A}^I(t)=S(t,t_0)\hat{A}^H(t) S^\dagger(t;t_0),
+		\end{equation}
+		with $\displaystyle S(\infty,-\infty)=T\exp\left(-i\int\dd t\,H_I(t)\right)$ the $S$-matrix of our system.\par
+		The main potin in this section is to introduce the celebrated \emph{Gell-mann Low} theorem and to utilize it in computation of Green function. But before that, we have to manually set one significant confinement on interactions in construction of perturbation theory that no one can avoid it.
+		\begin{Hypothesis}[(Adiabatic Hypothesis)]
+			When considering interactions, one can always regard the interaction absent at long before and in the long future, with a smooth exponent that 
+			\begin{equation}\label{2.6.1}
+				H=H_0+H'_\varepsilon=H_0+e^{-\varepsilon|t|}H'.
+			\end{equation}
+		\end{Hypothesis}
+		\begin{Note}
+			In fact, this hypothsis is equivalent to the technique of \emph{Abel regulation}.
+		\end{Note}
+		\begin{Theorem}[(Gellmann-Low Theorem)]
+			Under the adiabatic hypothesis, one can obtain the ground state of the interative system through the ground state of non-interactive one by
+			\begin{equation}\label{2.6.2}
+				\dfrac{|\psi^H_0\rangle}{\langle\Omega|\psi^H_0\rangle}=\lim_{\varepsilon\rightarrow\infty}\dfrac{|\psi^H_\varepsilon\rangle}{\langle\Omega|\psi^H_\varepsilon\rangle}=\lim_{\varepsilon\rightarrow\infty}\dfrac{S_\varepsilon(0,-\infty)|\Omega\rangle}{\langle\Omega|S_\varepsilon(0,-\infty)|\Omega\rangle},
+			\end{equation}
+			where $S_\varepsilon$ is the $S$-matrix with an adiabatic interaction, and $|\psi^H_\varepsilon\rangle$ or $|\psi^H_0\rangle$ the ground state of interactive system in Heisenberg picture.
+		\end{Theorem}
+		\begin{Proof}
+			The proof of this theorem is combusome and out of the main line of this note. For detailed proof, one can refer to 《固体量子场论》 or wikipidia.
+		\end{Proof}
+		\begin{Note}
+			When mentioned ``adiabatic hypothesis'', many textbooks just take $|\psi_0^H\rangle=S(0,-\infty)|\Omega\rangle$ for granted. Certainly this is the abuse of terminology, but to some extent this pedasgogical trick makes this theorem more smooth and acceptable. So I skip the verbose proof here. 
+		\end{Note}
+		Gell-mann Low theorem allow us to express the average value of the interactive ground state to roducts of Heisenberg operator in time order by the average of non-interactive one. That is, 
+		\begin{Theorem}[(Gellmann-Low Formula)]
+			The Green function can be compute by perturbation
+			\begin{equation}\label{2.6.3}
+				\langle\psi_0^H|T\hat{A}(t_1)\hat{B}(t_2)\cdots \hat{D}(t_n)|\psi^H_0\rangle=\dfrac{\langle\Omega|TS(\infty,-\infty)\hat{A}(t_1)\hat{B}(t_2)\cdots \hat{D}(t_n)|\Omega\rangle}{\langle\Omega|S(\infty,-\infty)|\Omega\rangle}.
+			\end{equation}
+		\end{Theorem}
+		\begin{Proof}
+			Suppose $t_1>\cdots>t_n$ and change the picture from Heisenberg one to interactive one, we get
+			\begin{align*}
+				&\langle\psi_0^H|T\hat{A}(t_1)\hat{B}(t_2)\cdots \hat{D}(t_n)|\psi^H_0\rangle\\
+				&\qquad=\langle\Omega|S^\dagger(0,-\infty)S(0,t_1)\hat{A}^I(t_1)S(t_1,0)\cdots S(0,t_n)\hat{D}^I(t_n)S(t_n,0) S(0,-\infty)|\Omega\rangle\\
+				&\qquad=\langle\Omega|S(-\infty,0) S(\infty,0)^\dagger S(\infty,0)S(0,t_1)\times\\
+				&\qquad\qquad\qquad\times\hat{A}^I(t_1)S(t_1,t_2)\cdots S(t_{n-1},t_n)\hat{D}^I(t_n)S(t_n,-\infty)|\Omega\rangle\\
+				&\qquad=\bigg\langle\Omega\bigg|S(-\infty,\infty) T\bigg\{\hat{A}(t_1)\cdots \hat{D}(t_n)S(\infty,-\infty)\bigg\}\bigg|\Omega\bigg\rangle,
+			\end{align*}
+			where in the third line we insert $\mathbb{1}\equiv S(\infty,0)^\dagger S(\infty,0)$. \textbf{By the non-degenerate hypothesis of the non-interactive grond state, we must have the two states $|\Omega\rangle$ and $S(\infty,-\infty)|\Omega\rangle$ differ with just a phase coefficient $e^{i\alpha}$}. Thus
+			$$\langle\Omega|S(-\infty,\infty)=e^{-i\alpha}|\Omega\rangle=\dfrac{\langle\Omega|}{\langle\Omega|S(-\infty,\infty)|\Omega\rangle}$$
+			and we're done.
+		\end{Proof}
+		\begin{Corollary}
+			\begin{equation}\label{2.6.4}
+				iG_{\alpha\beta}(x_1;x_2)=\dfrac{\langle\Omega|TS(\infty,-\infty)\psi_\alpha(x_1)\psi_\beta^\dagger(x_2)|\Omega\rangle}{\langle\Omega|S(\infty,-\infty)|\Omega\rangle}.
+			\end{equation}
+		\end{Corollary}
+		This formula will play an important role in our compuation of Feynman diagrams in the next section.
+	\section{Feynman Diagram}
+		Equipped with the Gellmann-Low theorem above, we now try some low order computation to make the formiliasm more clearly.\par
+		\begin{Lemma}[(Wick Theorem)]
+			And form of the time order of creation and annhilation fields can be devided into two parts: one is \emph{normal order} term, the other are pairing or complete time order pairs. For example,
+			\begin{align*}
+				T\{\psi_1\psi^\dagger_2\cdot\psi_3\psi_4\psi_4^\dagger\psi_3^\dagger\}&=\psi_2^\dagger\psi_4^\dagger\psi_3^\dagger\psi_1\psi_3\psi_4+T\{\psi_1\psi_2^\dagger\}T\{\psi_3\psi_4^\dagger\}T\{\psi_4\psi_3^\dagger\}+(-1)\cdot T\{\psi_1\psi_2^\dagger\}T\{\psi_3\psi_3^\dagger\}T\{\psi_4\psi_4^\dagger\}+T\{\psi_1\psi_4^\dagger\}T\{\psi_2^\dagger\psi_3\}T\{\psi_4\psi_3^\dagger\}+\\
+				&+(-1)\cdot T\{\psi_1\psi_4^\dagger\}T\{\psi_2^\dagger\psi_3\}T\{\psi_4\psi_3^\dagger\}+T\{\psi_1\psi_3^\dagger\}T\{\psi_2^\dagger\psi_3\}T\{\psi_4\psi_4^\dagger\}.
+			\end{align*}
+		\end{Lemma}
+		\begin{Corollary}
+			When computing the perturbative series, norm ordering term cancel with vaccuum state and so we can only consider the full-contracted terms.
+		\end{Corollary}
+		\subsection{Scalar Electron-electron Interaction}
+
+		\subsection{Scalar Electron-phonon Interaction}		
+
+\chapter{Methods on $T>0$ Quantum Field Theory}
+
+\part{Beyond Landau Fermi Liquid Thoery}
+
+\chapter{Quantum Hall Effect}
+
+\begin{thebibliography}{9}
+	\bibitem{Landau}E.M. Lifshiz, L.P. Pitaevski, Statistical Physics 2: Condensed Theory (Fourth Edition), 北京: 高等教育出版社, 2014.10.
+	\bibitem{zhang}
+	张永德, 高等量子力学(第二版), 北京: 科学出版社, 2010.8.
+	\bibitem{Weinberg}S. Weinberg, The Quantum Theory of Fields : Volume I, Cambridge University Press, 1995.
+	\bibitem{Atland}
+	Alexander Atland, Condensed Matter Field Theory (Second Edition), Beijing: World Publishing Corporation, 2015.
+	\bibitem{Nolting}
+	W. Nolting, Fundamentals of Many-body Physics, Berlin Heisenberg: Springer-Verlag, 2009.
+\end{thebibliography}
+
+	
+\end{document}
