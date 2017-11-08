@@ -5,16 +5,16 @@
 \contentsline {subsection}{\numberline {1.1.2}Heisenberg Picture}{4}{subsection.1.1.2}
 \contentsline {subsection}{\numberline {1.1.3}Interaction Picture}{4}{subsection.1.1.3}
 \contentsline {section}{\numberline {1.2}Schr$\mathaccentV {ddot}07F{\text {o}}$dinger Field and the Second Quantization}{5}{section.1.2}
-\contentsline {section}{\numberline {1.3}Occupation Number Representation}{6}{section.1.3}
-\contentsline {section}{\numberline {1.4}Identical Multi-particle State}{9}{section.1.4}
-\contentsline {section}{\numberline {1.5}Multi-particle Operators}{13}{section.1.5}
+\contentsline {section}{\numberline {1.3}Occupation Number Representation}{7}{section.1.3}
+\contentsline {section}{\numberline {1.4}Identical Multi-particle State}{8}{section.1.4}
+\contentsline {section}{\numberline {1.5}Multi-particle Operators}{12}{section.1.5}
 \contentsline {part}{I\hspace {1em}Landau Fermi Liquid Thoery}{17}{part.1}
 \contentsline {chapter}{\numberline {2}Methods on $T=0$ Quantum Field Theory}{19}{chapter.2}
 \contentsline {section}{\numberline {2.1}Grand Canonical Ensemble}{19}{section.2.1}
 \contentsline {section}{\numberline {2.2}Green Function}{20}{section.2.2}
 \contentsline {section}{\numberline {2.3}Free Green Function}{24}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Quantum Statistics of Grand Canonical Ensemble}{24}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Fermion Fields}{24}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Fermion Fields}{25}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Phonon Fields}{28}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}General Analytical Properties}{29}{section.2.4}
 \contentsline {section}{\numberline {2.5}Computation of Macrospic Quantaties}{32}{section.2.5}

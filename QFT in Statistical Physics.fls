@@ -1,8 +1,8 @@
 PWD /home/hxd/Documents/统计物理中的量子场论
 INPUT /usr/local/texlive/2017/texmf.cnf
 INPUT /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /home/hxd/Documents/统计物理中的量子场论/QFT in Statistical Physics.tex
+INPUT /usr/local/texlive/2017/texmf-var/web2c/xetex/xelatex.fmt
+INPUT QFT in Statistical Physics.tex
 OUTPUT QFT in Statistical Physics.log
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
@@ -19,13 +19,13 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/unicode-data/UnicodeData.txt
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/unicode-data/CaseFolding.txt
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/unicode-data/SpecialCasing.txt
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/engine/ctex-engine-pdftex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/ctexhook.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/ctexhook.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/ctexpatch.sty
@@ -38,47 +38,59 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ms/everysel.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ms/everysel.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/engine/ctex-engine-pdftex.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/engine/ctex-engine-pdftex.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKutf8.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKutf8.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/inputenc.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/inputenc.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/ot1enc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/ot1enc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/omsenc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/omsenc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.dfu
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJK.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJK.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJK.enc
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fontspec/fontspec.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fontspec/fontspec.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/tuenc.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/fontenc.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/fontenc.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjkpunct/CJKpunct.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjkpunct/CJKpunct.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjkpunct/CJKpunct.spa
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjkpunct/CJKpunct.spa
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKspace.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKspace.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/ctexspa.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/ctexspa.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKulem.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKulem.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/tuenc.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/tuenc.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fontspec/fontspec.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fontspec/fontspec.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xunicode-addon.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xunicode-addon.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tipa/t3enc.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/xetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/xetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xunicode-extra.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xunicode-extra.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xeCJKfntef.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/xelatex/xecjk/xeCJKfntef.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/ulem/ulem.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/ulem/ulem.sty
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/environ/environ.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/environ/environ.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/zhnumber/zhnumber.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/zhnumber/zhnumber.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
@@ -89,7 +101,6 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cf
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/indentfirst.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/indentfirst.sty
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /dev/null
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-fandol.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-fandol.def
@@ -127,8 +138,8 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/enumerate.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/enumerate.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
@@ -154,25 +165,19 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/puenc.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/puenc.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hxetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hxetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/stringenc.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/stringenc.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/babel-english/english.ldf
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/babel-english/english.ldf
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/babel/xebabel.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/simplewick/simplewick.sty
@@ -199,8 +204,9 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
@@ -312,8 +318,8 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/pict2e.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/pict2e.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/pict2e.cfg
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/pict2e.cfg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/p2e-xetex.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/pict2e/p2e-xetex.def
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/fp/defpattern.sty
@@ -342,18 +348,11 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/array.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tools/array.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.bdg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.bdg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.enc
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.enc
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.chr
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.chr
 INPUT QFT in Statistical Physics.aux
 INPUT QFT in Statistical Physics.aux
 OUTPUT QFT in Statistical Physics.aux
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmr.fd
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmr.fd
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -362,21 +361,9 @@ INPUT QFT in Statistical Physics.out
 INPUT QFT in Statistical Physics.out
 INPUT QFT in Statistical Physics.out
 INPUT QFT in Statistical Physics.out
-OUTPUT QFT in Statistical Physics.pdf
-INPUT ./QFT in Statistical Physics.out
-INPUT ./QFT in Statistical Physics.out
 OUTPUT QFT in Statistical Physics.out
-INPUT /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-INPUT /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmr.fd
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmr.fd
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr8.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr6.tfm
@@ -427,11 +414,6 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/bbold/Ubbold.fd
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold8.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold6.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/c70song.fd
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/cjk/texinput/UTF8/c70song.fd
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb80.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb55.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb4e.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr9.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr5.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmmi9.tfm
@@ -454,33 +436,10 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold9.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold5.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmtt.fd
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmtt.fd
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmtt9.tfm
-INPUT /usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmro10.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb5c.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb65.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberbff.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb4e.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb7e.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb59.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb96.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb8b.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb67.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb8d.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb30.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb20.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb76.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb5b.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb54.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb5f.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb58.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
+OUTPUT QFT in Statistical Physics.xdv
 INPUT QFT in Statistical Physics.toc
 INPUT QFT in Statistical Physics.toc
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr7.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmmi10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmmi7.tfm
@@ -502,17 +461,8 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold7.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
 OUTPUT QFT in Statistical Physics.toc
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmri10.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx8.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx6.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmsy10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm
@@ -523,17 +473,14 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold12.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbxi10.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb51.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb74.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbxi10.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb66.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb6c.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb4f.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb98.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmri8.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb60.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb63.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx8.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx6.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm
@@ -556,6 +503,8 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
@@ -565,20 +514,5 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold17.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold17.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/bbold/bbold17.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/omslmr.fd
-INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/lm/omslmr.fd
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb50.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb56.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb91.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb57.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb53.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb9a.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb7b.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb80.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb72.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb79.tfm
-INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/cyberb/cyberb52.tfm
 OUTPUT QFT in Statistical Physics.thm
 INPUT QFT in Statistical Physics.aux
-INPUT ./QFT in Statistical Physics.out
-INPUT ./QFT in Statistical Physics.out

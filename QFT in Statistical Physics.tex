@@ -210,14 +210,17 @@
 			The evolution equation can also be easily obtained by differentiating \eqref{1.1.7} and substituting \eqref{1.1.8}, but it is a little departure of our topic that we will never use in the future, so I just skip it.
 
 	\section{Schr$\ddot{\text{o}}$dinger Field and the Second Quantization}
-		\indent To prepare to construct the identical multi-particle quantum theory, we start with regarding the probability amplitude or wave funtion $\psi$ as the variable of \emph{classical fields}, though it is a quantity involving entirely in QM. Introducing the \emph{free}\footnote{I have to emphasize here that although there seems to be an ``interaction term'' $V$ in our Lagrangian, as is widely interpreted in QM, it is still a free theory since what we derive from it is the usual Schr$\ddot{\text{o}}$dinger equation, just like the non-interactive scalar field Lagrangian deriving a usual Klein-Gordan equation and non-interactive spinor field Lagrangian deriving a usual Dirac equation. In a nutshell, \textbf{\emph{free} here means there is no non-linear or coupling terms in Lagrangian} (since $\psi$ and $\psi^*$ are two independent fields, our Lagrangian here is indeed linear for fields and their derivatives).} (one-component) Lagrangian density
-		\begin{equation}\label{1.2.1}
-			\mathcal{L}=i\hbar\psi^*(\bm{r},t)\psi(\bm{r},t)-\dfrac{\hbar^2}{2m}\nabla\psi^*\cdot\nabla\psi-V\psi^*\psi,
-		\end{equation}
-		where the complex fields $\psi$ and $\psi^*$ are independent with each other, and utilizing the celebrated Euler-Lagrangian equation of $\psi^*$, i.e.,
+		\indent Though probability is thouroughly an quantity in quantum mechnics, in the paradigm of quantum fields theory, we regards $\psi$ as just the variable of \emph{classical fields}. \par
+		Introducing the \emph{free} lagrangian\footnote{I have to emphasize here that although $V$ is widely intepreted as ``interaction'' in QM literature, since what we derive from it is the fundamental Schr$\ddot{\text{o}}$dinger equation, just as the Klein-Gordan equation derived from non-interactive scalar field Lagrangian and the Dirac equation derived from non-interactive spinor field Lagrangian. So in this sense, we intepret the lagrangian with $V$ here as ``free''.}
+		\begin{Def}[(Schr$\ddot{\text{o}}$dinger Field)]
+			\begin{equation}\label{1.2.1}
+				\mathcal{L}=i\hbar\psi^*(\bm{r},t)\psi(\bm{r},t)-\dfrac{\hbar^2}{2m}\nabla\psi^*\cdot\nabla\psi-V\psi^*\psi,
+			\end{equation}
+		\end{Def}
+		where the complex fields $\psi$ and $\psi^*$ are independent with each other, and applying the celebrated Euler-Lagrangian equation on $\psi^*$, i.e.,
 		$$\partial_\mu\dfrac{\partial\mathcal{L}}{\partial(\partial_\mu\psi^*)}-\dfrac{\partial\mathcal{L}}{\partial\psi^*}=0,$$
 		we get the familiar Schr$\ddot{\text{o}}$dinger equation of $\psi$
-		$$i\hbar\dfrac{\partial \psi}{\partial t}=-\dfrac{\hbar^2}{2m}\Delta\psi+V\psi.$$
+		$$i\hbar\dfrac{\partial \psi}{\partial t}=-\dfrac{\hbar^2}{2m}\nabla^2\psi+V\psi.$$
 		\indent Now that we are in the formalism of classical field theory, the corresponding canonical momentum of field quantity is
 		\begin{equation}\label{1.2.2}
 			\pi(\bm{r},t)=\dfrac{\partial\mathcal{L}}{\partial\dot{\psi}(\bm{r},t)}=i\hbar\psi^*.
@@ -226,69 +229,66 @@
 		\begin{equation}\label{1.2.3}
 			\mathcal{H}\equiv \pi\dot{\psi}-\mathcal{L}=\dfrac{\hbar^2}{2m}\nabla\psi^*\cdot\nabla\psi+V\psi^*\psi.
 		\end{equation}
-		\indent According to the definition of Poinsson bracket (at equal time) that\footnote{c.f. Weinberg I.}
-		$$\{\psi(\bm{r},t),\psi^*(\bm{r''},t)\}=\int\dd\bm{r'}\left\{\dfrac{\delta\psi(\bm{r},t)}{\delta\psi(\bm{r'},t)}\dfrac{\delta\psi^*(\bm{r''},t)}{\delta\pi(\bm{r'},t)}-\dfrac{\delta\psi(\bm{r},t)}{\delta\pi(\bm{r'},t)}\dfrac{\delta\psi^*(\bm{r''},t)}{\delta\psi(\bm{r'},t)}\right\}$$
-		we get\footnote{By definition of functional derivatives, $$\dfrac{\delta\psi(\bm{r},t)}{\delta\psi(\bm{r'},t)}=\delta(\bm{r}-\bm{r'})$$ and accordingly $$\dfrac{\delta\psi^*(\bm{r''},t)}{\delta\pi(\bm{r'},t)}=\dfrac{1}{i\hbar}\delta(\bm{r''}-\bm{r'}).$$}
+		\indent According to the definition of Poisson bracket (at equal time)\footnote{cf. chapter $7$ in Weinberg I.} that
+		$$\big\{f[\psi,\pi],g[\psi,\pi]\big\}\equiv\int\dd\bm{r'}\left\{\dfrac{\delta f[\psi,\pi]}{\delta\psi(\bm{r'},t)}\dfrac{\delta g[\psi,\pi]}{\delta\pi(\bm{r'},t)}-\dfrac{\delta f[\psi,\pi]}{\delta\pi(\bm{r'},t)}\dfrac{\delta g[\psi,\pi]}{\delta\psi(\bm{r'},t)}\right\}$$
+		we get
 		\begin{align}
-			\{\psi(\bm{r},t),\psi^*(\bm{r'},t)\}&=\dfrac{1}{i\hbar}\delta(\bm{r}-\bm{r'}),\label{1.2.4}\\
-			\{\psi(\bm{r},t),\psi^*(\bm{r'},t)\}&=\{\psi^*(\bm{r},t),\psi^*(\bm{r'},t)\}=0.\label{1.2.5}
+			\{\psi(\bm{r},t),\pi(\bm{r'},t)\}&=\delta(\bm{r}-\bm{r'}),\label{1.2.4}\\
+			\{\psi(\bm{r},t),\psi(\bm{r'},t)\}&=\{\pi(\bm{r},t),\pi(\bm{r'},t)\}=0.\label{1.2.5}
 		\end{align}
-		\indent Fortunately, unlike the annoying gauge invariance in electromagenetic fields, there is no constraint in our Schr$\ddot{\text{o}}$dinger field, so according to the standard methods for canonically quantizing a constraint system developed by Dirac\footnote{This temporarilly works in $3+1$ dimensional fieds theory and 4-dimensional Euclidean fields theory. But things become esoteric for low-dimensional case, which we will study in the future part.}, the procedure of second qunatization is just simple replacement of ``classical field'' $\psi$ by the field operators $\hat{\psi}$ and Poinsson bracket $\{,\}$ by Dirac bracket\footnote{Here positive sign corresponds to Bosons while minus sign corresponds to Fermions} $[,]_{\pm}$ with a coefficient $1/i\hbar$, respectively, i.e.,
+		\indent Fortunately, without the annoying gauge invariance in electromagenetic fields, there is no \emph{constraint} in our Schr$\ddot{\text{o}}$dinger field, so according to the standard methods for canonically quantizing a constraint system developed by Dirac\footnote{This temporarilly works in $3+1$ dimensional fieds theory and 4-dimensional Euclidean fields theory. But things become esoteric for low-dimensional case, which we will study in the future part.}, the procedure of second qunatization is just simple replacement of ``classical field'' $\psi$ by the field operators $\hat{\psi}$ and Poinsson bracket $\{,\}$ by Dirac bracket\footnote{Here positive sign corresponds to Bosons while minus sign corresponds to Fermions} $[,]_{\pm}$ with a coefficient $1/i\hbar$, respectively, i.e.,
 		$$\{A,B\}\mapsto\dfrac{1}{i\hbar}[\hat{A},\hat{B}]_{\pm}.$$
 		So
 		\begin{Axiom}[(Second Quantization of Schr$\ddot{\text{o}}$dinger Field)]
-			The quantized canonical variables of $\psi$ and $\psi^*=\psi^\dagger$ (note that there is only one component in our Schr$\ddot{\text{o}}$dinger field) in \eqref{1.2.4} and \eqref{1.2.5}, denoting $\hat{\psi}$ and $\hat{\psi^\dagger}$, in Heisenberg picture, have the commutation relation that
+			The canonically quantized variables of $\psi$ and $\pi\equiv i\hbar\psi^*$, denoted as $\hat{\psi}$ and $\hat{\psi^\dagger}$ respectively, in Heisenberg picture, have the commutation relation that
 			\begin{align}
-				[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r'},t)]_{\pm}&=\delta(\bm{r}-\bm{r'}),\label{1.2.6}\\
+				[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r'},t)]_{\pm}&=i\hbar\delta(\bm{r}-\bm{r'}),\label{1.2.6}\\
 				[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r'},t)]_{\pm}&=[\hat{\psi}^\dagger(\bm{r},t),\hat{\psi}^\dagger(\bm{r'},t)]=0.\label{1.2.7}
 			\end{align}
 		\end{Axiom}
-
+		\begin{Note}
+			One may wonder why we recklessly quantize the Schr$\ddot{\text{o}}$dinger in \emph{both} the commutative and anti-commutative rule, which is aberrant to what we have learned form QFT that one kind of field corresponds with just one kind of particles (or more precisely, excited by). That is because the energy scale in condensed matter fields is so low (less than $100\,\mathrm{eV}$) that we naturally regard the speed of light not be finite but infinite, and hence in CMP we only consider the \emph{non-relativistic} QFT. So \textbf{the confinement of casualties on commutators\footnote{Some reminder on casualty in Relativistic QFT: \textbf{Lorentz invariance of S-matrix can be directly deduced from definiton of $S$-matrix, which in turn imposes confinement that the interactive density of Hamiltonian must commute for space-like interval. By definition of fields as well as properties of creation and annihilation operators, any fields operators in QFT can be expanded as multiples of creation and annihilation operations with some coeffients, then the only way to construct the fields operator is linear combination of creation and annihilation fields operators, i.e., the familiar so-called casualty. disappear and we are free to quantize the Schr$\ddot{\text{o}}$dinger field haphazardly}. cf. chapters 2-5 in Weinberg I.} diseappears.}
+		\end{Note}
 	\section{Occupation Number Representation}
-		By occupation number representation, we mean \textbf{a group of orthogonally normalized basis of multi-particle Hilbert space (adding the fundamental \emph{identical principle}) with the meaning of distribution of numbers of particles to some extent.}\par
-		For simplicity, we only consider the case where the potential term $V$ is independent of time. At this moment, we write the complete set of functions as $\{\psi_k(\bm{r})\}$, where
-		$$\left(-\dfrac{\hbar^2}{2m}\Delta+V(\bm{r})\right)\psi_k=E_k\psi_k.$$
-		By Sturm-Liouville theorem, this family of functions are orthogonally normalized and complete, i.e., $\langle\psi_k|\psi_l\rangle$. Particularly, we have
-		\begin{align}
-			\int\dd\bm{r}\,\psi_k(\bm{r})\psi^*_{k'}(\bm{r})&=\int\dd\bm{r}\,\langle\psi_k|\bm{r}\rangle\langle\bm{r}|\psi_{k'}\rangle=\delta_{kk'},\label{1.3.1}\\
-			\int\dd\bm{r}\,\psi_k(\bm{r})\psi^*_k(\bm{r'})&=1\implies\psi_k(\bm{r})\psi^*_k(\bm{r'})=\delta(\bm{r}-\bm{r'}).\label{1.3.2}
-		\end{align}
+		Given a complete set of function $\{\psi_k(\bm{r})\}$ such that
+		$$\left(-\dfrac{\hbar^2}{2m}\Delta+V(\bm{r})\right)\psi_k=E_k\psi_k$$
+		then by Sturm-Liouville theorem, this family of functions are orthogonally normalized and complete, i.e., $\langle\psi_k|\psi_l\rangle=\delta_{kl}$ and $\displaystyle\sum_{k}|\psi_k\rangle\langle\psi_k|=\mathbb{1}$.
+		%or, in coordinate representation,
+		%\begin{align}
+		%	\int\dd\bm{r}\,\psi_k(\bm{r})\psi^*_{k'}(\bm{r})&=\int\dd\bm{r}\,\langle\psi_k|\bm{r}\rangle\langle\bm{r}|\psi_{k'}\rangle=\delta_{kk'},\label{1.3.1}\\
+		%	\sum_k\psi_k(\bm{r})\psi^*_k(\bm{r'})&=1\implies\psi_k(\bm{r})\psi^*_k(\bm{r'})=\delta(\bm{r}-\bm{r'}).\label{1.3.2}
+		%\end{align}
 
-		So we can expand the field operator by combining the operator $a$ and $a^\dagger$ bearing the whole non-commutative properties with the coefficients of complete functions above
+		So we can expand the field operator by combining the operator $a$ and $a^\dagger$ bearing the non-commutative properties of operators with the coefficients of complete function basis above
 		\begin{Assertion}[(Expansion of Fields Operators)]
-			Generally, fields operators in Heisenberg picture must take the form of 
+			Generally, fields operators in Schr$\ddot{\text{o}}$dinger Picture take the form of (here we write in coordinate representation and add an extra spin label on the complete function basis) 
 			\begin{equation}\label{1.3.3}
-				\hat{\psi}(\bm{r},t)=\sum_ka_k\psi_k(\bm{r})e^{-iE_kt/\hbar},\quad\hat{\psi}^\dagger(\bm{r},t)=\sum_ka^\dagger_k\psi^*_k(\bm{r})e^{-iE_kt/\hbar},
+				\hat{\psi}(\bm{r})=\sum_{k\sigma}a_{k\sigma}\psi_{k\sigma}(\bm{r}),\quad\hat{\psi}^\dagger(\bm{r})=\sum_{k\sigma}a^\dagger_{k\sigma}\psi^*_{k\sigma}(\bm{r}),
 			\end{equation}
 			with 
 			\begin{equation}\label{1.3.4}
-				[a_k,a_{k'}^\dagger]_{\pm}=\delta_{kk'},\quad[a_k,a_{k'}]_{\pm}=[a^\dagger_k,a^\dagger_{k'}]_{\pm}=0.
+				[a_{k\sigma},a_{k'\sigma'}^\dagger]_{\pm}=\delta_{kk'}\delta_{\sigma\sigma'},\quad[a_{k\sigma},a_{k'\sigma'}]_{\pm}=[a^\dagger_{k\sigma},a^\dagger_{k'\sigma'}]_{\pm}=0.
 			\end{equation}
 		\end{Assertion}
 		\begin{Proof}
-			First, these two algrabric coefficients can be inversely work out through utilization of the orthogonality \eqref{1.3.1} that  
+			Multiplying a ket $\langle\psi_{k\sigma}|$ on \eqref{1.3.3} without choosing of representation, one immediately obtains $a_{k\sigma}=\langle\psi_{k\sigma}|\hat{\psi}\rangle$ and $a_{k\sigma}^\dagger=\langle\hat{\psi}|\psi_{k\sigma}\rangle$, or in coordinate representation
+			$$a_{k\sigma}=\int\dd\bm{r}\,\psi_{k\sigma}(\bm{r})\hat{\psi}(\bm{r}),\quad a^\dagger_{k\sigma}=\int\dd\bm{r}\,\psi^*_{k\sigma}(\bm{r})\hat{\psi}^\dagger(\bm{r}).$$
+			Then (in natural units)
 			\begin{align*}
-				a_k&=\int\,\dd\bm{r}\,\hat{\psi}(\bm{r},t)\psi_k^*(\bm{r})e^{iE_k t/\hbar},\\
-				a_k^{\dagger}&=\int\,\dd\bm{r}\,\hat{\psi}^\dagger(\bm{r},t)\psi_k(\bm{r})e^{-iE_k t\hbar}.
+				[a_{k\sigma},a^\dagger_{k'\sigma'}]_{\pm}&=\int\dd\bm{r}\dd\bm{r'}\,[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r},t)]_{\pm}\psi_{k\sigma}(\bm{r'})\psi^*_{k'\sigma'}(\bm{r})\\
+				&=\int\dd\bm{r}\dd\bm{r'}\,\delta(\bm{r}-\bm{r'})\psi_{k\sigma}(\bm{r'})\psi^*_{k'\sigma'}(\bm{r})\\
+				&=\int\,\dd\bm{r}\,\psi_{k'}(\bm{r})\psi_k^*(\bm{r})=\sum_k\langle\psi_{k'\sigma'}|\psi_{k\sigma}\rangle=\delta_{kk'}\delta_{\sigma\sigma'},
 			\end{align*}
-			Then we check \eqref{1.3.4} though direct computation: 
-			\begin{align*}
-				[a_k,a^\dagger_{k'}]_{\pm}&=\int\dd\bm{r}\dd\bm{r'}\,[\hat{\psi}(\bm{r},t),\hat{\psi}^\dagger(\bm{r},t)]_{\pm}\psi_{k'}(\bm{r'})\psi^*_{k}(\bm{r})e^{i(E_k-E_k')t/\hbar}\\
-				&=\int\dd\bm{r}\dd\bm{r'}\,\delta(\bm{r}-\bm{r'})\psi_{k'}(\bm{r'})\psi^*_{k}(\bm{r})e^{i(E_k-E_{k'})t/\hbar}\\
-				&=e^{i(E_k-E_{k'})t/\hbar}\int\,\dd\bm{r}\psi_{k'}(\bm{r})\psi_k^*(\bm{r})=e^{i(E_k-E_{k'})t/\hbar}\delta_{kk'}=\delta_{kk'}.
-			\end{align*}
-			The same goes to other commutative relations.
+			where in the second line we utilize the commutation relation \eqref{1.2.6} in Schr$\ddot{\text{o}}$dinger Picture, which is easy to show.
 		\end{Proof}
-		\begin{Note}
-			One may wonder why we recklessly quantize the Schr$\ddot{\text{o}}$dinger in \emph{both} the commutative and anti-commutative rule, which is aberrant to what we learned form QFT that one kind of field corresponds with just one kind of particles (or much precisely, exited by). That is because the energy scale in condensed matter fields is so low (less than $100\,\mathrm{eV}$) that we naturally regard the speed of light not be finite but infinite, and hence in CMP we only consider the \emph{non-relativistic} QFT. So \textbf{the confinement of casualties on commutators\footnote{Some reminder on casualty in Relativistic QFT: \textbf{Lorentz covariance of S-matrix can be directly deduced from its definiton, which in turn confines that the interactive density must commute for space-like interval}. But by introduction of creation and annihilation operators, any operators in QFT can be expanded as multiples of them. So the only way to construct the fields operator is linear combination of creation and annihilation fields operators, or, the familiar casualty.} disappear and we are free to quantize the Schr$\ddot{\text{o}}$dinger field haphazardly}.
-		\end{Note}
+
 		\begin{Example}[(Non-interactive Fermions)]
 			\par
-			In solid state physics, we already knew that \textbf{Bloch eletrons}, in perfect periodic lattice, is discribed by the ``box-normalization'' plane wave:
+			In solid state physics, we already knew that \textbf{Bloch eletrons}, in flawless periodic lattice, is discribed by the ``box-normalized'' plane wave:
 			$$\psi_{\bm{p}}(\bm{r})=\dfrac{1}{\sqrt{V}}e^{i\bm{p\cdot x}},$$
-			where $V$ is the volume of the box. So in this case \eqref{1.3.3} takes the simple form\footnote{We neglect $\hbar$ here.}
+			where $V$ is the volume of the box. In this common case, \eqref{1.3.3} takes the form
 			\begin{equation}\label{1.3.5}
-				\hat{\psi}(\bm{r},t)=\dfrac{1}{\sqrt{V}}\sum_{\bm{p}}a_{\bm{p}}e^{i\bm{p\cdot x}}e^{-iE_p t}.
+				\hat{\psi}(\bm{r},t)=\dfrac{1}{\sqrt{V}}\sum_{\bm{p}}a_{\bm{p}}e^{i\bm{p\cdot x}}.
 			\end{equation}
 		\end{Example}
 		\begin{Proposition}
@@ -296,52 +296,52 @@
 			\begin{equation}\label{1.3.6}
 				[\hat{H},\hat{N}_{k}]=0,\quad\forall k.
 			\end{equation}
-			So \textbf{the number of $k$-mode quasi-particles is independent of time for a stable system (equilibrium)}.
+			So \textbf{the number of $k$-mode quasi-particles is independent of time for a stable system (at equilibrium)}.
 		\end{Proposition}
 		\begin{Proof}
-			To see this more explicitly, we first express $\hat{H}$ with creation and annihilation operators:
+			Choosing energy eigen-functions as complete basis, then $\hat{H}$ can be explicit written by creation and annihilation operators:
 			\begin{align}
-				\hat{H}&=\int\dd\bm{r}\,\hat{\psi}^\dagger\left(-\dfrac{\hbar^2}{2m}\Delta+V\right)\hat{\psi}\nonumber\\
-				&=\sum_{k,k'}a_{k'}^\dagger a_k E_k e^{i(E_{k'}-E_k)t\hbar}\int\dd\bm{r}\,\psi_{k'}^*(\bm{r},t)\psi_k(\bm{r},t)\nonumber\\
-				&=\sum_k E_ka_k^\dagger a_k,\label{1.3.7}
+				\hat{H}&=\int\dd\bm{r}\,\hat{\psi}^\dagger(\bm{r})\left(-\dfrac{\hbar^2}{2m}\nabla^2+V\right)\hat{\psi}(\bm{r})\nonumber\\
+				&=\sum_{k,k'}a_{k'}^\dagger a_k E_k \int\dd\bm{r}\,\psi_{k'}^*(\bm{r},t)\psi_k(\bm{r},t)\nonumber=\sum_k E_ka_k^\dagger a_k,\label{1.3.7}
 			\end{align}
-			where the first line comes from the rule of the second quantization and in the second line we insert \eqref{1.3.3}.
-			Obviously, for each $k$, Hamiltonian commutes with the $k$-mode quasi-particle number operator.
+			where the first line comes from the rule of the second quantization. Obviously, for each $k$, Hamiltonian commutes with the $k$-mode quasi-particle number operator.
 		\end{Proof}
-		\textbf{Since each $\hat{N}_k$ also commute with each other, $\{\hat{H},\hat{N}_{k}\}$ forms one \emph{complete set of commutating observables}, so they can be simultaneously diagonalized under the \emph{simultaneous eigenstates}}, temporarily denoted as $|\psi_N\rangle$, which must belong to the multi-particle space\footnote{Here the subscript $1$ means this is the single-particle Hilbert space, and the superscript $(i)$ indicate the label of particles, i.e., the single-particle Hilbert space of the $i$th particle is denoted as $\mathcal{H}_1^{(i)}$.}
-		$$|\psi_N\rangle\in\mathcal{H}_N=\mathcal{H}_1^{(1)}\otimes\cdots\otimes\mathcal{H}_1^{(N)}$$
-		because in our system there are indeed $N_k$ quasi-particles.
+		\textbf{Since each $\hat{N}_k$ also commute with each other, $\{\hat{H},\hat{N}_{k}\}$ forms one \emph{complete set of commutating observables}, so they can be simultaneously diagonalized under the \emph{simultaneous eigenstates}}, temporarily denoted as $|\psi_{N_k}\rangle$, which must belong to the multi-particle space
+		$$|\psi_{N_k}\rangle\in\mathcal{H}_{N_k}=\mathcal{H}_1^{(1)}\otimes\cdots\otimes\mathcal{H}_1^{(N_k)}\equiv\bigotimes_{i=1}^{N_k}\mathcal{H}_1^{(i)},$$
+		where the subscript $1$ indicates the single-particle Hilbert space, while the superscript $(i)$ indicates the label of particles.
 
 	\section{Identical Multi-particle State}
-		In the former section we mentioned that now we have to consider the multi-particle state. And more importantly, since all these $n_k$ quasi-particles, if exits, are of $k$-mode, they belongs to the same state and therefore are \emph{identical} ones satisfying the \emph{identical principle}, which adds complexity to them.\par
-		We first start with the single-particle state. Let $\{\hat{\varphi}^{(i)}\}$ be a \emph{complete set of commutative observables} in $\mathcal{H}^{(i)}_1$ and $|\varphi_\alpha^{(i)}\rangle$ be the simultaneous eigenstates\footnote{Here the subscript $\alpha$ indicate one label of linear-independent basic vectors of single-particle Hilbert space.} of $\mathcal{H}^{(i)}_1$. Then an arbitrary $N$-particle state can be naturally written as
+		As is shown above, now we are working in the multi-particle states. If all the $k$-mode particles are of the same type, then \emph{identical principle} will certainly come into effects and bring into complexity.\par
+		Let $|\varphi_\alpha^{(i)}\rangle$ be the $\alpha$-th eigenstate of the Hamiltonian $H_k^{(i)}$ of the $i$-th $k$-mode particle, i.e., in the Hilbert space $\mathcal{H}^{(i)}_1$. Then an arbitrary $N$-particle state must be written as
 		\begin{equation}\label{1.4.0}
-			|\varphi_N\rangle\equiv|\varphi_{\alpha_1}^{(1)}\cdots\varphi_{\alpha_N}^{(N)}\rangle=|\varphi_{\alpha_1}^{(1)}\rangle\otimes\cdots\otimes|\varphi_{\alpha_N}^{(N)}\rangle.
+			|\varphi_{N_k}\rangle\equiv|\varphi_{\alpha_1}^{(1)}\rangle\otimes\cdots\otimes|\varphi_{\alpha_N}^{(N)}\rangle=|\varphi_{\alpha_1}^{(1)}\cdots\varphi_{\alpha_N}^{(N)}\rangle.
 		\end{equation}
-		This basis of $\mathcal{H}_{N}$ must be complete because each components of it is the complete basis of single-particle state\footnote{As for the reason why these eigenstates of the self-adjoint operator $\hat{\varphi}$ form the complete basis of single-particle Hilbert spaces, one can refer to the celebrated \emph{spectrum decomposition theorem of unbounded self-adjoint operators} proved by Von Neumann.}.\par
-		According to \textbf{identical principle, some unitary phases are allowed exits after interchanging two identical particles}
-		$$|\psi_N(\cdots,i,\cdots,j,\cdots)\rangle=e^{i\theta(\cdots)}|\psi_N(\cdots,j,\cdots,i,\cdots)\rangle,$$
-		where $\theta(\cdots)$ is the \textbf{one-dimensional irreducible unitary representation of the group of interchanging particles}. In our case of \emph{three-dimensional} configuration space, this group is the \textbf{permutation group\footnote{Things alter for two-dimensional case, where the group describing transposition of two particles become the so-called \emph{braid group}.}, whose one-dimensional unitary representation $\rho:\mathbf{Perm}\rightarrow\mathbb{R}$ is characterized by either a positive or minus sign}. %Because of the extra structure imposed to our system, the prototype description of multi-particle states should be altered. 
+		This basis of $\mathcal{H}_{N}$ must be complete because each components of it is the complete basis of single-particle state\footnote{As for the reason why these eigenstates of the self-adjoint operator $\hat{\varphi}$ form the complete basis of single-particle Hilbert spaces, one can refer to the celebrated \emph{spectrum decomposition theorem of unbounded self-adjoint operators} proved by Von Neumann. cf. GTM267.}.\par
+		According to \textbf{identical principle\footnote{cf. chpater 4 in Weinberg I.}, some unitary phases are allowed exits after interchanging two identical particles}
+		$$|\psi_{N_k}(\cdots,i,\cdots,j,\cdots)\rangle=e^{i\theta(\cdots)}|\psi_{N_k}(\cdots,j,\cdots,i,\cdots)\rangle,$$
+		where $\theta(\cdots)$ is the \textbf{one-dimensional irreducible unitary representation of the group of interchanging particles}. In our case of \emph{three-dimensional} configuration space, this group is the \textbf{permutation group\footnote{Things alter for two-dimensional case, where the group describing transposition of two particles become the so-called \emph{braid group}, since the process of interchanging two particles involves descriptions on the topology of their worldlines.}, whose one-dimensional unitary representation $\rho:\mathbf{Perm}\rightarrow\mathbb{C}$ is characterized by either a positive or minus sign}. %Because of the extra structure imposed to our system, the prototype description of multi-particle states should be altered. 
 		More explicitly, denote the operator of transposition as $P_{ij}$ such that
 		$$P_{ij}|\cdots\phi_{\alpha_i}^{(i)}\cdots\phi_{\alpha_j}^{(j)}\cdots\rangle:=|\cdots\phi_{\alpha_i}^{(j)}\cdots\phi_{\alpha_j}^{(i)}\cdots\rangle,$$
 		then 
 		\begin{equation}\label{1.4.1}
-			P_{ij}|N\rangle=\varepsilon|N\rangle,\quad\varepsilon=\pm1,
+			P_{ij}|N_k\rangle=\varepsilon|N_k\rangle,\quad\varepsilon=\pm1,
 		\end{equation}
-		where $|N\rangle\equiv|\cdots\phi_{\alpha_i}^{(i)}\cdots\phi_{\alpha_j}^{(j)}\cdots\rangle$ denoting \textbf{the multi-particle state including the effects of interchange} (compare with that without interchanging effect in \eqref{1.4.0}), and positive for bosons while minus for fermions.\\
- 		\indent The question is, \textbf{since extra physical structure is included in our theory, the prototype in \eqref{1.4.0} proves to be invalid to naturally contain the interchange effect} (In \eqref{1.4.2} we add the sign by manual realization). Fortunately, a mathemtical trick succeed in realizing this:
+		%where $|N\rangle\equiv|\cdots\phi_{\alpha_i}^{(i)}\cdots\phi_{\alpha_j}^{(j)}\cdots\rangle$ denoting 
+		for \textbf{the multi-particle state $|N_k\rangle$ including the effects of transposition} (compared with the original one in \eqref{1.4.0}), with positive for bosons while minus for fermions.\par
+ 		The question is, \textbf{since extra structure is included in our theory, the prototype \eqref{1.4.0} is reasonable to be invalid}. But fortunately, a mathemtical trick succeed in realizing this without discarding this:
  		\begin{Def}[(Symmetrized and Anti-symmetrized Multi-particle State)]
- 			By introducing a appropriate normalization factor $1/N!$, the prescription\footnote{Since \eqref{1.4.2} is just a mathematical realization of \eqref{1.4.1}, we inherit the notation $|N\rangle$ of multi-particle states with interchange effects.} 
+ 			By introducing a appropriate normalization factor $1/N!$, the prescription\footnote{Since \eqref{1.4.2} is an appropriate mathematical realization of \eqref{1.4.1}, we naturally inherit the notation $|N_k\rangle$ for multi-particle states with interchanging effects.} 
  			\begin{equation}\label{1.4.2}
- 				|N\rangle\equiv|\psi^{(\varepsilon)}_N\rangle:=\dfrac{1}{N!}\hat{S}_\varepsilon|\psi_{\alpha_1}^{(1)}\cdots\psi_{\alpha_N}^{(N)}\rangle,
+ 				|N_k\rangle\equiv|\psi^{(\varepsilon)}_{N_k}\rangle:=\dfrac{1}{N_k!}\hat{S}_\varepsilon|\psi_{\alpha_1}^{(1)}\cdots\psi_{\alpha_{N_k}}^{(N_k)}\rangle,
  			\end{equation}
- 			with $\displaystyle\hat{S}_{\varepsilon}=\sum_\mathcal{P}\varepsilon^p\mathcal{P}$ known as \emph{symmetrization operator}, where $p$ is the number of transpositions constructing the permutation $\mathcal{P}$, or more precisely, $\mathcal{P}$ is $p$ times of group multiplication of tarnspositions, $\varepsilon$ is the sign under each transposition, and the sum runs over \emph{all} the permutation for the $N$-tube $(1,2,\cdots,N)$, leads to a correct \emph{symmetrized or anti-symmetrized multi-particle state}. And the space spanned by it, which is of obviously smaller than the former one, is denoted as $\mathcal{H}_N^{(\varepsilon)}\subset\mathcal{H}_N$.
+ 			with $\displaystyle\hat{S}_{\varepsilon}\equiv\sum_\mathcal{P}\varepsilon^p\mathcal{P}$ known as \emph{symmetrization operator}, where $p$ is the number of transpositions constructing the permutation $\mathcal{P}$ through $p$ times of group multiplications, $\varepsilon$ is the sign under each transposition, and the sum runs over \emph{all} the permutation for the $N$-tube $(1,2,\cdots,N)$. 
  		\end{Def}
- 		To see that \eqref{1.4.2} is well-defined, we only need to check \eqref{1.4.1}. In fact, symmetrized (antisymmetrized) states are nothing but summation of usual ones, which always give out an extra sign $\varepsilon$ under another transposition. That is,
+ 		For $\varepsilon=\pm1$ we call $|N_k\rangle$ either \emph{symmetrized or anti-symmetrized multi-particle state}. Obviously the space spanned by them are both smaller than the former one. We denote them as $\mathcal{H}_{N_k}^{(\varepsilon)}$, or $\mathcal{SH}_{N_k}\subset\mathcal{H}_{N_k}$ and $\mathcal{AH}_{N_k}\subset\mathcal{H}_{N_k}$, respectively.\par
+ 		To see that \eqref{1.4.2} is well-defined, we only need to check realization of \eqref{1.4.1}. In fact, symmetrized (antisymmetrized) states are nothing but summation of usual ones, which always give out an extra sign $\varepsilon$ under another transposition. That is,
  		$$P_{ij}\hat{S}_\varepsilon=\sum_{\mathcal{P}}\varepsilon^p P_{ij}\mathcal{P}=\sum_{\mathcal{P}}\varepsilon^{p+1}\mathcal{P}=\varepsilon\hat{S}_\varepsilon.$$
  		
  		\hfill\par
- 		Inner products of symmetrized states will be used in the near future, let us study here in advance. We begin with investigation on properties of the permutation operator:
+ 		Inner products of symmetrized states will be used in the near future, let us briefly list here in advance. We begin with investigation on properties of the permutation operator:
  		\begin{Property}\hfill\par
  			a) $\mathcal{P}=\mathcal{P}^\dagger$;\par
  			b) $[\mathcal{P},A]=0$;\par
@@ -358,7 +358,7 @@
  				&=\langle\cdots\psi^{(j)}_{\alpha_i}\cdots\psi^{(i)}_{\alpha_j}\cdots|A|\cdots\phi^{(j)}_{\alpha_i}\cdots\phi^{(i)}_{\alpha_j}\cdots\rangle\\
  				&\equiv\langle\cdots\psi^{(i)}_{\alpha_i}\cdots\psi^{(j)}_{\alpha_j}\cdots|P_{ij}^\dagger AP_{ij}|\cdots\phi^{(i)}_{\alpha_i}\cdots\phi^{(j)}_{\alpha_j}\cdots\rangle,
  			\end{align*}
- 			implying $A=P_{ij}^\dagger AP_{ij}$ or $[P_{ij},A]=0$ with the unitarity in property one. And since $\mathcal{P}$ is group multiplication of transposition $P_{ij}$, the second property holds.\par
+ 			implying $A=P_{ij}^\dagger AP_{ij}$ or $[P_{ij},A]=0$ with the unitarity proven in property one. And since $\mathcal{P}$ is group multiplication of transposition $P_{ij}$, the second property holds.\par
  			Property c) means that $\mathcal{P}$ is \emph{nilpotent}, which is obvious form the nilpotency of transposition operator $P_{ij}$.
  		\end{Proof}
  		\begin{Lemma}[(Inner Products of Symmetrized (Anti-symmetrized) States)]
@@ -367,51 +367,62 @@
  			 \end{equation}
  		\end{Lemma}
  		\begin{Proof}
- 			The average under symmetrized (anti-symmetrized) states can be shown in use of both properties before:
+ 			The average under symmetrized (anti-symmetrized) states can be shown in using of all properties above:
  			\begin{align*}
  				\langle\psi_N^{(\varepsilon)}|A|\phi_N^{(\varepsilon)}\rangle&=\dfrac{1}{N!}\sum_{\mathcal{P}}\varepsilon^p\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|\mathcal{P}^\dagger A|\phi_N^{(\varepsilon)}\rangle\\
  				&=\dfrac{1}{N!}\sum_{\mathcal{P}}\varepsilon^p\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A\mathcal{P}|\phi_N^{(\varepsilon)}\rangle\\
- 				&=\dfrac{1}{N!}\sum_{\mathcal{P}}\varepsilon^{2p}\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A\mathcal{P}|\phi_N^{(\varepsilon)}\rangle=\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A|\phi_N^{(\varepsilon)}\rangle,
+ 				&=\dfrac{1}{N!}\sum_{\mathcal{P}}\varepsilon^{2p}\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A|\phi_N^{(\varepsilon)}\rangle=\langle\psi_{\alpha_1}\cdots\psi_{\alpha_N}|A|\phi_N^{(\varepsilon)}\rangle,
  			\end{align*}
- 			where in the second line we make use of both the unitarity and nilpotency of $\mathrm{P}$, in the third line $\varepsilon^{2p}=1$ whatever the sign of our system is and the sum exactly contains $N!$ terms. 
+ 			where in the second line we make use of both the unitarity and commutative relation of $\mathcal{P}$ and validity of definition on $|\psi_{N_k}^{(\varepsilon)}\rangle$, and in the last line $\varepsilon^{2p}=1$ whatever the sign of our system is and the sum exactly contains $N!$ terms (that's why we introduce the normalized factor in defintion of $|\psi_{N_k}^{(\varepsilon)}\rangle$). 
  		\end{Proof}
- 		\hfill\par
- 		Now let us continue our previous discussion where \textbf{different energy level $E_k$ corresponds to a different number of particles $N_k$}.\par 
- 		One might notice that what we defined before on creation and annihilation operators $a_k$ and $a_k^\dagger$, as the linear operator on \textbf{$k$-mode Hilbert spaces}, are just the non-commutative relation and we did not mention a word on the essential domain spaces or image spaces of them, as well as the effects they act on states. So there is still freedom on the definition of them and now we are to complete it:
+ 		Now let us get go on our previous discussion where \textbf{different energy level $E_k$ corresponds to a different number of particles $N_k$}.\par 
+ 		One might notice that what we defined before on creation and annihilation operators $a_k$ and $a_k^\dagger$, as the linear operator on $k$-mode Hilbert spaces, never mention the essential domain spaces or image spaces of them, as well as the effects they act on states. So here we are to complete the definition:
  		\begin{Def}[(Creation Operators)]
 	 		The creation operator $a_\beta^\dagger:\mathcal{H}_{N_k}^{(\varepsilon)}\rightarrow\mathcal{H}_{N_k+1}^{(\varepsilon)}$ is defined as
  			\begin{equation}\label{1.4.3}
- 				a^\dagger_\beta|N_k\rangle\equiv a^\dagger_\beta|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}:=\sqrt{N_k+1}|\varphi_\beta\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}.
+ 				a^\dagger_\beta|N_k\rangle\equiv a^\dagger_\beta|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}:=\sqrt{N_k+1}|\varphi_\beta\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}\equiv\sqrt{N_k+1}|N_k+1\rangle.
  			\end{equation}
  		\end{Def}
- 		As the adjoint operator of $a^\dagger_\beta$, $a_\beta$ must map from $\mathcal{H}_{N_k}^{(\varepsilon)}$ to $\mathcal{H}_{N_k-1}^{(\varepsilon)}$ with some unknown coefficients, which can be determined by the commutation relation and the fact that our symmetrized or anti-symmetrized state $|N_k\rangle$ is always the eigenstate of $\hat{N}_k\equiv a^\dagger_k a_k$ such that
+ 		Likewise, as the adjoint operator of $a^\dagger_\beta$, $a_\beta$ must also map from $\mathcal{H}_{N_k}^{(\varepsilon)}$ to $\mathcal{H}_{N_k-1}^{(\varepsilon)}$ with some coefficients waiting to be determined, which can be obtained by the commutation relation and the fact that our symmetrized or anti-symmetrized state $|N_k\rangle$ is always the eigenstate of $\hat{N}_k\equiv a^\dagger_k a_k$ such that
  		%\footnote{There are some ambiguities in my notation: although here I am talking about the general cases, I still use $N_k$ as is in the former section, meaning that all $n_k$ particles are settle in the same }
  		\begin{equation}\label{1.4.4}
- 			\hat{N}_k|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=N_k|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)},
+ 			\hat{N}_k|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=N_k|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}.
  		\end{equation}
- 		giving
- 		\begin{Def}[(Annihilation Operators)]
+ 		Hence we have
+ 		\begin{Corollary}[(Annihilation Operators)]
 	 		\begin{equation}\label{1.4.5}
- 				a_{\alpha_i}|\varphi_{\alpha_1}\cdots\varphi_{\alpha_i}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=\sqrt{N}|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{i-1}}\varphi_{\alpha_{i+1}}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}.
+ 				a_{\alpha_i}|N_k\rangle\equiv a_{\alpha_i}|\varphi_{\alpha_1}\cdots\varphi_{\alpha_i}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=\sqrt{N_k}|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{i-1}}\varphi_{\alpha_{i+1}}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=\sqrt{N_k}|N_k-1\rangle.
  			\end{equation}
-		\end{Def}
-		Applying \eqref{1.4.5} $N_k$ times, one easily gets
+		\end{Corollary}
+		So we can now safely conclude that 
 		\begin{Proposition}
-			The symmetrized or anti-symmetrized multi-particle states for a typical energy level can be constructed by applying creation operator $N_k$ times on vacuum state
+			An arbitrary symmetrized or anti-symmetrized states \emph{for a specific energy level} lives in the \textbf{single energy level Fork space} $F\mathcal{H}_{N_k}$ such that
+			$$|N_k\rangle\in
+				\begin{cases}
+					\displaystyle\bigoplus_{N_k=0}^\infty\mathcal{SH}_{N_k}\equiv\bigoplus_{N_k=0}^\infty\mathcal{S}\left(\bigotimes_{i=0}^{N_k}\mathcal{H}_1^{(i)}\right),&bosons,\\
+					\displaystyle\bigoplus_{N_k=0}^\infty\mathcal{AH}_{N_k}\equiv\bigoplus_{N_k=0}^\infty\mathcal{A}\left(\bigotimes_{i=0}^{N_k}\mathcal{H}_1^{(i)}\right),&fermions.
+				\end{cases}$$
+		
+		\end{Proposition}
+		Applying \eqref{1.4.5} $N_k$ times and taking the conjugate transpose, one easily gets
+		\begin{Proposition}
+			The symmetrized or anti-symmetrized multi-particle states \emph{for a specific energy level} can be constructed by applying creation operator $N_k$ times on vacuum state
 			\begin{equation}\label{1.4.6}
-				|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=\dfrac{1}{\sqrt{N_k!}}a_{\alpha_1}^\dagger\cdots a_{\alpha_{N_k}}^\dagger|0\rangle.
+				|N_k\rangle\equiv|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_k}}\rangle^{(\varepsilon)}=\dfrac{1}{\sqrt{N_k!}}a_{\alpha_1}^\dagger\cdots a_{\alpha_{N_k}}^\dagger|0\rangle.
 			\end{equation}
 		\end{Proposition}
-		Although to define the action of creation and annihilation operator we pick one energy level with particle number $N_k$, one can discern that \textbf{these two definition is independent of which energy level we are focussing on}. And since different energy level never overlap with others (as a hypothesis of statistical equilibrium), so we can finally write out the explicit form of \textbf{\emph{complete} (anti-)symmetrized multi-particle states as simple tensor products of $|N_k\rangle$}:
-		\begin{Assertion}[(Complete Symmetrized (Anti-symmetrized) States)]
+		Although to define the action of creation and annihilation operator we manually pick out one specific energy level with particle number $N_k$, these two definitions are apparently independent of which energy level we choose. And since creation or annihilation a particle at one energy level has nothing to do with other levels, we naturally demand the \emph{complete} (anti-)symmetrized multi-particle states as simple tensor products of $|N_k\rangle$:
+		\begin{Assertion}[(Multi-level Symmetrized (Anti-symmetrized) States)]
 			Whatever the sign of system we adopt, the compete state always takes the form of
 			\begin{equation}\label{1.4.10}
-				|N\rangle=|\varphi_{\alpha_1}\cdots\varphi_{\alpha_{N_1}}\rangle^{(\varepsilon)}\otimes\cdots\otimes|\varphi_{\beta_1}\cdots\varphi_{\beta_{N_k}}\rangle^{(\varepsilon)}\otimes\cdots\nonumber,
+				|N\rangle=|N_1\rangle\otimes\cdots\otimes|N_k\rangle\otimes\cdots\nonumber,
 			\end{equation}
-			where $|N\rangle$ is the eigenstate of $\hat{N}=\sum_k\hat{N}_k$ with $N=\sum_k N_k$.
+			where $|N\rangle$ denotes the eigenstate of $\hat{N}=\sum_k\hat{N}_k$ with $\hat{N}=\sum_k \hat{N}_k$. Namely, the multi-level symmetrized (or anti-symmetrized) states lives in the tensor products of Fork space of each level
+			$$|N\rangle\in\bigotimes_{k=1}^m\left(\bigoplus_{N_k=0}^\infty\mathcal{H}_{N_k}^{(\varepsilon)}\right),$$
+			where $k$ runs over $m$ energy level indces.
 		\end{Assertion}
 		\begin{Corollary}[(Eigenstates of Bosons $\hat{N}$)]
-			The state of overall $k$-mode quasi-bosons is
+			The state of all bosons is
 			\begin{align}
 				|N\rangle_{\text{bosons}}=\dfrac{1}{\sqrt{N_1!\cdots N_k!\cdots}}(a^\dagger_\alpha)^{N_1}\cdots(a^\dagger_\beta)^{N_k}\cdots|0\rangle,\label{1.4.7}
 			\end{align}
@@ -421,31 +432,31 @@
 			For each $k$, the eigenvalue of $\hat{N}_k$ can only be one or zero.
 		\end{Lemma}
 		\begin{Proof}
-			We show this by proving that at this time $\hat{N}_k$ is the projective operator\footnote{We here use $b$ and $b^\dagger$ to make the distinction with boson case.}
-			$$\hat{N}_k^2=b_k^\dagger b_k b_k^\dagger b_k=b_k^\dagger(1-b_k^\dagger b_k)b_k=\hat{N}_k,$$
-			where we have substitute the anti-commute relation for the creation and annihilation operators for fermions.
+			We show this by proving that at this time $\hat{N}_k$ is the projective operator\footnote{We here use $c$ and $c^\dagger$ to make the distinction with boson case.}
+			$$\hat{N}_k^2=c_k^\dagger c_k c_k^\dagger c_k=c_k^\dagger(1-c_k^\dagger c_k)c_k=\hat{N}_k,$$
+			where we substitute the anti-commute relation for the creation and annihilation operators for fermions.
 		\end{Proof}
-		Since both the factorials of one and zero are one, for fermions we similarly have
+		Since both the factorials of one and zero are one, for fermions we have
 		\begin{Corollary}[(Eigenstates of Fermions $\hat{N}$)]
-			The state of overall $k$-mode quasi-fermions is
+			The state of all fermions is
 			\begin{align}
-				|N\rangle_{\text{fermions}}=b^\dagger_\alpha\cdots b^\dagger_\beta\cdots|0\rangle.\label{1.4.8}
+				|N\rangle_{\text{fermions}}=c^\dagger_\alpha\cdots c^\dagger_\beta\cdots|0\rangle.\label{1.4.8}
 			\end{align}
 		\end{Corollary}
 	
 	\section{Multi-particle Operators}
-		In this section, we will express the operators defined on the Hilbert space we constructed (spanned by $|\psi_N\rangle$) in the last section with creation and annihilation operators. 
+		In this section, we will express the operators acting on the Hilbert space we constructed above with creation and annihilation operators. 
 		\begin{Def}[(Single-particle and Two-particle Operator)]
-			For an arbitrary observable acting on symmetrized Hilbert space $A\in\mathrm{End}\left(\displaystyle\bigotimes_{i}\mathcal{H}_{N_i}^{(\varepsilon)}\right)$, $A$ must also be (anti-)symmetrized as the Hilbert space with the form\footnote{The subscript indicates the number of particles of Hilbert spaces that the operator is defined on.} of
+			For an arbitrary observable acting on symmetrized (or anti-symmetrized) Hilbert space of $N_i$ particles at a specific energy level $A\in\mathrm{End}(\mathcal{H}_{N_i}^{(\varepsilon)})=\displaystyle\mathrm{End}\left(\mathcal{S}\bigotimes_{i=1}^{N_i}\mathcal{H}^{(i)}_1\right)$, the action of $A$ must also be symmetrized (or anti-symmetrized) as the Hilbert space does, i.e.,\footnote{The subscript indicates the number of particles the operator acting on.} of the form
 			\begin{equation}\label{1.5.1}
 				A=A_1+A_2+\cdots\equiv\sum_{i=1}^N A^{(i)}_1+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}+\cdots.
 			\end{equation}
 			We call the first part of the summation \emph{single-particle operator} and the second part \emph{two-particle operator}.
 		\end{Def}
-		\begin{Example}
-			A naive consideration (without self-couplings) is 
-			$$ H=H_1+H_2=\sum_i^N\dfrac{p_i^2}{2m}+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}V(\bm{r}_i-\bm{r}_j).$$
-			Although what we usual encounter is the above simple expression, \textbf{equation \eqref{1.5.1} is acturally an expansion of interaction including high-order couplings.}
+		\begin{Example}[(Coulumb Interaction)]
+			The Hamiltonian of electrons with Coulumb interaction is simply (without considering influence of lattice)
+			$$ H=H_1+H_2=\sum_i^N\dfrac{p_i^2}{2m}+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}\frac{e^2}{4\pi|\bm{r}_i-\bm{r}_j|}.$$
+			Although we usual encounter with simple expression as above, \textbf{equation \eqref{1.5.1} is acturally an expansion of interaction including high-order couplings.}
 		\end{Example}
 		\begin{Proposition}[(Single-particle Operator)]
 			The single-particle operator of $A$ can be expressed as
@@ -613,7 +624,7 @@
 		\end{Note}
 		\begin{Note}
 			Some additional comparision of the ground state $|\Omega\rangle$ in CMP and QED is necessary here:\par
-			\textbf{In CMP, owing to the effects of statistical physics\footnote{One should notice that although QED has more structure than CMP in the sense of Lorentz invariance, the theoretical framework of the latter one still own some original features because \textbf{CMP is acturally the combination of (perturbative) field theory and the therory of Gibbs statistics}. And it is the additional characteristic that makes it valuable to learn.}, electrons in non-interacting fermion systems have the distribution of \emph{fermi ball} in the momentum space, which is disparate in situations in high energy physics. Thus the terminology ``vaccuum state'' has entirely different meaning in these two paradigms}. This difference is apparent under action of creation and annihilation operators:
+			\textbf{In CMP, owing to the effects of statistical physics\footnote{One should notice that although QED has more structure than CMP in the sense of Lorentz invariance, the theoretical framework of the latter one still own some original features because \textbf{CMP is acturally the combination of (perturbative) field theory and the therory of Gibbs statistics}. And it is the additional characteristic that makes it valuable to learn.}, electrons in non-interacting fermion systems have the distribution of \emph{fermi ball} in the momentum space, which is disparate with situations in high energy physics. Thus the terminology ``vaccuum state'' has entirely different meaning in these two paradigms}. This difference is apparent under action of creation and annihilation operators:
 			$$\begin{cases}a_{\bm{p}}|\Omega\rangle=0,&(\varepsilon>\varepsilon_F)\\a_{\bm{p}}^\dagger|\Omega\rangle=0.&(\varepsilon<\varepsilon_F)\end{cases}$$
 		\end{Note}
 		\hfill\par
@@ -631,21 +642,31 @@
 		
 	\section{Free Green Function}
 		\subsection{Quantum Statistics of Grand Canonical Ensemble}
-		Any observables can be solved out from the grand partition function:
+		In this section, we review the derivation of distribution function for both bosons and fermions in the frame of multi-particle states and quantum statistical physics.
+		\begin{Lemma}[(Partition Function)]
+			The partition function of the grand canonical ensemble takes the form of
+			\begin{equation}\label{2.3.14}
+				\varXi_{\mp}=\prod_\ell(1\mp e^{-\beta(\varepsilon_\ell-\mu)})^{\mp1},
+			\end{equation}
+			where minus sign for bosons and possitive sign for fermions.
+		\end{Lemma}
+		\begin{Proof}
 		\begin{align*}
-			\varXi\equiv\mathrm{tr}(e^{-\beta H'})&=\sum_{\{n_k\}}\langle\{n_k\}|\prod_{\ell}e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|\{n_k\}\rangle\\
+			\varXi\equiv\mathrm{tr}(e^{-\beta H'})&=\mathrm{tr}\left(e^{-\beta \sum_\ell H'_\ell}\right)=\mathrm{tr}\left(\bigotimes_{\ell}e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\\
+			&=\prod_{\ell}\mathrm{tr}_\ell\left(e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)=\prod_\ell\sum_{n_k}\langle n_k|e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|n_k\rangle\\
 			&=\prod_{\ell}\sum_{n_k=0}^\infty e^{-\beta(\varepsilon_\ell-\mu)n_k}.
 		\end{align*}
-		Note that for fermions $n_k$ can only be either zero or one while for bosons $n_k$ can be any large number, so 
-		\begin{equation}\label{2.3.14}
-			\varXi_{\mp}=\prod_\ell(1\mp e^{-\beta(\varepsilon_\ell-\mu)})^{\mp1},
-		\end{equation}
-		where minus sign for bosons and possitive sign for fermions.\par
+		Note that for fermions $n_k$ can only be either zero or one while for bosons $n_k$ can be any large number, so we obtain the form in \eqref{2.3.14}.
+		\end{Proof}
+		
 		Now we are able to obtain the distribution of particle numbers.
 		\begin{align*}
-			\langle a_k^\dagger a_k\rangle&\equiv\langle\rho a_k^\dagger a_k\rangle=\mathrm{tr}\left(a_k^\dagger a_k\dfrac{1}{\varXi}\prod_\ell e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\\
-			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k\prod_l e^{-\beta(\varepsilon_l-\mu)a_l^\dagger a_l}|\{n_k\}\rangle\\
-			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}\sum_l|\{n_l\}\rangle\langle\{n_l\}|\prod_n e^{-\beta(\varepsilon_n-\mu)}|\{n_k\}\rangle
+			\langle a_k^\dagger a_k\rangle&\equiv\langle\rho a_k^\dagger a_k\rangle=\mathrm{tr}\left(\dfrac{1}{\varXi}\bigotimes_\ell e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\cdot a_k^\dagger a_k\right)\\
+			&=\dfrac{1}{\varXi}\mathrm{tr}\left(a_k^\dagger a_k\cdot e^{-\beta(\varepsilon_k-\mu)}\otimes\right)\\
+			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k\prod_\ell e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|\{n_k\}\rangle\\
+			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}|\{n_k\}\rangle\langle\{n_k\}|\prod_{\ell\neq k} e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|\{n_k\}\rangle\\
+			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}|\{n_k\}\rangle\\
+			&=-\mathrm{tr}\bigg(\dfrac{\partial}{\partial(\beta(\varepsilon_\ell-\mu))}e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\bigg) \bigg/\mathrm{tr}\left(e^{-\beta(\varepsilon_\ell-\mu)a_k^\dagger a_k}\right)
 		\end{align*}
 		\subsection{Fermion Fields}
 			We begin with the familiar distribution of free fermion gases at finite temperature
