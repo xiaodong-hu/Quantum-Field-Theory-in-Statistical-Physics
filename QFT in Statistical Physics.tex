@@ -444,56 +444,61 @@
 			\end{align}
 		\end{Corollary}
 	
-	\section{Multi-particle Operators}
+	\section{Multi-body Operators}
 		In this section, we will express the operators acting on the Hilbert space we constructed above with creation and annihilation operators. 
-		\begin{Def}[(Single-particle and Two-particle Operator)]
-			For an arbitrary observable acting on symmetrized (or anti-symmetrized) Hilbert space of $N_i$ particles at a specific energy level $A\in\mathrm{End}(\mathcal{H}_{N_i}^{(\varepsilon)})=\displaystyle\mathrm{End}\left(\mathcal{S}\bigotimes_{i=1}^{N_i}\mathcal{H}^{(i)}_1\right)$, the action of $A$ must also be symmetrized (or anti-symmetrized) as the Hilbert space does, i.e.,\footnote{The subscript indicates the number of particles the operator acting on.} of the form
-			\begin{equation}\label{1.5.1}
-				A=A_1+A_2+\cdots\equiv\sum_{i=1}^N A^{(i)}_1+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}+\cdots.
-			\end{equation}
-			We call the first part of the summation \emph{single-particle operator} and the second part \emph{two-particle operator}.
+		\begin{Def}[(Single-body and Two-body Operator)]
+			For an arbitrary observable acting on symmetrized (or anti-symmetrized) Hilbert space of $N_i$ particles at a specific energy level $A\in\mathrm{End}(\mathcal{H}_{N_i}^{(\varepsilon)})=\displaystyle\mathrm{End}\left(\mathcal{S}\bigotimes_{i=1}^{N_i}\mathcal{H}^{(i)}_1\right)$, the action of $A$ must also be symmetrized (or anti-symmetrized) as the Hilbert space does, i.e.,\footnote{The subscript indicates the number of particles the operator acting on.} of the form\footnote{Another \textbf{\emph{wrong}} form of multi-body state usually seen in physics literature takes a neat form of $$A\equiv A_1+A_2+\cdots=\sum_{i=1}^N A^{(i)}_1+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}+\cdots.$$}
+			\begin{align}
+				A&=A_1+A_2+\cdots\nonumber\\
+				&=\bigg(A_1^{(1)}\otimes\mathbb{1}\otimes\cdots+\mathbb{1}\otimes A_1^{(2)}\otimes\cdots+\mathbb{1}\otimes\cdots\otimes A_1^{(N)}\bigg)\nonumber\\
+				&\quad+\bigg(A_2^{(1)}\otimes A_2^{(2)}\otimes\mathbb{1}\otimes\cdots+A_2^{(1)}\otimes\mathbb{1}\otimes A_2^{(3)}\otimes\mathbb{1}\otimes\cdots+\cdots\bigg)+\cdots.\label{1.5.1}
+			\end{align}
+			We call the first part of the summation \emph{single-body operator} and the second part \emph{two-body operator}.
 		\end{Def}
 		\begin{Example}[(Coulumb Interaction)]
 			The Hamiltonian of electrons with Coulumb interaction is simply (without considering influence of lattice)
 			$$ H=H_1+H_2=\sum_i^N\dfrac{p_i^2}{2m}+\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}\frac{e^2}{4\pi|\bm{r}_i-\bm{r}_j|}.$$
 			Although we usual encounter with simple expression as above, \textbf{equation \eqref{1.5.1} is acturally an expansion of interaction including high-order couplings.}
 		\end{Example}
-		\begin{Proposition}[(Single-particle Operator)]
-			The single-particle operator of $A$ can be expressed as
+		\begin{Proposition}[(Single-body Operator)]
+			The single-body operator of $A$ can be expressed as
 			\begin{equation}\label{1.5.2}
-				A_1\equiv\sum_{i=1}^N A^{(i)}_1=\sum_{\alpha,\beta}\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta,
+				A_1=\sum_{\alpha,\beta}\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta,
 			\end{equation}
-			where the superscript $i$ indicates a contribution from the $i$th single-particle\footnote{Since all the paritcle of the same energy level are supposed to be identical, contribution from the inner product of single-particle state of particle one has nothing different with that of particle two. Hence in this sense, \textbf{the superscript $i$ is utterly unecessary}.}. In the continuous form
-			$$\sum_{i=1}^N A^{(i)}_1=\iint\dd\alpha\dd\beta\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta.$$
+			where the superscript $i$ indicates a contribution from the $i$th single-body\footnote{Since all the $k$-mode paritcles of the same energy level are supposed to be identical, contribution from the $i$th particle has no difference with that of others'.}
+			%Hence in this sense, \textbf{the superscript $i$ is utterly unecessary}.}. 
+			In the continuous form
+			$$A_1=\iint\dd\alpha\dd\beta\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta.$$
 		\end{Proposition}
 		\begin{Proof}
-			We prove the discrete form, and there is no differences on the continuous one. Utilize the completeness of symmetrized multi-particle states $|N\rangle$, we have (focussing on a specific $k$-mode of $N$ particles)
+			We prove the discrete form, and there is no differences on the continuous one. Utilize the completeness of symmetrized multi-body states $|N\rangle$, we have (focussing on a specific $k$-mode of $N$ particles)
 			\begin{align}
 				A_1&=\sum_{\substack{\alpha_1\cdots\alpha_N\\\beta_1\cdots\beta_N}}|\varphi_{\alpha_1}\cdots\rangle^{(\varepsilon)}{}^{(\varepsilon)}\langle\varphi_{\alpha_1}\cdots|A_1|\varphi_{\beta_1}\cdots\rangle^{(\varepsilon)}{}^{(\varepsilon)}\langle\varphi_{\beta_1}\cdots|\label{1.5.3}\\
 	 			&=\dfrac{1}{N!}\sum_{\substack{\alpha_1\cdots\alpha_N\\\beta_1\cdots\beta_N}}a_{\alpha_1}^\dagger\cdots a_{\alpha_N}^\dagger|0\rangle{}^{(\varepsilon)}\langle\varphi_{\alpha_1}\cdots|A_1|\varphi_{\beta_1}\cdots\rangle^{(\varepsilon)}\langle0|a_{\beta_N}\cdots a_{\beta_1}.\label{1.5.4}
 			\end{align}
-			Here we encounter with an inner product under symmetrized states, which has be shown in \eqref{1.4.9} before. Expanding the right hand side of \eqref{1.4.9} with the definition of symmetrized (anti-symmetrized) state, one immediately gets
+			Here we encounter with an inner product between symmetrized states, which has be shown in \eqref{1.4.9} before. Expanding the right hand side of \eqref{1.4.9} with the definition of symmetrized (anti-symmetrized) state, one has
 			\begin{align}
 				{}^{(\varepsilon)}\langle\varphi_{\alpha_1}\cdots|A_1|\varphi_{\beta_1}\cdots\rangle^{(\varepsilon)}&=\dfrac{1}{N!}\sum_{\mathcal{P}_\beta}\varepsilon^{p_\beta}\mathcal{P}_\beta\bigg[\langle\varphi_{\alpha_1}^{(1)}|A^{(1)}_1|\varphi_{\beta_1}^{(1)}\rangle\langle\varphi_{\alpha_2}^{(2)}|\varphi_{\beta_2}^{(2)}\rangle\cdots\langle\varphi_{\alpha_N}^{(N)}|\varphi_{\beta_N}^{(N)}\rangle\nonumber\\
 				&+\cdots+\langle\varphi_{\alpha_1}^{(1)}|\varphi_{\beta_1}^{(1)}\rangle\langle\varphi_{\alpha_2}^{(2)}|\varphi_{\beta_2}^{(2)}\rangle\cdots\langle\varphi_{\alpha_N}^{(N)}|A^{(N)}_N|\varphi_{\beta_N}^{(N)}\rangle\bigg],\label{1.5.5}
 			\end{align}
-			where we make use of the the definition of usual multi-particle states (as simple tensor products of single-particle states) and the definition of single-particle operator that only have contribution under inner products of single particle states.\par
-			And \textbf{because both $\alpha$ and $\beta$ are dummy index under sum, each term in \eqref{1.5.5} should give exactly the same contribution after inserting \eqref{1.5.5} into \eqref{1.5.4}}, which can be easily seen by re-labeling them\footnote{ The operation of renaming variables will certainly also affect the order of creation and annihiation operators outside the inner product of symmetrized (anti-symmetrized) states, but by commutation relation there will be no contribution.}. However, \textbf{because of the existence of permutation opearator $\mathcal{P}_\beta$ acting on all labels $\beta$, each transposition (exchange of name of two dummy variables) will contributes an extra factor $\varepsilon$ and therefore each term in \eqref{1.5.5} will contribute an extra $\varepsilon^{p_\beta}$ overall}. Including the existed factor $\varepsilon^{p_\beta}$, this gives for each same term a coefficient $\varepsilon^{2p_\beta}\equiv+1$ whatever the kind of identical particles we are handling. So 
+			where we make use of the the definition of usual multi-body states (as simple tensor products of single-body states) and the fact that single-body operator is actually sum of operators acting on merely one-particle state
+			$$A_1=A_1^{(1)}\otimes\mathbb{1}\otimes\cdots+\mathbb{1}\otimes A_1^{(2)}\otimes\cdots+\cdots\otimes\mathbb{1}\otimes A_1^{(N)}.$$
+			And \textbf{because both $\alpha$ and $\beta$ are dummy index under addition in \eqref{1.5.5}, each term in \eqref{1.5.5} should give the same contribution}, which can be easily seen by re-labeling them\footnote{ The operation of renaming variables will certainly also affect the order of creation and annihiation operators outside the inner product of symmetrized (anti-symmetrized) states, but by commutation relation there has no contribution.}. However, \textbf{because of the existence of permutation opearator $\mathcal{P}_\beta$ acting on all labels $\beta$, each transposition (exchange of name of two dummy variables) will contributes an extra factor $\varepsilon$ and therefore each term of \eqref{1.5.5} will contribute an extra $\varepsilon^{p_\beta}$ overall}. Including this extra factor, the coefficient $\varepsilon^{2p_\beta}$ will always be $+1$ whatever the kind of identical particles we are handling with. So 
 			\begin{align}
-				\sum_i^N A_1^{(1)}&=\dfrac{N}{N!}\sum_{\substack{\alpha_1\cdots\alpha_N\\\beta_1\cdots\beta_N}}a_{\alpha_1}^\dagger\cdots a_{\alpha_N}^\dagger|0\rangle\bigg[\langle\psi_{\alpha_1}^{(1)}|A_1^{(1)}|\psi_{\beta_1}^{(1)}\rangle\delta_{\alpha_2,\beta_2}\cdots\delta_{\alpha_N,\beta_N}\bigg]\langle0|a_{\beta_N}\cdots a_{\beta_1}\nonumber\\
+				A_1&=\dfrac{N}{N!}\sum_{\substack{\alpha_1\cdots\alpha_N\\\beta_1\cdots\beta_N}}a_{\alpha_1}^\dagger\cdots a_{\alpha_N}^\dagger|0\rangle\bigg[\langle\psi_{\alpha_1}^{(1)}|A_1^{(1)}|\psi_{\beta_1}^{(1)}\rangle\delta_{\alpha_2,\beta_2}\cdots\delta_{\alpha_N,\beta_N}\bigg]\langle0|a_{\beta_N}\cdots a_{\beta_1}\nonumber\\
 				&=\sum_{\alpha_1,\beta_1}\langle\psi_{\alpha_1}^{(1)}|A_1^{(1)}|\psi_{\beta_1}^{(1)}\rangle a_{\alpha_1}^\dagger a_{\beta_1}\left[\dfrac{1}{(N-1)!}\sum_{\substack{\alpha_2\cdots\alpha_N\\\beta_2\cdots\beta_N}}a_{\alpha_1}^\dagger\cdots a_{\alpha_N}^\dagger|0\rangle\langle0|a_{\alpha_2}\cdots a_{\alpha_N}\right]\nonumber\\
 				&=\sum_{\alpha,\beta}\langle\varphi_\alpha|A_1^{(1)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta^\dagger=\sum_{\alpha,\beta}\langle\varphi_\alpha|A_1^{(i)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta^\dagger\nonumber,
 			\end{align}
 			where the square bracket in the second line is exactly the completeness relation of $\mathcal{H}_{N-1}^{(\varepsilon)}$.
 		\end{Proof}
 		\begin{Proposition}
-			The two-particle operator of $A$ can be expressed as
+			The two-body operator of $A$ can be expressed as\footnote{Here we abuse the \emph{wrong notation} for simplicity, but one should always be aware of the correct form \eqref{1.5.1}.}
 			\begin{equation}\label{1.5.6}
 				A_2\equiv\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}=\dfrac{1}{2}\sum_{\alpha,\beta,\gamma,\delta}\langle\varphi_\alpha\varphi_\beta|A_2^{(i,j)}|\varphi_\gamma\varphi_\delta\rangle a_\alpha^\dagger a_\beta^\dagger a_\delta a_\gamma.
 			\end{equation}
-			where $(i,j)$ is an arbitrary pair and $|\varphi_\alpha\varphi_\beta\rangle$ is the usual two-particle state $|\varphi_\alpha\rangle\otimes|\varphi_\beta\rangle$,
+			where $(i,j)$ is an arbitrary pair and $|\varphi_\alpha\varphi_\beta\rangle$ is the usual two-body state $|\varphi_\alpha\rangle\otimes|\varphi_\beta\rangle$,
 			or in the continuous form
-			$$\dfrac{1}{2}\sum_{\substack{i,j\\i\neq j}}A_2^{(i,j)}=\dfrac{1}{2}\iiiint\dd\alpha\dd\beta\dd\gamma\dd\delta\,\langle\varphi_\alpha\varphi_\beta|A_2^{(i,j)}|\varphi_\gamma\varphi_\delta\rangle a_\alpha^\dagger a_\beta^\dagger a_\delta a_\gamma.$$
+			$$A_2=\dfrac{1}{2}\iiiint\dd\alpha\dd\beta\dd\gamma\dd\delta\,\langle\varphi_\alpha\varphi_\beta|A_2^{(i,j)}|\varphi_\gamma\varphi_\delta\rangle a_\alpha^\dagger a_\beta^\dagger a_\delta a_\gamma.$$
 		\end{Proposition}
 		\begin{Proof}
 			Similarly. Leave as an exercise.
@@ -511,9 +516,9 @@
 			where $A_1^{(i)}(\xi)\equiv\langle\xi|A_1^{(i)}|\xi\rangle$ and $\quad A_2^{(i,j)}(\xi_1,\xi_2)\equiv\langle\xi_1,\xi_2|A_2^{(i,j)}|\xi_2,\xi_1\rangle$
 		\end{Corollary}
 		\begin{Proof}
-			We still work in discrete form in consistency with what we have done above, that is, we have a discrete spectrum decomposition of the identity operator in the $i$th single-particle Hilbert space $\mathcal{H}_1^{(i)}$
+			We still work in discrete form in consistency with what we have done above, that is, we have a discrete spectrum decomposition of the identity operator in the $i$th single-body Hilbert space $\mathcal{H}_1^{(i)}$
 			$$\displaystyle\sum_\xi|\xi^{(i)}\rangle\langle\xi^{(i)}|=\mathbb{1}.$$
-			\indent We first prove the single-particle case. One should note that only when $A_1^{(i)}$ acts on states in $\mathcal{H}_1^{(i)}$ that it gives out a non-vanishing value, i.e.,
+			\indent We first prove the single-body case. One should note that only when $A_1^{(i)}$ acts on states in $\mathcal{H}_1^{(i)}$ that it gives out a non-vanishing value, i.e.,
 			\begin{equation}\label{1.5.9}
 				A_1^{(i)}|\xi^{(j)}\rangle=\delta_{ij}A_1^{(i)}|\xi^{(i)}\rangle.
 			\end{equation}
@@ -522,17 +527,22 @@
 				A_1&=\sum_{\xi^{(i)}}\sum_{\xi^{(j)}}\langle\varphi_\alpha|\xi^{(i)}\rangle\langle\xi^{(i)}|A_1^{(i)}|\xi^{(j)}\rangle\langle\xi^{(j)}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta\\
 				&=\sum_{\xi^{(i)}}\varphi^*_\alpha(\xi^{(i)})A_1^{(i)}(\xi^{(i)})\varphi_\beta(\xi^{(i)})a_\alpha^\dagger a_\beta.
 			\end{align*}
-			There is no difference in the proof of two-particle case.
+			There is no difference in the proof of two-body case.
 		\end{Proof}
-		\begin{Example}[(Self-interactive Hamiltonian for Schr$\ddot{\text{o}}$dinger Field)]
-			Consider a multi-particle system put in an extra field and has interaction\footnote{For simplicity we do not consider the couplings between spins and extra fields here.} between particles of \emph{different} $k$-mode (since there is just one kind of field, we would like to call this the \emph{self-interaction} of Schr$\ddot{\text{o}}$dinger fields), which has interference on the \emph{free} Hamiltonian and may result in changing the transition rate of particles or other observable physical processes. One can easily write
-			\begin{align}
-				H&=\sum_{i,j}\int\dd\bm{r}\left[\dfrac{\hbar^2}{2m}\nabla\varphi_i(\bm{r})^*\cdot\nabla\varphi_j(\bm{r})+\varphi_i^*(\bm{r})U(\bm{r})\varphi_j(\bm{r})\right]a^\dagger_i a_j\nonumber\\
-				&+\dfrac{1}{2}\sum_{i,j,k,l}\iint\dd\bm{r}\dd\bm{r'}\,\varphi_i^*(\bm{r})\varphi^*_j(\bm{r'})U^{(2)}(\bm{r},\bm{r})\varphi_k(\bm{r'})\varphi_l(\bm{r})a_i^\dagger a_j^\dagger a_k a_l+\cdots\nonumber\\
-				&=\int\dd\bm{r}\left[\dfrac{\hbar^2}{2m}\nabla\psi^\dagger\cdot\nabla\psi+\psi^\dagger(\bm{r})U(\bm{r})\psi(\bm{r})\right]\nonumber\\
-				&+\dfrac{1}{2}\iint\dd\bm{r}\dd\bm{r'}\,\psi^\dagger(\bm{r})\psi^\dagger(\bm{r'})U^{(2)}(\bm{r},\bm{r})\psi(\bm{r'})\psi(\bm{r}),+\cdots\label{1.5.10}
-			\end{align}
-			where we have inserted the definition of fields operators.
+		\begin{Example}[(General Interactive Hamiltonian for Schr$\ddot{\text{o}}$dinger Field)]
+			Consider a general\footnote{For simplicity we ignore the couplings between spins labels and extra fields here.} multi-body system with high order couplings\footnote{Again we abuse the wrong notation here.}
+			$$H=H_1+H_2+\cdots=\sum_j\dfrac{1}{2m}\hat{\bm p}_i^2+\dfrac{1}{2}{\sum_{ij}}'U(\hat{\bm{r}}_i,\hat{\bm{r}}_j)+\cdots.$$
+			Then by rules we deduced before,
+			\begin{align*}
+				H_1&=\sum_{\alpha\beta}\dfrac{1}{2m}\langle\varphi_\alpha|\hat{\bm{p}^2_i}|\varphi_\beta\rangle a_\alpha^\dagger a_\beta=-\dfrac{\hbar^2}{2m}\sum_{\alpha\beta}\int\dd\bm{r}\,\varphi_\alpha(\bm{r})\nabla^2\varphi_\beta(\bm{r})a_\alpha^\dagger a_\beta\\
+				&=-\dfrac{\hbar^2}{2m}\int\dd\bm{r}\,\nabla\psi^\dagger(\bm{r})\cdot\nabla\psi(\bm{r}),
+			\end{align*}
+			where in the second line we integrate by parts and substitue the definition of fields operators. Likewise, for the two-body part,
+			\begin{align*}
+				H_2&=\dfrac{1}{2}\sum_{\alpha\beta\mu\nu}\langle\varphi_\alpha^{(j)}\varphi_\beta^{(i)}|U(\hat{\bm r}_i,\hat{\bm r}_j)|\varphi_\mu^{(i)}\varphi^{(j)}_\nu\rangle a_\alpha^\dagger a_\beta^\dagger a_\mu a_\nu\\
+				&=\sum_{\alpha\beta\mu\nu}\int\dd\bm{r}\dd\bm{r'}\varphi_\alpha^*(\bm{r})\varphi_\beta^*(\bm{r'})U(\bm{r},\bm{r'})\varphi_\mu(\bm{r'})\varphi_\nu(\bm{r})a_\alpha^\dagger a_\beta^\dagger a_\mu a_\nu\\
+				&=\dfrac{1}{2}\iint\dd\bm{r}\dd\bm{r'}\,\psi^\dagger(\bm{r})\psi^\dagger(\bm{r'})U(\bm{r},\bm{r'})\psi(\bm{r'})\psi(\bm{r})+\cdots.
+			\end{align*}
 		\end{Example}
 
 \part{Landau Fermi Liquid Thoery}
