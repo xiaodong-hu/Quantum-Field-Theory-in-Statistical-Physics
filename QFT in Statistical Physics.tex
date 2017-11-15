@@ -541,11 +541,11 @@
 			\begin{align*}
 				H_2&=\dfrac{1}{2}\sum_{\alpha\beta\mu\nu}\langle\varphi_\alpha^{(j)}\varphi_\beta^{(i)}|U(\hat{\bm r}_i,\hat{\bm r}_j)|\varphi_\mu^{(i)}\varphi^{(j)}_\nu\rangle a_\alpha^\dagger a_\beta^\dagger a_\mu a_\nu\\
 				&=\sum_{\alpha\beta\mu\nu}\int\dd\bm{r}\dd\bm{r'}\varphi_\alpha^*(\bm{r})\varphi_\beta^*(\bm{r'})U(\bm{r},\bm{r'})\varphi_\mu(\bm{r'})\varphi_\nu(\bm{r})a_\alpha^\dagger a_\beta^\dagger a_\mu a_\nu\\
-				&=\dfrac{1}{2}\iint\dd\bm{r}\dd\bm{r'}\,\psi^\dagger(\bm{r})\psi^\dagger(\bm{r'})U(\bm{r},\bm{r'})\psi(\bm{r'})\psi(\bm{r})+\cdots.
+				&=\dfrac{1}{2}\iint\dd\bm{r}\dd\bm{r'}\,\psi^\dagger(\bm{r})\psi^\dagger(\bm{r'})U(\bm{r},\bm{r'})\psi(\bm{r'})\psi(\bm{r}).
 			\end{align*}
 		\end{Example}
 
-\part{Landau Fermi Liquid Thoery}
+%\part{Landau Fermi Liquid Thoery}
 \chapter{Methods on $T=0$ Quantum Field Theory}
 	\section{Grand Canonical Ensemble}
 
@@ -661,29 +661,41 @@
 			where minus sign for bosons and possitive sign for fermions.
 		\end{Lemma}
 		\begin{Proof}
+		Recall that the symmetrized or anti-symmetrized multi-particle state for many energy levels lives in tensor product of Fock spaces:
+		$$|N\rangle\in\bigotimes_{k}\bigoplus_{n_k}\mathcal{H}_{n_k}^{(\varepsilon)},$$
+		so does the many-body operators. Hence
 		\begin{align*}
 			\varXi\equiv\mathrm{tr}(e^{-\beta H'})&=\mathrm{tr}\left(e^{-\beta \sum_\ell H'_\ell}\right)=\mathrm{tr}\left(\bigotimes_{\ell}e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\\
-			&=\prod_{\ell}\mathrm{tr}_\ell\left(e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)=\prod_\ell\sum_{n_k}\langle n_k|e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|n_k\rangle\\
-			&=\prod_{\ell}\sum_{n_k=0}^\infty e^{-\beta(\varepsilon_\ell-\mu)n_k}.
+			&=\prod_{\ell}\mathrm{tr}_\ell\left(e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)=\prod_\ell\sum_{n_\ell}\langle n_\ell|e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|n_\ell\rangle\\
+			&=\begin{cases}\displaystyle\prod_{\ell}\sum_{n_\ell=0}^\infty e^{-\beta(\varepsilon_\ell-\mu)n_\ell},&\text{Bosons},\\\displaystyle\prod_{\ell}\sum_{n_\ell=0}^1 e^{-\beta(\varepsilon_\ell-\mu)n_\ell},&\text{Fermions}.\end{cases}
 		\end{align*}
-		Note that for fermions $n_k$ can only be either zero or one while for bosons $n_k$ can be any large number, so we obtain the form in \eqref{2.3.14}.
+		and we obtain the familiar form in \eqref{2.3.14}.
 		\end{Proof}
 		
-		Now we are able to obtain the distribution of particle numbers.
-		\begin{align*}
-			\langle a_k^\dagger a_k\rangle&\equiv\langle\rho a_k^\dagger a_k\rangle=\mathrm{tr}\left(\dfrac{1}{\varXi}\bigotimes_\ell e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\cdot a_k^\dagger a_k\right)\\
-			&=\dfrac{1}{\varXi}\mathrm{tr}\left(a_k^\dagger a_k\cdot e^{-\beta(\varepsilon_k-\mu)}\otimes\right)\\
-			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k\prod_\ell e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|\{n_k\}\rangle\\
-			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}|\{n_k\}\rangle\langle\{n_k\}|\prod_{\ell\neq k} e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}|\{n_k\}\rangle\\
-			&=\dfrac{1}{\varXi}\sum_{\{n_k\}}\langle\{n_k\}|a_k^\dagger a_k e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}|\{n_k\}\rangle\\
-			&=-\mathrm{tr}\bigg(\dfrac{\partial}{\partial(\beta(\varepsilon_\ell-\mu))}e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\bigg) \bigg/\mathrm{tr}\left(e^{-\beta(\varepsilon_\ell-\mu)a_k^\dagger a_k}\right)
-		\end{align*}
-		\subsection{Fermion Fields}
-			We begin with the familiar distribution of free fermion gases at finite temperature
-			\begin{equation}\label{2.3.1}
-				n_F(\varepsilon_{\bm{k}})\equiv\langle a_{\bm{k}}^\dagger a_{\bm{k}}\rangle=\mathrm{tr}\bigg(e^{\beta(\Omega-H')}a_{\bm{k}}^\dagger a_{\bm{k}}\bigg)=1\bigg/ \left(e^{\beta(\varepsilon_{\bm{k}}-\mu)}+1\right).
+		Now we are able to get the distribution for both kinds:
+		\begin{Proposition}[(Distribution Function)]
+			The distribution function for bosons is
+			\begin{equation}
+				n_B(\bm{k})=\dfrac{1}{e^{\beta(\varepsilon_{\bm{k}}-\mu)}-1},
 			\end{equation}
-			At the low temperature limit $\beta\rightarrow\infty$, not only do we immediately have
+			while for fermions is
+			\begin{equation}
+				n_F(\bm{k})=\dfrac{1}{e^{\beta(\varepsilon_{\bm{k}}-\mu)}+1}.
+			\end{equation}
+		\end{Proposition}
+		\begin{Proof}
+			\begin{align*}
+				\langle a_k^\dagger a_k\rangle&\equiv\mathrm{tr}(\rho a_k^\dagger a_k)=\mathrm{tr}\left(\dfrac{1}{\varXi}\bigotimes_\ell e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\cdot a_k^\dagger a_k\right)\\
+				&=\dfrac{1}{\varXi}\mathrm{tr}_k\left(e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}a_k^\dagger a_k\right)\mathrm{tr}_{\ell\neq k}\left(\bigotimes_{\ell\neq k}e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\\
+				&=\mathrm{tr}_k\left(e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}a_k^\dagger a_k\right)\cdot\left(\prod_{\ell\neq k}\mathrm{tr}_\ell\left(e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\right)\bigg/\prod_\ell\mathrm{tr}_\ell\left(e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\\
+				&=-\mathrm{tr}_k\bigg(\dfrac{\partial}{\partial(\beta(\varepsilon_k-\mu))}e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_\ell}\bigg) \bigg/\mathrm{tr}_k\left(e^{-\beta(\varepsilon_\ell-\mu)a_k^\dagger a_k}\right)\\
+				&=-\dfrac{\partial}{\partial(\beta(\varepsilon_k-\mu))}\mathrm{tr}_k\left(e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell}\right)\cdot\mathrm{tr}_k\left(e^{-\beta(\varepsilon_\ell-\mu)a_k^\dagger a_k}\right)\\
+				&=-\dfrac{\partial}{\partial(\beta(\varepsilon_k-\mu))}\ln\left(\mathrm{tr}_k\left(e^{-\beta(\varepsilon_k-\mu)a_k^\dagger a_k}\right)\right)\\
+				&=-\dfrac{\partial}{\partial(\beta(\varepsilon_k-\mu))}\ln \left((1\mp e^{-\beta(\varepsilon_\ell-\mu)a_\ell^\dagger a_\ell)}\right)=\dfrac{1}{e^{\beta(\varepsilon_k-\mu)}\mp1}
+			\end{align*}
+		\end{Proof}
+		\subsection{Fermion Fields}
+			At the low temperature limit $\beta\rightarrow\infty$, distribution function reduce to the simple form
 			\begin{equation}\label{2.3.2}
 				n_F(\varepsilon_{\bm k})=\theta(\mu-\varepsilon_{\bm k}),
 			\end{equation}
@@ -707,8 +719,8 @@
 				\label{fig:1}
 			\end{figure}
 			%%%%%%%%%%%%%%%%%%%%%%%
-			one should also notice that in analogy of what we have done on definition of Green function, at this time only the ``physical vaccuum'' state average contributes to a non-zero value, i.e.,
-			$$\lim_{\beta\rightarrow\infty}\langle a_{\bm{k}} a_{\bm{k}}^\dagger\rangle=\langle\Omega|a_{\bm{k}}a_{\bm{k}}^\dagger|\Omega\rangle=n_F(\varepsilon_{\bm{k}}).$$
+			%one should also notice that in analogy of what we have done on definition of Green function, at this time only the ``physical vaccuum'' state average contributes to a non-zero value, i.e.,
+			%$$\lim_{\beta\rightarrow\infty}\langle a_{\bm{k}} a_{\bm{k}}^\dagger\rangle=\langle\Omega|a_{\bm{k}}a_{\bm{k}}^\dagger|\Omega\rangle=n_F(\varepsilon_{\bm{k}}).$$
 			Before putting forward the specific results of Green functions, it is worthy to introduce one generalize function before:
 			\begin{Lemma}[(Sokhotsky-Weiestrass Formula)]
 				Given an integrable function $\varphi(x)$ (with a compact support), we can introduce a linear functional on $K$ space\footnote{Some Addition on definition of \emph{basic function space} $K$. We say the linear combinations of complex functions with bounded support and infinit derivatives forms a space of $K$ if the limit (topology) is defined as follows:\par
@@ -731,7 +743,7 @@
 			\begin{Note}
 				Note that \eqref{2.3.4} holds for all real number $s$, no matter $s$ is possitive or negative.
 			\end{Note}
-
+			Free fields for electrons has be obtained in \eqref{2.1.2}, so now let us calculate the free Green function
 			\begin{Proposition}
 				The Green funtion of non-interactive fermion gases $G^{(0)}$ in momnentum space is
 				\begin{equation}\label{2.3.5}
@@ -740,15 +752,15 @@
 				where the \emph{Fermi momentum} $p_F\equiv\sqrt{2m\mu}$.
 			\end{Proposition}
 			\begin{Proof}
-			Direclty substitute the free fermion fields operator, we have (recall the \emph{minus sign} for fermions)
-				\begin{align*}
-					G^{(0)}(\bm{r};t)&=\frac{1}{i}\left(\theta(t)\langle|\Omega|\psi^H\psi^{\dagger H}|\Omega\rangle-\theta(-t)\langle\Omega|\psi^{\dagger H}\psi^H|\Omega\rangle\right)\\
-					&=\dfrac{1}{iV}\sum_{\bm{k}}\bigg(\theta(t)\langle\Omega|(1-a_{\bm{k}}^\dagger a_{\bm{k}})|\Omega\rangle-\theta(-t)\langle\Omega|a_{\bm{k}}^\dagger a_{\bm{k}}|\Omega\rangle\bigg)e^{i[\bm{k\cdot x}-(\varepsilon_{\bm{k}}-\mu)t]}\\
-					&=\dfrac{1}{iV}\sum_{\bm{k}}\bigg(\theta(t)\big(1-\theta(\mu-\varepsilon_{\bm{k}})\big)-\theta(-t)\theta(\mu-\varepsilon_{\bm{k}})\bigg)e^{i[\bm{k\cdot x}-(\varepsilon_{\bm{k}}-\mu)t]},
+			Direclty substitute the free fermion fields operator, we have (note that the ground state for non-interacting fermions is the \emph{fermi ball}, where for $k<k_F$ there is no space for more electrons to reside and for $k>k_F$ there is no electron to be annihilated)
+2				\begin{align*}
+					iG^{(0)}(\bm{r};t)&=\theta(t)\langle|\Omega|\psi^H\psi^{\dagger H}|\Omega\rangle-\theta(-t)\langle\Omega|\psi^{\dagger H}\psi^H|\Omega\rangle\\\
+					&=\dfrac{1}{V}\sum_{\bm{k}}\bigg(\theta(t)\langle\Omega|(1-a_{\bm{k}}^\dagger a_{\bm{k}})|\Omega\rangle-\theta(-t)\langle\Omega|a_{\bm{k}}^\dagger a_{\bm{k}}|\Omega\rangle\bigg)e^{i[\bm{k\cdot x}-(\varepsilon_{\bm{k}}-\mu)t]}\\
+					&=\dfrac{1}{V}\sum_{\bm{k}}\bigg(\theta(t)\big(1-\theta(\mu-\varepsilon_{\bm{k}})\big)-\theta(-t)\theta(\mu-\varepsilon_{\bm{k}})\bigg)e^{i[\bm{k\cdot x}-(\varepsilon_{\bm{k}}-\mu)t]},
 				\end{align*}
-				where we have utilized the anticommutation relation and substituted the distribution of fermions at $T=0\,\mathrm{k}$. Next, carefully performing the Fourier transformation, we get 
+				where in the second line we have utilized the anticommutative relation for ferminonic operators and substituted the distribution of fermions at $T=0\,\mathrm{k}$. Next, carefully performing the Fourier transformation, we get 
 				\begin{align*}
-					G^{(0)}(\bm{p},\omega)&\equiv\int\,G^{(0)}(\bm{r},t)e^{-i(\bm{p\cdot r}-\omega t)}\dd t\dd\bm{r}\\
+					iG^{(0)}(\bm{p},\omega)&\equiv\int\,G^{(0)}(\bm{r},t)e^{-i(\bm{p\cdot r}-\omega t)}\dd t\dd\bm{r}\\
 					&=	\begin{cases}
 							\displaystyle\mu-\varepsilon_{\bm{p}}>0,&\displaystyle\frac{-1}{i}\int\,\theta(-t)e^{i(\omega-\varepsilon_{\bm p}+\mu)t}\dd t=\dfrac{-1}{i}\int_{-\infty}^0\,e^{i(\omega+\mu-\varepsilon_{\bm p})t}\,\dd t,\\[0.7pc]
 							\displaystyle\mu-\varepsilon_{\bm{p}}<0,&\displaystyle\frac{1}{i}\int\,\theta(t)e^{i(\omega-\varepsilon_{\bm p}+\mu)t}\dd t=\dfrac{1}{i}\int_0^\infty\,e^{i(\omega+\mu-\varepsilon_{\bm p})t}\,\dd t.

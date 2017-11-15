@@ -1,10 +1,10 @@
 # Fdb version 3
-["xdvipdfmx"] 1510205512 "QFT in Statistical Physics.xdv" "QFT in Statistical Physics.pdf" "QFT in Statistical Physics" 1510205512
-  "QFT in Statistical Physics.xdv" 1510205512 593432 2abe3659557503f9ed014b1cf188d9a7 "xelatex"
+["xdvipdfmx"] 1510759250 "QFT in Statistical Physics.xdv" "QFT in Statistical Physics.pdf" "QFT in Statistical Physics" 1510759251
+  "QFT in Statistical Physics.xdv" 1510759250 595420 f4f156ae2b21f38e30b0f39946b31303 "xelatex"
   (generated)
   "QFT in Statistical Physics.pdf"
-["xelatex"] 1510205510 "QFT in Statistical Physics.tex" "QFT in Statistical Physics.xdv" "QFT in Statistical Physics" 1510205512
-  "/dev/null" 1510198355 0 d41d8cd98f00b204e9800998ecf8427e ""
+["xelatex"] 1510759248 "QFT in Statistical Physics.tex" "QFT in Statistical Physics.xdv" "QFT in Statistical Physics" 1510759251
+  "/dev/null" 1510735217 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1480098689 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1480098689 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -270,14 +270,14 @@
   "/usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf" 1494087824 32646 eadc4ca26cdbe7105ac7c593aa8c4f72 ""
   "/usr/local/texlive/2017/texmf-var/web2c/xetex/xelatex.fmt" 1504528651 3678520 54ee05c1e1c0e90a493a7b414d02858c ""
   "/usr/local/texlive/2017/texmf.cnf" 1504528584 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "QFT in Statistical Physics.aux" 1510205512 13825 42bd6906f33268bf2fc6cb0f93a7934e ""
-  "QFT in Statistical Physics.out" 1510205512 5041 5ab59c1a07b8814f7bca3c74433a1677 ""
-  "QFT in Statistical Physics.tex" 1510205510 96755 b5c53f2591be0e9b5d66a67a48cd28e0 ""
-  "QFT in Statistical Physics.toc" 1510205512 2377 4fe0da1dbe5636eadbb3f01a9c0c43d2 ""
+  "QFT in Statistical Physics.aux" 1510759250 13617 afd6752dc0a13d8074b3129c9514cd6b ""
+  "QFT in Statistical Physics.out" 1510759250 4830 41d989427a337045ed7b4f491e47e6ca ""
+  "QFT in Statistical Physics.tex" 1510759248 97880 fbbf9222e10db9c24441fc51ffedbf49 ""
+  "QFT in Statistical Physics.toc" 1510759250 2301 6dd0b567eac7af292bb3364d4a3a2cb8 ""
   (generated)
-  "QFT in Statistical Physics.log"
   "QFT in Statistical Physics.thm"
-  "QFT in Statistical Physics.aux"
   "QFT in Statistical Physics.out"
   "QFT in Statistical Physics.xdv"
+  "QFT in Statistical Physics.aux"
+  "QFT in Statistical Physics.log"
   "QFT in Statistical Physics.toc"
